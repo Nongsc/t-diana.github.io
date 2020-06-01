@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="renderer" content="webkit"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0-rc.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0-rc.0" type="image/png" sizes="32x32"><meta name="msvalidate.01" content="8053F4DEB65CB21B9E01C995EDF3095B"><meta name="360-site-verification" content="8f30a1dc148b643dcca9dca97fbe6392"><meta name="sogou_site_verification" content="N4VH5LimgF"><meta name="description" content="hexo+GitHub博客搭建                           引言        我花了一些时间搭建属于自己的博客，曾经也弄过一些博客之类的，接触hexo之后，相对来说,hexo简单易用，灵活高效。 hexo+GitHub进行搭建相对自己购买服务器更为划算。花费的精力也比使用服务器要少很多。这样我们就可以更专注写博客。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo+GitHub博客搭建">
+<meta property="og:url" content="http://www.nscblog.top/2020/05/01/hexo-GitHub%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="Nsc">
+<meta property="og:description" content="hexo+GitHub博客搭建                           引言        我花了一些时间搭建属于自己的博客，曾经也弄过一些博客之类的，接触hexo之后，相对来说,hexo简单易用，灵活高效。 hexo+GitHub进行搭建相对自己购买服务器更为划算。花费的精力也比使用服务器要少很多。这样我们就可以更专注写博客。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-01T08:52:43.000Z">
+<meta property="article:modified_time" content="2020-06-01T09:11:49.326Z">
+<meta property="article:author" content="侬仕超">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="错误记录">
+<meta name="twitter:card" content="summary"><meta name="keywords" content="侬仕超, Nsc"><meta name="description" content="不要懒,好好干好一件事就行"><title>hexo+GitHub博客搭建 | Nsc</title><link ref="canonical" href="http://www.nscblog.top/2020/05/01/hexo-GitHub%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0-rc.0"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?8efe34ce9afd961e32b530315be3248c';
+  hm.async = true;
+
+  if (false) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Nsc" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-chess-rook"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Nsc</div><div class="header-banner-info__subtitle">天道酬勤</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">hexo+GitHub博客搭建</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-05-01</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-06-01</span></span></div></header><div class="post-body">
+        <h1 id="hexo-GitHub博客搭建"   >
+          <a href="#hexo-GitHub博客搭建" class="heading-link"><i class="fas fa-link"></i></a>hexo+GitHub博客搭建</h1>
+      
+        <h2 id="引言"   >
+          <a href="#引言" class="heading-link"><i class="fas fa-link"></i></a>引言</h2>
+      <blockquote>
+<p>我花了一些时间搭建属于自己的博客，曾经也弄过一些博客之类的，接触hexo之后，相对来说,hexo简单易用，灵活高效。</p>
+<p>hexo+GitHub进行搭建相对自己购买服务器更为划算。花费的精力也比使用服务器要少很多。这样我们就可以更专注写博客。</p>
+</blockquote>
+<a id="more"></a>
+
+
+        <h2 id="环境搭建"   >
+          <a href="#环境搭建" class="heading-link"><i class="fas fa-link"></i></a>环境搭建</h2>
+      <p>首先我们要将博客托管于GitHub所以我们先安装Git，使用Git进行代码的上传于维护。</p>
+
+        <h2 id="Git安装"   >
+          <a href="#Git安装" class="heading-link"><i class="fas fa-link"></i></a>Git安装</h2>
+      <ol>
+<li><p>从<span class="exturl"><a class="exturl__link"   href="https://git-scm.com/downloads"  target="_blank" rel="noopener">Git官网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>上下载你计算机系统所对应的Git安装包</p>
+</li>
+<li><p>无脑下一步，进行安装</p>
+</li>
+<li><p>安装完成之后Win+R 输入cmd回车 输入 </p>
+<figure class="highlight markdown"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></div></figure>
+
+<p>出现版本号，代表环境变量配置成功。没有配置成功的话</p>
+<figure class="highlight markdown"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">找到Git的安装路径</span><br><span class="line">将安装路径下的bin文件夹的路径添加到path变量中</span><br><span class="line"></span><br><span class="line">注意：bin文件夹存放是Git的一些二进制可执行命令。</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>Git的一些基本操作和使用，我推荐<span class="exturl"><a class="exturl__link"   href="https://wiki.jikexueyuan.com/project/git-tutorial/github.html"  target="_blank" rel="noopener">极客学院的Git教程</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，写的很清楚，跟着学基本使用不成问题。</p>
+</li>
+</ol>
+
+        <h2 id="node-js安装"   >
+          <a href="#node-js安装" class="heading-link"><i class="fas fa-link"></i></a>node.js安装</h2>
+      <ol>
+<li><p>从<span class="exturl"><a class="exturl__link"   href="https://nodejs.org/en/"  target="_blank" rel="noopener">nodejs官网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>上下载你计算机系统所对应的nodejs安装包，我们直接使用长期支持办就行。不推荐使用最新版，否则在后续过程会出现百度都没有的问题。如：</p>
+<blockquote>
+<p>TypeError [ERR_INVALID_ARG_TYPE]: The “mode” argument must be integer.</p>
+</blockquote>
+</li>
+</ol>
+<ol start="2">
+<li><p>无脑下一步，直接完事。</p>
+<p>再次进入cmd 执行以下命令</p>
+<figure class="highlight markdown"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v  #查看nodejs的版本</span><br><span class="line">npm -v #这我也不知道是啥，查看有没有相关工具</span><br></pre></td></tr></table></div></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>安装Git和nodejs之后，我们直接使用git bash来敲命令行</p>
+</blockquote>
+
+        <h2 id="hexo安装"   >
+          <a href="#hexo安装" class="heading-link"><i class="fas fa-link"></i></a>hexo安装</h2>
+      <ol>
+<li><p>先创建一个空文件夹blog，用于存放hexo的环境与博客文章，在blog文件内进行右单击后选择git bash here</p>
+<p>输入命令</p>
+<figure class="highlight markdown"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></div></figure>
+
+<p>老规矩，使用hexo -v 查看是否安装成功，顺便查看版本号</p>
+</li>
+<li><p>接下来初始化hexo</p>
+<figure class="highlight markdown"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></div></figure>
+
+<p>初始化完成后会有以下文件结构：</p>
+<ul>
+<li>node_modules：依赖包 即hexo所需的环境依赖</li>
+<li>public：生成的页面的存放位置</li>
+<li>scaffolds：生成文章的一些模板</li>
+<li>source：用来存放你的文章</li>
+<li>themes：hexo主题样式</li>
+<li>.gitignore：上传到git时所要忽略的东西</li>
+<li>_config.yml：全局的配置文件</li>
+</ul>
+</li>
+<li><p>输入命令</p>
+<figure class="highlight markdown"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g #生成博客视图资源</span><br><span class="line">hexo s #启动后台服务器 会有http://localhost:4000</span><br></pre></td></tr></table></div></figure>
+
+<p>在浏览器中输入：<span class="exturl"><a class="exturl__link"   href="http://localhost:4000"  target="_blank" rel="noopener">http://localhost:4000</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 进行测试查看</p>
+<p>使用Ctrl+C将服务器关闭</p>
+</li>
+</ol>
+
+        <h2 id="创建GitHub个人仓库"   >
+          <a href="#创建GitHub个人仓库" class="heading-link"><i class="fas fa-link"></i></a>创建GitHub个人仓库</h2>
+      <ul>
+<li>首先创建一个GitHub账号，记得用户名</li>
+<li>创建一个仓库（repository）仓库名是 用户名.github.io 如我的仓库名就是 t-diana.github.io</li>
+</ul>
+
+        <h2 id="将SSH添加到GitHub"   >
+          <a href="#将SSH添加到GitHub" class="heading-link"><i class="fas fa-link"></i></a>将SSH添加到GitHub</h2>
+      <ul>
+<li><p>记录本台机器一些信息</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#这里的yourname输入你的GitHub用户名</span><br><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">#这里youremail输入你的GitHub的邮箱</span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>生成SSH公钥</p>
+<figure class="highlight markdown"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C "youremail"</span><br></pre></td></tr></table></div></figure>
+
+<p>可以在用户主目录里找到<code>.ssh</code>目录，里面有 id_rsa 和 id_rsa.pub 两个文件，这两个就是 SSH Key 的秘钥对，<code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥，可以放心地告诉任何人。</p>
+</li>
+<li><p>GitHub添加SSH </p>
+<ol>
+<li>登录GitHub</li>
+<li>点击右上角头像，选择setting</li>
+<li>选择SSH and GPG keys</li>
+<li>点击 New SSH key</li>
+<li>将id_rsa.pub里的内容全部复制到key中，取个title 点击Add SSH key</li>
+</ol>
+</li>
+<li><p>在git bash 中查看是否添加成功</p>
+<figure class="highlight markdown"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com   #直接复制，不用修改</span><br></pre></td></tr></table></div></figure>
+
+</li>
+</ul>
+
+        <h2 id="将hexo部署到GitHub"   >
+          <a href="#将hexo部署到GitHub" class="heading-link"><i class="fas fa-link"></i></a>将hexo部署到GitHub</h2>
+      <p>对全局配置文件_config.yml(而不是themes下的 _config.yml)进行修改</p>
+<figure class="highlight yml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/YourgithubName/YourgithubName.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line"><span class="comment">#YourgithubName 就是自己的GitHub用户名</span></span><br></pre></td></tr></table></div></figure>
+
+<p>然后需要先安装deploy-git，才能用命令将博客视图资源部署到GitHub上</p>
+<figure class="highlight markdown"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save #安装deploy-git的命令</span><br></pre></td></tr></table></div></figure>
+
+<p>上传操作相关命令，每次写完文章后，执行相关的命令</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean #清除之前生成的博客视图资源</span><br><span class="line">hexo generate 或是 hexo g #生成静态文章</span><br><span class="line">hexo deploy 或是 hexo d #将资源上传到GitHub上</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>注意：</p>
+<p>进行deploy时会需要输入username和password</p>
+</blockquote>
+<p>至此，博客基本搭建完成。如果需要进行其他修改的话。</p>
+<p>大家可以查看<span class="exturl"><a class="exturl__link"   href="https://blog.csdn.net/sinat_37781304/article/details/82729029"  target="_blank" rel="noopener">这篇博客</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，这位博主写得非常细致。</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://www.nscblog.top">侬仕超</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://www.nscblog.top/2020/05/01/hexo-GitHub%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">http://www.nscblog.top/2020/05/01/hexo-GitHub%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.nscblog.top/tags/%E5%AD%A6%E4%B9%A0/">学习</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.nscblog.top/tags/%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/">错误记录</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2020/05/01/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E8%AE%BA/"><span class="paginator-prev__text">学习方法论</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo-GitHub博客搭建"><span class="toc-number">1.</span> <span class="toc-text">
+          hexo+GitHub博客搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.1.</span> <span class="toc-text">
+          引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建"><span class="toc-number">1.2.</span> <span class="toc-text">
+          环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git安装"><span class="toc-number">1.3.</span> <span class="toc-text">
+          Git安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node-js安装"><span class="toc-number">1.4.</span> <span class="toc-text">
+          node.js安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo安装"><span class="toc-number">1.5.</span> <span class="toc-text">
+          hexo安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建GitHub个人仓库"><span class="toc-number">1.6.</span> <span class="toc-text">
+          创建GitHub个人仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将SSH添加到GitHub"><span class="toc-number">1.7.</span> <span class="toc-text">
+          将SSH添加到GitHub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将hexo部署到GitHub"><span class="toc-number">1.8.</span> <span class="toc-text">
+          将hexo部署到GitHub</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/head_img.jpeg" alt="avatar"></div><p class="sidebar-ov-author__text">没人会带你去钓鱼</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/t-diana/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/id201015024" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/xi-xu-33-23" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=201015024" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">0</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>侬仕超</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0-rc.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js" color="0,0,0" opacity="0.6" count="99" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: 'ab258a36734e477abf13',
+    clientSecret: '8270553dda1b5679c380128b955479f9ee61d971',
+    repo: 'comments',
+    owner: 't-diana',
+    admin: ['t-diana'],
+    distractionFreeMode: 'false',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.0.0-rc.0"></script><script src="/js/stun-boot.js?v=2.0.0-rc.0"></script><script src="/js/scroll.js?v=2.0.0-rc.0"></script><script src="/js/header.js?v=2.0.0-rc.0"></script><script src="/js/sidebar.js?v=2.0.0-rc.0"></script></body></html>
