@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="renderer" content="webkit"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0-rc.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0-rc.0" type="image/png" sizes="32x32"><meta name="msvalidate.01" content="8053F4DEB65CB21B9E01C995EDF3095B"><meta name="360-site-verification" content="8f30a1dc148b643dcca9dca97fbe6392"><meta name="sogou_site_verification" content="N4VH5LimgF"><meta name="description" content="第6章    利用数组处理批量数据        数组特点：  数组是一组有序数据的集合 用一个数组名和下标表示一个元素 数组中的所有元素都属于同一个数据类型                       6.1    怎样定义和引用一维数组                           6.1.1    怎样定义一维数组       语法： 类型符 数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用数组处理批量数据">
+<meta property="og:url" content="http://www.nscblog.top/2020/05/24/%E5%88%A9%E7%94%A8%E6%95%B0%E7%BB%84%E5%A4%84%E7%90%86%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE/index.html">
+<meta property="og:site_name" content="Nsc">
+<meta property="og:description" content="第6章    利用数组处理批量数据        数组特点：  数组是一组有序数据的集合 用一个数组名和下标表示一个元素 数组中的所有元素都属于同一个数据类型                       6.1    怎样定义和引用一维数组                           6.1.1    怎样定义一维数组       语法： 类型符 数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/C%E8%AF%AD%E8%A8%80%E5%AF%B9%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%88%86%E8%A1%8C%E7%BB%99%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E8%B5%8B%E5%80%BC.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%B0%86%E6%95%B0%E6%8D%AE%E5%86%99%E5%9C%A8%E4%B8%80%E4%B8%AA%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%86%85.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%AF%B9%E9%83%A8%E5%88%86%E5%85%83%E7%B4%A0%E8%B5%8B%E5%80%BC.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%85%A8%E9%83%A8%E5%85%83%E7%B4%A0%E8%B5%8B%E5%80%BC%E7%9C%81%E7%95%A5%E7%AC%AC%E4%B8%80%E7%BB%B4%E9%95%BF%E5%BA%A6.png">
+<meta property="article:published_time" content="2020-05-24T12:42:34.000Z">
+<meta property="article:modified_time" content="2020-06-10T12:55:41.096Z">
+<meta property="article:author" content="侬仕超">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="专升本">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/C%E8%AF%AD%E8%A8%80%E5%AF%B9%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89.png"><meta name="keywords" content="侬仕超, Nsc"><meta name="description" content="不要懒,好好干好一件事就行"><title>利用数组处理批量数据 | Nsc</title><link ref="canonical" href="http://www.nscblog.top/2020/05/24/%E5%88%A9%E7%94%A8%E6%95%B0%E7%BB%84%E5%A4%84%E7%90%86%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0-rc.0"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?8efe34ce9afd961e32b530315be3248c';
+  hm.async = true;
+
+  if (false) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Nsc" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-chess-rook"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Nsc</div><div class="header-banner-info__subtitle">天道酬勤</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">利用数组处理批量数据</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-05-24</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-06-10</span></span></div></header><div class="post-body">
+        <h1 id="第6章-利用数组处理批量数据"   >
+          <a href="#第6章-利用数组处理批量数据" class="heading-link"><i class="fas fa-link"></i></a>第6章    利用数组处理批量数据</h1>
+      <blockquote>
+<p>数组特点：</p>
+<ol>
+<li>数组是一组有序数据的集合</li>
+<li>用一个数组名和下标表示一个元素</li>
+<li>数组中的所有元素都属于同一个数据类型</li>
+</ol>
+</blockquote>
+
+        <h2 id="6-1-怎样定义和引用一维数组"   >
+          <a href="#6-1-怎样定义和引用一维数组" class="heading-link"><i class="fas fa-link"></i></a>6.1    怎样定义和引用一维数组</h2>
+      
+        <h3 id="6-1-1-怎样定义一维数组"   >
+          <a href="#6-1-1-怎样定义一维数组" class="heading-link"><i class="fas fa-link"></i></a>6.1.1    怎样定义一维数组</h3>
+      <p>语法：</p>
+<p>类型符 数组名[常量表达式]   如：</p>
+<p>int  a[10];</p>
+<blockquote>
+<p>说明：</p>
+<ol>
+<li>数组命名规则与变量名相同，遵循标识符命名规则。</li>
+<li>定义数组是，需要指定长度。</li>
+<li>常量表达式可以包括常量和符号常量</li>
+<li>数组在内存中是一片连续的空间。</li>
+</ol>
+</blockquote>
+<p>在非主函数中定义数组，其长度可以是变量或非常量表达式。</p>
+<p>如果指定数组为静态存储方式，则不能用“可变长数组”。如:</p>
+<p>static int a[2*n]</p>
+
+        <h3 id="6-1-2-怎样引用一维数组和元素"   >
+          <a href="#6-1-2-怎样引用一维数组和元素" class="heading-link"><i class="fas fa-link"></i></a>6.1.2    怎样引用一维数组和元素</h3>
+      <p>引用数组元素的表示形式：</p>
+<p>数组名[下标]           </p>
+<p>注意：</p>
+<p>下标可以是整形常量或整形表达式。</p>
+<p>​    a[0]=a[5]+a[7]-a[2*3];</p>
+<p>数组下标范围是0到（定义长度-1）</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">10</span>],i=<span class="number">9</span>,j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(;j&lt;<span class="number">10</span>;j++)</span><br><span class="line">		a[j]=j;</span><br><span class="line">	<span class="keyword">for</span>(;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"a[%d]=%d\n"</span>,i,a[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="6-1-3-一维数组的初始化"   >
+          <a href="#6-1-3-一维数组的初始化" class="heading-link"><i class="fas fa-link"></i></a>6.1.3    一维数组的初始化</h3>
+      <ul>
+<li><p>定义数组时对全部元素赋值</p>
+<p>int a[5]={0,1,2,3,4};</p>
+</li>
+<li><p>可以给数组一部分元素赋值。</p>
+<p>int a[10]={0,1,2,3};        //系统给后续元素赋值为0</p>
+</li>
+<li><p>如果想使一个数组中元素值为0，可以写成</p>
+<p>int a[3]={0,0,0};  或     int a[3]={0}；</p>
+</li>
+</ul>
+
+        <h3 id="6-1-4-一维数组程序举例"   >
+          <a href="#6-1-4-一维数组程序举例" class="heading-link"><i class="fas fa-link"></i></a>6.1.4    一维数组程序举例</h3>
+      <figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	利用数组来实现斐波那契数列 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">20</span>]=&#123;<span class="number">1</span>,<span class="number">1</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;<span class="number">20</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i]=a[i<span class="number">-1</span>]+a[i<span class="number">-2</span>];</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">20</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"a[%d]=%d\n"</span>,i,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 	用一维数组实现冒泡排序 </span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">5</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> i,j=<span class="number">0</span>,temp=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">5</span>-i;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[j]&gt;a[j+<span class="number">1</span>])</span><br><span class="line">			&#123;</span><br><span class="line">				temp=a[j];</span><br><span class="line">				a[j]=a[j+<span class="number">1</span>];</span><br><span class="line">				a[j+<span class="number">1</span>]=temp;	</span><br><span class="line">			&#125;</span><br><span class="line">		</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"a[%d]=%d\n"</span>,i,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="6-2-怎样定义和引用二维数组"   >
+          <a href="#6-2-怎样定义和引用二维数组" class="heading-link"><i class="fas fa-link"></i></a>6.2    怎样定义和引用二维数组</h2>
+      <p><strong>二维数组常称矩阵</strong></p>
+
+        <h3 id="6-2-1-怎样定义二维数组"   >
+          <a href="#6-2-1-怎样定义二维数组" class="heading-link"><i class="fas fa-link"></i></a>6.2.1    怎样定义二维数组</h3>
+      <p>二维数组定义的一般表现形式</p>
+<p>类型说明符 数组名[常量表达式] [常量表达式];</p>
+<p>如：</p>
+<p>float  a[3] [4],b[4] [5];</p>
+<p>定义a为3行4列的数组，b为5行10列的数组。</p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/C%E8%AF%AD%E8%A8%80%E5%AF%B9%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89.png" alt="image-20200526134726431"></p>
+<p>C语言中二维数组中元素的排列的顺序是按行存放的，即在内存中存放第一行的元素，接着再存放第二行的元素。内存中中的个元素是连续存放的，不是二维的，是线性的。</p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89.png" alt="image-20200526140316287"></p>
+
+        <h3 id="6-2-2-怎样引用二维数组"   >
+          <a href="#6-2-2-怎样引用二维数组" class="heading-link"><i class="fas fa-link"></i></a>6.2.2    怎样引用二维数组</h3>
+      <p>二维数组元素的表示形式为</p>
+<p>数组名[下标] [下标]        下标应是整形表达式（对常量使用运算符连接进行运算）</p>
+
+        <h3 id="6-2-3-二维数组的初始化"   >
+          <a href="#6-2-3-二维数组的初始化" class="heading-link"><i class="fas fa-link"></i></a>6.2.3    二维数组的初始化</h3>
+      <ol>
+<li>分行给二维数组赋初值<img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%88%86%E8%A1%8C%E7%BB%99%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E8%B5%8B%E5%80%BC.png" alt="image-20200526142730067"></li>
+<li>可以，将所有数据卸载一个花括号内，按数组元素在内存中的排列顺序对个元素赋值。<img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%B0%86%E6%95%B0%E6%8D%AE%E5%86%99%E5%9C%A8%E4%B8%80%E4%B8%AA%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%86%85.png" alt="image-20200526142826624"></li>
+<li>可以对部分赋值。没有赋值的部分，系统会自动赋值为0<img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%AF%B9%E9%83%A8%E5%88%86%E5%85%83%E7%B4%A0%E8%B5%8B%E5%80%BC.png" alt="image-20200526142929658"></li>
+<li>如果对全部元素都赋值，则定义数组是对第一维长度可以不指定，但第二维的长度不能省。<img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%85%A8%E9%83%A8%E5%85%83%E7%B4%A0%E8%B5%8B%E5%80%BC%E7%9C%81%E7%95%A5%E7%AC%AC%E4%B8%80%E7%BB%B4%E9%95%BF%E5%BA%A6.png" alt="image-20200526143041282"></li>
+</ol>
+
+        <h3 id="6-2-4-二维数组程序举例"   >
+          <a href="#6-2-4-二维数组程序举例" class="heading-link"><i class="fas fa-link"></i></a>6.2.4    二维数组程序举例</h3>
+      <figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	二维数组元素互换 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">3</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> b[<span class="number">3</span>][<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">3</span>;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			b[j][i]=a[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">2</span>;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\t"</span>,b[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	找出二维数组中最大的数 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">3</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">max</span>=a[<span class="number">0</span>][<span class="number">0</span>],i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">3</span>;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i][j]&gt;<span class="built_in">max</span>)</span><br><span class="line">				<span class="built_in">max</span>=a[i][j];</span><br><span class="line">		&#125;;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"max=%d"</span>,<span class="built_in">max</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="6-3-字符数组"   >
+          <a href="#6-3-字符数组" class="heading-link"><i class="fas fa-link"></i></a>6.3    字符数组</h2>
+      
+        <h3 id="6-3-1-怎样定义字符数组"   >
+          <a href="#6-3-1-怎样定义字符数组" class="heading-link"><i class="fas fa-link"></i></a>6.3.1    怎样定义字符数组</h3>
+      <p>char c[10];</p>
+<p>c[10]=’3’;</p>
+<p>因为字符型数据是以ASCII码存放的，因此，也可以用整形数组存放字符</p>
+
+        <h3 id="6-3-2-字符数组的初始化"   >
+          <a href="#6-3-2-字符数组的初始化" class="heading-link"><i class="fas fa-link"></i></a>6.3.2    字符数组的初始化</h3>
+      <p>一次将各个字符赋值给数组中各元素。</p>
+<p>部分赋值元素，剩余没有赋值的部分被系统自定义为空字符   ‘\0’</p>
+<p>不赋值，默认是null 即  ‘\0’</p>
+
+        <h3 id="6-3-3-怎样引用字符数组中的元素"   >
+          <a href="#6-3-3-怎样引用字符数组中的元素" class="heading-link"><i class="fas fa-link"></i></a>6.3.3    怎样引用字符数组中的元素</h3>
+      <p>可以引用字符数组中一个元素，得到一个字符。</p>
+
+        <h3 id="6-3-4-字符串和字符串结束的标志"   >
+          <a href="#6-3-4-字符串和字符串结束的标志" class="heading-link"><i class="fas fa-link"></i></a>6.3.4    字符串和字符串结束的标志</h3>
+      <p>在C语言中是将字符串作为字符数组来处理的。</p>
+<p>C语言规定了一个“字符串结束的标志”，以null   即’\0’   作为结束标志。</p>
+<p>如果字符数组中存有若干个字符，前9个字符都不是空字符，而地10个是’\0’ ，它的有效字符为9个，也就是说遇到字符’\0’时，表示字符串结束，把它前面的字符组成一个字符串。</p>
+<p><strong>null字符的位置决定了字符数组的长度，或是字符串的长度。</strong></p>
+<p>字符数组初始化一种方法：使用字符串常量来使字符数组初始化。</p>
+<p>如：char c[]={“i am student.”};也可以省略花括号</p>
+<p>​        char c[]=”i am student.”;  空字符也是字符串的长度的一部分，字符串的长度还要加一个空字符的位置。</p>
+<p>​        char c[]=”i am student.”;等价于a[]  与d[]不一样</p>
+<p>​        char a[]={‘i’,’ ‘,’a’,’m’,’ ‘,’s’,’t’,’u’,’d’,’e’,’n’,’t’,’.’,’\0’};</p>
+<p>​        char d[]={‘i’,’ ‘,’a’,’m’,’ ‘,’s’,’t’,’u’,’d’,’e’,’n’,’t’,’.’};</p>
+<p>说明：字符数组并不要求它的最后一个字符为null，甚至可以没有null</p>
+<p>​            但为了处理方法一致，便于测定字符串的实际长度，在字符数组中加一个’\0’.便于引用字符数组中的字符串。</p>
+
+        <h3 id="6-3-5-字符数组的输入输出"   >
+          <a href="#6-3-5-字符数组的输入输出" class="heading-link"><i class="fas fa-link"></i></a>6.3.5    字符数组的输入输出</h3>
+      <p>字符数组的输入输出：</p>
+<p>1.逐个字符输入输出，用格式符  %c  输出或输入一个字符</p>
+<p>2.将整个字符串一次输入或输出。用%s格式符</p>
+<p>​    如： char c[]={“chair”};</p>
+<p>​            printf(“%s\n”,c);</p>
+<blockquote>
+<p>说明：</p>
+<ol>
+<li><p>输出字符不包括’\0’</p>
+</li>
+<li><p>使用%s时，printf函数中输出项是字符数组名，而不是数组元素名。</p>
+</li>
+<li><p>如果数组长度大于字符串时，当检测到null时结束</p>
+</li>
+<li><p>当数组中包含多个null是，遇到第一个null输出结束</p>
+</li>
+<li><p>可以用scanf函数输入一个字符串。如：scanf(“%s”,c);</p>
+<p>scanf函数输入项是字符数组名，不需要使用地址符，因为在C语言中数组名代表该数组的起始位置。</p>
+</li>
+<li><p>printf(“%s\n”,c); 执行过程，找到数组名c的起始位置，然后逐个输出其中的字符。直到遇到null 即’\0’时停止</p>
+</li>
+</ol>
+</blockquote>
+
+        <h3 id="6-3-6-使用字符串处理函数"   >
+          <a href="#6-3-6-使用字符串处理函数" class="heading-link"><i class="fas fa-link"></i></a>6.3.6    使用字符串处理函数</h3>
+      
+        <h4 id="puts函数-输出字符串的函数"   >
+          <a href="#puts函数-输出字符串的函数" class="heading-link"><i class="fas fa-link"></i></a>puts函数    输出字符串的函数</h4>
+      <p>puts(字符数组) 作用是将一个字符串（以’\0’结束的字符序列）输出到终端。</p>
+
+        <h4 id="gets函数-输入字符串的函数"   >
+          <a href="#gets函数-输入字符串的函数" class="heading-link"><i class="fas fa-link"></i></a>gets函数    输入字符串的函数</h4>
+      <p>gets(字符数组)    目的是向字符数组输入一个字符串</p>
+<blockquote>
+<p>注意puts和gets函数只能输出或输入一个字符串</p>
+</blockquote>
+
+        <h4 id="strcat函数-字符串连接函数"   >
+          <a href="#strcat函数-字符串连接函数" class="heading-link"><i class="fas fa-link"></i></a>strcat函数    字符串连接函数</h4>
+      <p>strcat(字符数组1，字符数组2)，作用是将两个字符串连接起来</p>
+<blockquote>
+<p>说明：</p>
+<ol>
+<li>字符数组1必须足够大，才能容纳连接后的新字符串。</li>
+<li>连接后，字符串1的’\0’取消，只保留字符串2的’\0’</li>
+</ol>
+</blockquote>
+
+        <h4 id="strcpy和strncpy-字符串复制函数"   >
+          <a href="#strcpy和strncpy-字符串复制函数" class="heading-link"><i class="fas fa-link"></i></a>strcpy和strncpy    字符串复制函数</h4>
+      <p>strcpy(字符数组1，字符串2)   将字符串2复制到字符数组1</p>
+<blockquote>
+<p>说明：</p>
+<ol>
+<li>字符数组1的长度要等于或大于字符串2</li>
+<li>字符数组1必须是数组名，字符串2既可以是字符数组名，也可以是一个字符串常量。</li>
+<li>字符串2会替换掉字符数组1前字符串2的字符，剩余的不变</li>
+<li>不能使用赋值语句将一个字符串常量或字符数组直接给一个字符数组。只能使用strcpy函数将字符串赋值到另一个字符数组里去。</li>
+<li>可以使用strncpy函数将字符串2前面n个字符赋值到字符数组1去。   strncpy(字符数组1，字符串2，几个字符);</li>
+</ol>
+</blockquote>
+
+        <h4 id="strcmp函数-字符串比较函数"   >
+          <a href="#strcmp函数-字符串比较函数" class="heading-link"><i class="fas fa-link"></i></a>strcmp函数    字符串比较函数</h4>
+      <p>strcmp(字符串1，字符串2)     比较字符串1和字符串2  比较的是内容是值</p>
+<blockquote>
+<p>说明：</p>
+<ol>
+<li>比较规则:将两个字符串自左到右逐个字符相比（按ASCII码值进行比较）直到出现不同字符或遇到’\0’为止</li>
+<li>全部字符相同，则认为两个字符串相等；</li>
+<li>如果出现不相同字符，则以第一对不相同的字符比较结果为准。</li>
+<li>不能直接使用数组名比较字符串，只能用strcmp函数进行比较</li>
+</ol>
+</blockquote>
+<p>strcmp的返回值 </p>
+<ol>
+<li>0代表两个字符串相等</li>
+<li>正整数表示字符串1&gt;字符串2</li>
+<li>负整数表示字符串1&lt;字符串2</li>
+</ol>
+
+        <h4 id="strlen-函数-测试字符串长度的函数"   >
+          <a href="#strlen-函数-测试字符串长度的函数" class="heading-link"><i class="fas fa-link"></i></a>strlen 函数   测试字符串长度的函数</h4>
+      <p>strlen(字符数组);</p>
+<p>函数的值为字符串的实际长度，不包括’\0’</p>
+
+        <h4 id="strlwr函数-转换为小写"   >
+          <a href="#strlwr函数-转换为小写" class="heading-link"><i class="fas fa-link"></i></a>strlwr函数    转换为小写</h4>
+      <p>strlwr(字符串)；</p>
+<p>将字符串中大写字母转换为小写。</p>
+
+        <h4 id="strupr函数-转换为大写"   >
+          <a href="#strupr函数-转换为大写" class="heading-link"><i class="fas fa-link"></i></a>strupr函数    转换为大写</h4>
+      <p>strupr(字符串);</p>
+<p>将字符串中小写字母转换为大写。</p>
+<blockquote>
+<p>库函数是由编译系统提供，不同的编译系统提供的函数可能不同。</p>
+<p>在使用字符串处理函数是，应当在程序文件的开头用#include&lt;string.h&gt;</p>
+</blockquote>
+
+        <h3 id="6-3-7-字符数组应用举例"   >
+          <a href="#6-3-7-字符数组应用举例" class="heading-link"><i class="fas fa-link"></i></a>6.3.7    字符数组应用举例</h3>
+      <p>看书上</p>
+
+        <h2 id="习题"   >
+          <a href="#习题" class="heading-link"><i class="fas fa-link"></i></a>习题</h2>
+      <figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">"math.h"</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">"string.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	写上1到100的全部整数，然后逐个判断他们是否素数，</span></span><br><span class="line"><span class="comment">	找出一个非素数，就把他们挖掉，最后剩下的就是素数。</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">100</span>],i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)</span><br><span class="line">		a[i]=i+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">3</span>;i&lt;<span class="number">100</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">2</span>;j&lt;a[i];j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]%j==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				a[i]=<span class="string">'\0'</span>;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(a[i]!=<span class="number">0</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"a[%d]=%d\n"</span>,i,a[i]);</span><br><span class="line">	 &#125; </span><br><span class="line">	 <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">"math.h"</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">"string.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	使用选择排序对10个数排序。 </span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">8</span>]=&#123;<span class="number">4</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">8</span>&#125;,i,j,temp;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">8</span><span class="number">-1</span>;i++)</span><br><span class="line">		<span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;<span class="number">8</span>;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]&lt;a[j])</span><br><span class="line">			&#123;</span><br><span class="line">				temp=a[i];</span><br><span class="line">				a[i]=a[j];</span><br><span class="line">				a[j]=temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"a[%d]=%d\t"</span>,i,a[i]); </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">"math.h"</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">"string.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	使用选择排序对10个数排序。 </span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">6</span>]=&#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;,<span class="built_in">end</span>,temp1,temp2,num,i,j;</span><br><span class="line">	<span class="comment">//输入的数是最大的直接放在末尾</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入数据\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;num);</span><br><span class="line">	<span class="keyword">if</span>(a[<span class="number">4</span>]&lt;num)</span><br><span class="line">		a[<span class="number">5</span>]=num;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	<span class="comment">//在循环中找到合适的位置</span></span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//放好插入元素的位置</span></span><br><span class="line">		<span class="keyword">if</span>(num&lt;a[i])</span><br><span class="line">		&#123;</span><br><span class="line">			temp1=a[i];</span><br><span class="line">			a[i]=num;	</span><br><span class="line">			<span class="comment">//剩余元素向后移动一个	</span></span><br><span class="line">			<span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;<span class="number">6</span>;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				temp2=a[j];</span><br><span class="line">				a[j]=temp1;</span><br><span class="line">				temp1=temp2;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"a[%d]=%d\t"</span>,i,a[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://www.nscblog.top">侬仕超</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://www.nscblog.top/2020/05/24/%E5%88%A9%E7%94%A8%E6%95%B0%E7%BB%84%E5%A4%84%E7%90%86%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE/">http://www.nscblog.top/2020/05/24/%E5%88%A9%E7%94%A8%E6%95%B0%E7%BB%84%E5%A4%84%E7%90%86%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.nscblog.top/tags/%E5%AD%A6%E4%B9%A0/">学习</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.nscblog.top/tags/%E4%B8%93%E5%8D%87%E6%9C%AC/">专升本</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.nscblog.top/tags/C%E8%AF%AD%E8%A8%80/">C语言</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/05/30/%E7%94%A8%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">用函数实现模块化程序设计</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/05/18/%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"><span class="paginator-prev__text">循环结构程序设计</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第6章-利用数组处理批量数据"><span class="toc-number">1.</span> <span class="toc-text">
+          第6章    利用数组处理批量数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-怎样定义和引用一维数组"><span class="toc-number">1.1.</span> <span class="toc-text">
+          6.1    怎样定义和引用一维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-1-怎样定义一维数组"><span class="toc-number">1.1.1.</span> <span class="toc-text">
+          6.1.1    怎样定义一维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-2-怎样引用一维数组和元素"><span class="toc-number">1.1.2.</span> <span class="toc-text">
+          6.1.2    怎样引用一维数组和元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-3-一维数组的初始化"><span class="toc-number">1.1.3.</span> <span class="toc-text">
+          6.1.3    一维数组的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-4-一维数组程序举例"><span class="toc-number">1.1.4.</span> <span class="toc-text">
+          6.1.4    一维数组程序举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-怎样定义和引用二维数组"><span class="toc-number">1.2.</span> <span class="toc-text">
+          6.2    怎样定义和引用二维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-1-怎样定义二维数组"><span class="toc-number">1.2.1.</span> <span class="toc-text">
+          6.2.1    怎样定义二维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-2-怎样引用二维数组"><span class="toc-number">1.2.2.</span> <span class="toc-text">
+          6.2.2    怎样引用二维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-3-二维数组的初始化"><span class="toc-number">1.2.3.</span> <span class="toc-text">
+          6.2.3    二维数组的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-4-二维数组程序举例"><span class="toc-number">1.2.4.</span> <span class="toc-text">
+          6.2.4    二维数组程序举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-字符数组"><span class="toc-number">1.3.</span> <span class="toc-text">
+          6.3    字符数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-1-怎样定义字符数组"><span class="toc-number">1.3.1.</span> <span class="toc-text">
+          6.3.1    怎样定义字符数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-2-字符数组的初始化"><span class="toc-number">1.3.2.</span> <span class="toc-text">
+          6.3.2    字符数组的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-3-怎样引用字符数组中的元素"><span class="toc-number">1.3.3.</span> <span class="toc-text">
+          6.3.3    怎样引用字符数组中的元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-4-字符串和字符串结束的标志"><span class="toc-number">1.3.4.</span> <span class="toc-text">
+          6.3.4    字符串和字符串结束的标志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-5-字符数组的输入输出"><span class="toc-number">1.3.5.</span> <span class="toc-text">
+          6.3.5    字符数组的输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-6-使用字符串处理函数"><span class="toc-number">1.3.6.</span> <span class="toc-text">
+          6.3.6    使用字符串处理函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#puts函数-输出字符串的函数"><span class="toc-number">1.3.6.1.</span> <span class="toc-text">
+          puts函数    输出字符串的函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gets函数-输入字符串的函数"><span class="toc-number">1.3.6.2.</span> <span class="toc-text">
+          gets函数    输入字符串的函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strcat函数-字符串连接函数"><span class="toc-number">1.3.6.3.</span> <span class="toc-text">
+          strcat函数    字符串连接函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strcpy和strncpy-字符串复制函数"><span class="toc-number">1.3.6.4.</span> <span class="toc-text">
+          strcpy和strncpy    字符串复制函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strcmp函数-字符串比较函数"><span class="toc-number">1.3.6.5.</span> <span class="toc-text">
+          strcmp函数    字符串比较函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strlen-函数-测试字符串长度的函数"><span class="toc-number">1.3.6.6.</span> <span class="toc-text">
+          strlen 函数   测试字符串长度的函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strlwr函数-转换为小写"><span class="toc-number">1.3.6.7.</span> <span class="toc-text">
+          strlwr函数    转换为小写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strupr函数-转换为大写"><span class="toc-number">1.3.6.8.</span> <span class="toc-text">
+          strupr函数    转换为大写</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-7-字符数组应用举例"><span class="toc-number">1.3.7.</span> <span class="toc-text">
+          6.3.7    字符数组应用举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#习题"><span class="toc-number">1.4.</span> <span class="toc-text">
+          习题</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/head_img.jpeg" alt="avatar"></div><p class="sidebar-ov-author__text">没人会带你去钓鱼</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/t-diana/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/id201015024" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/xi-xu-33-23" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=201015024" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">9</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">0</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">5</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>侬仕超</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0-rc.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js" color="0,0,0" opacity="0.6" count="99" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="//cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="//cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: 'ab258a36734e477abf13',
+    clientSecret: '8270553dda1b5679c380128b955479f9ee61d971',
+    repo: 'comments',
+    owner: 't-diana',
+    admin: ['t-diana'],
+    distractionFreeMode: 'false',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.0.0-rc.0"></script><script src="/js/stun-boot.js?v=2.0.0-rc.0"></script><script src="/js/scroll.js?v=2.0.0-rc.0"></script><script src="/js/header.js?v=2.0.0-rc.0"></script><script src="/js/sidebar.js?v=2.0.0-rc.0"></script></body></html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="renderer" content="webkit"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0-rc.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0-rc.0" type="image/png" sizes="32x32"><meta name="msvalidate.01" content="8053F4DEB65CB21B9E01C995EDF3095B"><meta name="360-site-verification" content="8f30a1dc148b643dcca9dca97fbe6392"><meta name="sogou_site_verification" content="N4VH5LimgF"><meta name="description" content="3.1    顺序程序设计举例       略,自己看资料理解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最简单的C程序设计——顺序程序设计">
+<meta property="og:url" content="http://www.nscblog.top/2020/03/27/%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E9%A1%BA%E5%BA%8F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Nsc">
+<meta property="og:description" content="3.1    顺序程序设计举例       略,自己看资料理解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/VisualC++6.0%E7%BC%96%E8%AF%91%E7%B3%BB%E7%BB%9Fpng">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6%E5%8F%8A%E5%85%B6%E4%BD%9C%E7%94%A8.png">
+<meta property="og:image" content="c:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200328232537047.png">
+<meta property="og:image" content="c:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200328234513731.png">
+<meta property="og:image" content="c:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200328234530564.png">
+<meta property="og:image" content="c:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200330224041765.png">
+<meta property="og:image" content="c:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200331234252470.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6.jpg">
+<meta property="og:image" content="c:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200331234738194.png">
+<meta property="og:image" content="c:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200401000035144.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%AE%9E%E6%95%B0%E7%9A%84%E6%9E%84%E6%88%90.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%AE%9E%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%89%E5%85%B3%E6%83%85%E5%86%B5.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%AE%97%E6%9C%AF%E9%A2%84%E7%AE%97%E7%AC%A6.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/C%E9%A2%84%E7%AE%97%E7%AC%A61.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/C%E8%AF%AD%E8%A8%80%E8%BF%90%E7%AE%97%E7%AC%A62.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E6%9E%84%E6%88%90.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/printf%E8%BE%93%E5%87%BA%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F.png">
+<meta property="article:published_time" content="2020-03-27T12:41:13.000Z">
+<meta property="article:modified_time" content="2020-06-10T12:50:29.202Z">
+<meta property="article:author" content="侬仕超">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="专升本">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/VisualC++6.0%E7%BC%96%E8%AF%91%E7%B3%BB%E7%BB%9Fpng"><meta name="keywords" content="侬仕超, Nsc"><meta name="description" content="不要懒,好好干好一件事就行"><title>最简单的C程序设计——顺序程序设计 | Nsc</title><link ref="canonical" href="http://www.nscblog.top/2020/03/27/%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E9%A1%BA%E5%BA%8F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0-rc.0"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?8efe34ce9afd961e32b530315be3248c';
+  hm.async = true;
+
+  if (false) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Nsc" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-chess-rook"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Nsc</div><div class="header-banner-info__subtitle">天道酬勤</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">最简单的C程序设计——顺序程序设计</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-03-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-06-10</span></span></div></header><div class="post-body">
+        <h2 id="3-1-顺序程序设计举例"   >
+          <a href="#3-1-顺序程序设计举例" class="heading-link"><i class="fas fa-link"></i></a>3.1    顺序程序设计举例</h2>
+      <p>略,自己看资料理解</p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/VisualC++6.0%E7%BC%96%E8%AF%91%E7%B3%BB%E7%BB%9Fpng" alt="image-20200327234909117"></p>
+<a id="more"></a>
+
+
+        <h2 id="3-2-数据的表现形式及其运算"   >
+          <a href="#3-2-数据的表现形式及其运算" class="heading-link"><i class="fas fa-link"></i></a>3.2    数据的表现形式及其运算</h2>
+      <blockquote>
+<p>程序中最基本的成分:数据成分,运算成分,控制成分,传输成分</p>
+</blockquote>
+
+        <h3 id="3-2-1-常量和变量"   >
+          <a href="#3-2-1-常量和变量" class="heading-link"><i class="fas fa-link"></i></a>3.2.1    常量和变量</h3>
+      <blockquote>
+<p>在计算机高级语言中,数据有两种表现形式:常量和变量</p>
+</blockquote>
+
+        <h5 id="1-常量"   >
+          <a href="#1-常量" class="heading-link"><i class="fas fa-link"></i></a>1.    常量</h5>
+      <p>概念:程序运行过程中不能被改变的量</p>
+<p>常量类型:</p>
+<ol>
+<li><p>整形常量</p>
+</li>
+<li><p>实型常量:1&gt;十进制小数形式;2&gt;指数形式</p>
+</li>
+<li><p>字符常量:普通字符常量(用单撇号括起来的);转义字符(以\开头的字符序列,如:\n)</p>
+<p>ASCII码的字符表示都可以通过该字符的八进制的进行转义</p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6%E5%8F%8A%E5%85%B6%E4%BD%9C%E7%94%A8.png" alt="image-20200328000334408"></p>
+</li>
+<li><p>字符串常量:用双撇号将若干个字符括起来</p>
+</li>
+<li><p>符号常量</p>
+<p>概念:使用# define指令,指定一个符号名称代表一个常量</p>
+<p>如:    #define PI 3.1416</p>
+<p>要求:1&gt;含义清楚,即见名知义;2&gt;多处使用到同一个常量是,能做到”一改全改”.</p>
+<p>注意:要区分符号常量和变量</p>
+<p>​        符号常量不占内存只是一个临时符号,预编译后这个符号就不存在了,所以不能对符号常量赋新值</p>
+</li>
+</ol>
+
+        <h5 id="2-变量"   >
+          <a href="#2-变量" class="heading-link"><i class="fas fa-link"></i></a>2.    变量</h5>
+      <p>变量代表一个有名字的具有特定属性的一个存储单元,它用来存放数据(变量的值)</p>
+<p>变量先声明,后使用.</p>
+<p><img src="C:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200328232537047.png" alt="image-20200328232537047"></p>
+<p>变量名实际上是一个以名字为代表的一个存储地址.在对程序编译连接时由编译系统给每一个变量名分配对应的内存地址.从变量中取值,实际上是通过变量名找到相应的内存地址,从该存储单元中读取值.</p>
+
+        <h5 id="3-常变量"   >
+          <a href="#3-常变量" class="heading-link"><i class="fas fa-link"></i></a>3.    常变量</h5>
+      <p>由const进行修饰</p>
+<p>如:const float pi =3.1415926</p>
+<p>符号常量和常变量的异同</p>
+<p><img src="C:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200328234513731.png" alt="image-20200328234513731"></p>
+<p><img src="C:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200328234530564.png" alt="image-20200328234530564"></p>
+<p>常变量:具有变量的基本属性:有类型,占存储单元.不能改变值,可以在程序中被引用.</p>
+<p>​             具有符号常量的优点,使用方便</p>
+<p>符号常量:没有占存储单元</p>
+<p>​                 在预编译时进行字符串替换</p>
+
+        <h5 id="4-标识符"   >
+          <a href="#4-标识符" class="heading-link"><i class="fas fa-link"></i></a>4.    标识符</h5>
+      <p>只能由字母,数字,下划线组成,且第一个字符必须为字母或下划线</p>
+<p>严格区分大小写</p>
+
+        <h3 id="3-2-2-数据类型"   >
+          <a href="#3-2-2-数据类型" class="heading-link"><i class="fas fa-link"></i></a>3.2.2    数据类型</h3>
+      <p>在数学中,数值是抽象的</p>
+<p>在计算机,数据是存放在存储单元中的,它是具体存在的,存放数据范围是有限的</p>
+<p>单精度是小数点后6位</p>
+<p><img src="C:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200330224041765.png" alt="image-20200330224041765"></p>
+<p>基本类型和枚举类型变量的值都是数值.统称算术类型</p>
+<p>算术类型和指针类型统称为纯量类型(标量类型):变量值是以数字表示的,枚举类型是程序中用户定义的整数类型.</p>
+<p>枚举类型是程序中用户定义的整数内容(枚举类型的值只能是整数类型)</p>
+<p>数组类型和结构体类型统称为组合类型,共用体类型不属于组合类型因为在同一时间内只能有一个成员具有值.</p>
+<p>函数类型:用于定义函数,描述函数的接口,包括(函数返回值的数据类型和参数的类型)</p>
+
+        <h3 id="3-2-3-整形数据"   >
+          <a href="#3-2-3-整形数据" class="heading-link"><i class="fas fa-link"></i></a>3.2.3    整形数据</h3>
+      
+        <h5 id="1-基本整形-int型"   >
+          <a href="#1-基本整形-int型" class="heading-link"><i class="fas fa-link"></i></a>1.基本整形(int型)</h5>
+      <p>编译系统分配给int型数据2个字节或4个字节(由具体的C编译系统决定)</p>
+<p>Visual C++为每个整形分配四个字节</p>
+<p> 存储单元的存放方式:用整数的补码进行存放</p>
+<p>正整数的补码就是原码</p>
+<p>负数的补码是正整数的原码按位取反,进行加一</p>
+<p><img src="C:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200331234252470.png" alt="image-20200331234252470"></p>
+<p>十进制转二进制:</p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6.jpg" alt=""></p>
+
+        <h5 id="2-短整型"   >
+          <a href="#2-短整型" class="heading-link"><i class="fas fa-link"></i></a>2.    短整型</h5>
+      <p>Visual C++ 分配2个字节</p>
+
+        <h5 id="3-长整形"   >
+          <a href="#3-长整形" class="heading-link"><i class="fas fa-link"></i></a>3.    长整形</h5>
+      <p>Visual C++ 分配4个字节</p>
+<p><img src="C:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200331234738194.png" alt="image-20200331234738194"></p>
+<p>注意:</p>
+<p>只有整形包括字符型数据可以加signed或unsigned,实型数据不能加</p>
+<p>无符号整形数据用”%u”格式进行输出,%u表示用无符号十进制数的格式输出</p>
+
+        <h3 id="3-2-4-字符型数据"   >
+          <a href="#3-2-4-字符型数据" class="heading-link"><i class="fas fa-link"></i></a>3.2.4    字符型数据</h3>
+      
+        <h5 id="1-字符与字符代码"   >
+          <a href="#1-字符与字符代码" class="heading-link"><i class="fas fa-link"></i></a>1.    字符与字符代码</h5>
+      <p>在程序中,只能使用系统字符集中的字符,目前大多数采用ASCII字符集.</p>
+<p><img src="C:/Users/20101/AppData/Roaming/Typora/typora-user-images/image-20200401000035144.png" alt="image-20200401000035144"></p>
+
+        <h5 id="2-字符变量"   >
+          <a href="#2-字符变量" class="heading-link"><i class="fas fa-link"></i></a>2.    字符变量</h5>
+      <p>关键字:char 如:</p>
+<p>char a = ‘b’</p>
+<p>这个声明变量并且赋值的意思是将字符 b 对应的ASCII码赋值给变量名为a这个字符变量</p>
+<p>输出时可以选择十进制输出,或选择字符形式输出</p>
+<p>“%d”:十进制输出</p>
+<p>“%c”:字符形式输出</p>
+<p>Q:字符类型也属于整形,是否也可以使用signed和unsigned修饰符?</p>
+<p>可以</p>
+<p>第一位(8位二进制表示的数),表示符号位:数据范围就是:0-127(相当于使用了signed进行修饰)</p>
+<p>第一位不表示符号位,数据表示可以从0-255(使用了unsigned进行修饰)</p>
+
+        <h4 id="3-2-5-浮点型数据"   >
+          <a href="#3-2-5-浮点型数据" class="heading-link"><i class="fas fa-link"></i></a>3.2.5    浮点型数据</h4>
+      <p>在C语言中实数以指数形式存储，如图</p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%AE%9E%E6%95%B0%E7%9A%84%E6%9E%84%E6%88%90.png" alt="image-20200410221943185"></p>
+<p>比如：3.1416 可以表示为3.14159x10^0  0.314159x10^1</p>
+<p><strong>移动小数点位置的同时改变指数的值，就可以保证它的值不会变</strong></p>
+<p>小数部分占的位数越多，表示精度大</p>
+<p>指数部分占的位数越多，表示范围越大</p>
+<p>浮点数类型有：float   double</p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%AE%9E%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%89%E5%85%B3%E6%83%85%E5%86%B5.png" alt="image-20200410222303302"></p>
+<p>注意：C编译系统把浮点型常量按双精度处理。</p>
+
+        <h4 id="3-2-6-怎样确定常量的类型"   >
+          <a href="#3-2-6-怎样确定常量的类型" class="heading-link"><i class="fas fa-link"></i></a>3.2.6    怎样确定常量的类型</h4>
+      <p>整形常量：不带小数点的数值是整形常量。</p>
+<p>浮点型常量：凡是以小数形式出现的实数。</p>
+<p>区分类型和变量：</p>
+<p>类型：是变量的一个属性，代表的是一类型的数据。比如： 大学生</p>
+<p>变量：占用存储单元，是具体存在的实体。如 大学生 我</p>
+<p>大学生是抽象的  而我是具体的</p>
+
+        <h4 id="3-2-7-运算符和表达式"   >
+          <a href="#3-2-7-运算符和表达式" class="heading-link"><i class="fas fa-link"></i></a>3.2.7    运算符和表达式</h4>
+      <p>1.基本的算术运算符</p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%AE%97%E6%9C%AF%E9%A2%84%E7%AE%97%E7%AC%A6.png" alt="image-20200410223425659"></p>
+<p>2.自增、自减运算符</p>
+<p><strong>注意：自增、自减运算符只能用于变量，不能用于常量或表达式</strong></p>
+<p>3.算术表达式和运算符的优先级与结合性</p>
+<p>算术运算符中的数如果只能float，那将数值转为float，进行计算，如果有double 就转为double进行计算，float和double都有，就转为double进行计算</p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/C%E9%A2%84%E7%AE%97%E7%AC%A61.png" alt="image-20200512133713227"></p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/C%E8%AF%AD%E8%A8%80%E8%BF%90%E7%AE%97%E7%AC%A62.png" alt="image-20200512133804473"></p>
+
+        <h2 id="3-3-C语句"   >
+          <a href="#3-3-C语句" class="heading-link"><i class="fas fa-link"></i></a>3.3 C语句</h2>
+      <p>一个函数包含声明部分和执行部分，执行部分由C语句组成</p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E6%9E%84%E6%88%90.png" alt="image-20200512143030129"></p>
+<p>C语句分类：</p>
+<ol>
+<li><p>控制语句</p>
+<p>条件语句</p>
+<p>循环语句</p>
+<p>continue  结束本次循环语句</p>
+<p>break  终止执行switch或循环语句</p>
+<p>switch 多分支选择语句</p>
+<p>return 函数返回语句</p>
+<p>goto 转向语句，在结构化过程中基本不适用goto语句</p>
+</li>
+<li><p>函数调用语句: 由一个函数调用和一个分号组成 如 printf();</p>
+</li>
+<li><p>表达式语句 如a=3;</p>
+</li>
+<li><p>空语句 ；</p>
+</li>
+<li><p>复合语句 也称语句块（代码块）形如：{ a=3;b=4;} </p>
+<blockquote>
+<p>注意：复合语句中最后的分号不能忽略不写</p>
+</blockquote>
+</li>
+</ol>
+
+        <h3 id="3-3-2-最基本的语句-赋值语句"   >
+          <a href="#3-3-2-最基本的语句-赋值语句" class="heading-link"><i class="fas fa-link"></i></a>3.3.2 最基本的语句-赋值语句</h3>
+      <ol>
+<li><p>赋值运算符</p>
+</li>
+<li><p>复合的赋值运算符</p>
+</li>
+<li><p>赋值表达式</p>
+</li>
+<li><p>赋值过程中的类型转换</p>
+<p>浮点类型-&gt;整形  小数部分舍弃</p>
+<p>整形-&gt;浮点类型   小数部分补零</p>
+</li>
+</ol>
+
+        <h2 id="3-4-数据的输入输出"   >
+          <a href="#3-4-数据的输入输出" class="heading-link"><i class="fas fa-link"></i></a>3.4 数据的输入输出</h2>
+      
+        <h3 id="3-4-2-有关数据输入输出的概念"   >
+          <a href="#3-4-2-有关数据输入输出的概念" class="heading-link"><i class="fas fa-link"></i></a>3.4.2 有关数据输入输出的概念</h3>
+      <ol>
+<li><p>输入输出是针对计算机而言的</p>
+</li>
+<li><p>C语言本身不提供输入输出语句，输入输出操作由C标准函数库实现的。</p>
+<p>C提供的标准函数以库的形式在C的编译系统中提供，不是C语言文本的组成部分。</p>
+</li>
+<li><p>在使用系统库函数是，要在文件的开头用预处理命令#include 把有关头文件放在本程序中</p>
+<p>#include&lt;stdio.h&gt;  stdio.h是包含了标准的I/O库有关的变量定义和宏定义以及对函数的声明</p>
+</li>
+</ol>
+
+        <h3 id="3-4-3-使用printf函数输出数据"   >
+          <a href="#3-4-3-使用printf函数输出数据" class="heading-link"><i class="fas fa-link"></i></a>3.4.3 使用printf函数输出数据</h3>
+      <p>printf函数的一般格式：</p>
+<p>printf(格式控制，输出列表)；</p>
+<p>printf(“%d”,c);</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>格式字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%d</td>
+<td>输出一个有符号的十进制</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>输出一个字符</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>输出一个字符串</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>输出浮点数        %7.2f代表数据宽度为7，其中包括2位小数           %-25.3f     代表输出数据向左对齐（当位数不足25时）%25.3f 输出数据左边以空格填充（当位数不足25位时）</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>以指数形式输出实数 VisualC++小数位默认占6位</td>
+</tr>
+</tbody></table></div>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/printf%E8%BE%93%E5%87%BA%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F.png" alt="image-20200513105212996"></p>
+
+        <h3 id="3-4-4-用scanf函数输入数据"   >
+          <a href="#3-4-4-用scanf函数输入数据" class="heading-link"><i class="fas fa-link"></i></a>3.4.4 用scanf函数输入数据</h3>
+      <p>scanf函数的一般形式（语法）</p>
+<p>scanf(格式控制，地址表列);</p>
+<p>如scanf(“%d%f”,&amp;a,&amp;b);</p>
+<p><strong>注意</strong></p>
+<blockquote>
+<ol>
+<li><p>格式控制后面应当是变量地址，而不是变量名</p>
+</li>
+<li><p>格式控制字符串中除了格式声明以外还有其他字符，则在输入数据时在对应位置输入与这些字符相同的字符。</p>
+<p>如：scanf(“a=%d,b=%c”,&amp;a,&amp;b); 则输入a=10,b=’c’</p>
+</li>
+<li><p>在使用“%c”格式声明时，空格字符和‘’转义字符 ‘’都作为有效字符。</p>
+</li>
+<li><p>在输入数值数据时，如输入空格、回车、Tab键，或遇非法字符，认为该数据结束。</p>
+</li>
+</ol>
+</blockquote>
+
+        <h3 id="3-4-5-字符数据的输入输出"   >
+          <a href="#3-4-5-字符数据的输入输出" class="heading-link"><i class="fas fa-link"></i></a>3.4.5 字符数据的输入输出</h3>
+      <ol>
+<li><p>用putchar()函数输出一个字符</p>
+<p>语法：putchar(c); 输出变量c</p>
+</li>
+<li><p>用getchar()函数输入一个字符</p>
+<p>语法：getchar()   注：此函数没有参数</p>
+</li>
+</ol>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://www.nscblog.top">侬仕超</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://www.nscblog.top/2020/03/27/%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E9%A1%BA%E5%BA%8F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">http://www.nscblog.top/2020/03/27/%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E9%A1%BA%E5%BA%8F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.nscblog.top/tags/%E5%AD%A6%E4%B9%A0/">学习</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.nscblog.top/tags/%E4%B8%93%E5%8D%87%E6%9C%AC/">专升本</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.nscblog.top/tags/C%E8%AF%AD%E8%A8%80/">C语言</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/05/01/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E8%AE%BA/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">学习方法论</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/03/25/%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%81%B5%E9%AD%82/"><span class="paginator-prev__text">算法——程序的灵魂</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-顺序程序设计举例"><span class="toc-number">1.</span> <span class="toc-text">
+          3.1    顺序程序设计举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-数据的表现形式及其运算"><span class="toc-number">2.</span> <span class="toc-text">
+          3.2    数据的表现形式及其运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-常量和变量"><span class="toc-number">2.1.</span> <span class="toc-text">
+          3.2.1    常量和变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-常量"><span class="toc-number">2.1.0.1.</span> <span class="toc-text">
+          1.    常量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-变量"><span class="toc-number">2.1.0.2.</span> <span class="toc-text">
+          2.    变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-常变量"><span class="toc-number">2.1.0.3.</span> <span class="toc-text">
+          3.    常变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-标识符"><span class="toc-number">2.1.0.4.</span> <span class="toc-text">
+          4.    标识符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-数据类型"><span class="toc-number">2.2.</span> <span class="toc-text">
+          3.2.2    数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-整形数据"><span class="toc-number">2.3.</span> <span class="toc-text">
+          3.2.3    整形数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-基本整形-int型"><span class="toc-number">2.3.0.1.</span> <span class="toc-text">
+          1.基本整形(int型)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-短整型"><span class="toc-number">2.3.0.2.</span> <span class="toc-text">
+          2.    短整型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-长整形"><span class="toc-number">2.3.0.3.</span> <span class="toc-text">
+          3.    长整形</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-字符型数据"><span class="toc-number">2.4.</span> <span class="toc-text">
+          3.2.4    字符型数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-字符与字符代码"><span class="toc-number">2.4.0.1.</span> <span class="toc-text">
+          1.    字符与字符代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-字符变量"><span class="toc-number">2.4.0.2.</span> <span class="toc-text">
+          2.    字符变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-5-浮点型数据"><span class="toc-number">2.4.1.</span> <span class="toc-text">
+          3.2.5    浮点型数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-6-怎样确定常量的类型"><span class="toc-number">2.4.2.</span> <span class="toc-text">
+          3.2.6    怎样确定常量的类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-7-运算符和表达式"><span class="toc-number">2.4.3.</span> <span class="toc-text">
+          3.2.7    运算符和表达式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-C语句"><span class="toc-number">3.</span> <span class="toc-text">
+          3.3 C语句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-最基本的语句-赋值语句"><span class="toc-number">3.1.</span> <span class="toc-text">
+          3.3.2 最基本的语句-赋值语句</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-数据的输入输出"><span class="toc-number">4.</span> <span class="toc-text">
+          3.4 数据的输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-2-有关数据输入输出的概念"><span class="toc-number">4.1.</span> <span class="toc-text">
+          3.4.2 有关数据输入输出的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-3-使用printf函数输出数据"><span class="toc-number">4.2.</span> <span class="toc-text">
+          3.4.3 使用printf函数输出数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-4-用scanf函数输入数据"><span class="toc-number">4.3.</span> <span class="toc-text">
+          3.4.4 用scanf函数输入数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-5-字符数据的输入输出"><span class="toc-number">4.4.</span> <span class="toc-text">
+          3.4.5 字符数据的输入输出</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/head_img.jpeg" alt="avatar"></div><p class="sidebar-ov-author__text">没人会带你去钓鱼</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/t-diana/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/id201015024" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/xi-xu-33-23" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=201015024" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">9</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">0</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">5</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>侬仕超</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0-rc.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js" color="0,0,0" opacity="0.6" count="99" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="//cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="//cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: 'ab258a36734e477abf13',
+    clientSecret: '8270553dda1b5679c380128b955479f9ee61d971',
+    repo: 'comments',
+    owner: 't-diana',
+    admin: ['t-diana'],
+    distractionFreeMode: 'false',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.0.0-rc.0"></script><script src="/js/stun-boot.js?v=2.0.0-rc.0"></script><script src="/js/scroll.js?v=2.0.0-rc.0"></script><script src="/js/header.js?v=2.0.0-rc.0"></script><script src="/js/sidebar.js?v=2.0.0-rc.0"></script></body></html>

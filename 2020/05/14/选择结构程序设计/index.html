@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="renderer" content="webkit"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0-rc.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0-rc.0" type="image/png" sizes="32x32"><meta name="msvalidate.01" content="8053F4DEB65CB21B9E01C995EDF3095B"><meta name="360-site-verification" content="8f30a1dc148b643dcca9dca97fbe6392"><meta name="sogou_site_verification" content="N4VH5LimgF"><meta name="description" content="选择结构程序设计                           4.1 选择结构和判断条件       选择结构的关键：条件判断。 C语言选择语句：  if语句 实现两个分支 switch语句，实现多分支的选择结构  1234567891011121314151617181920212223&#x2F;&#x2F;使用if实现双分支选择结构# include &lt;stdio.h&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="选择结构程序设计">
+<meta property="og:url" content="http://www.nscblog.top/2020/05/14/%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Nsc">
+<meta property="og:description" content="选择结构程序设计                           4.1 选择结构和判断条件       选择结构的关键：条件判断。 C语言选择语句：  if语句 实现两个分支 switch语句，实现多分支的选择结构  1234567891011121314151617181920212223&#x2F;&#x2F;使用if实现双分支选择结构# include &lt;stdio.h&gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7.png">
+<meta property="og:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/if-else%E5%B0%B1%E8%BF%91%E5%8C%B9%E9%85%8D.png">
+<meta property="article:published_time" content="2020-05-14T12:41:49.000Z">
+<meta property="article:modified_time" content="2020-06-10T12:53:13.510Z">
+<meta property="article:author" content="侬仕超">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="专升本">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6.png"><meta name="keywords" content="侬仕超, Nsc"><meta name="description" content="不要懒,好好干好一件事就行"><title>选择结构程序设计 | Nsc</title><link ref="canonical" href="http://www.nscblog.top/2020/05/14/%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0-rc.0"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?8efe34ce9afd961e32b530315be3248c';
+  hm.async = true;
+
+  if (false) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Nsc" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-chess-rook"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Nsc</div><div class="header-banner-info__subtitle">天道酬勤</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">选择结构程序设计</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-05-14</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-06-10</span></span></div></header><div class="post-body">
+        <h1 id="选择结构程序设计"   >
+          <a href="#选择结构程序设计" class="heading-link"><i class="fas fa-link"></i></a>选择结构程序设计</h1>
+      
+        <h2 id="4-1-选择结构和判断条件"   >
+          <a href="#4-1-选择结构和判断条件" class="heading-link"><i class="fas fa-link"></i></a>4.1 选择结构和判断条件</h2>
+      <p>选择结构的关键：条件判断。</p>
+<p>C语言选择语句：</p>
+<ol>
+<li>if语句 实现两个分支</li>
+<li>switch语句，实现多分支的选择结构</li>
+</ol>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用if实现双分支选择结构</span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="comment">//求方程实根 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> a,b,c,disc,x1,x2,p,q;<span class="comment">//disc是判别式 b^2-4*a*c</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请分别输入a,b,c的值\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lf%lf%lf"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%f\t%f\t%f\t"</span>,a,b,c);</span><br><span class="line">	disc=<span class="built_in">pow</span>(b,<span class="number">2</span>)<span class="number">-4</span>*a*c;</span><br><span class="line">	<span class="comment">//disc大于0时才有实根</span></span><br><span class="line">	<span class="keyword">if</span>(disc&lt;<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"这个方程没有实根\n"</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">		q=<span class="built_in">sqrt</span>(disc)/(<span class="number">2.0</span>*a);</span><br><span class="line">		p=-b/(<span class="number">2.0</span>*a);</span><br><span class="line">		x1=p+q;</span><br><span class="line">		x2=p-q;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"x1=%.2f\t,x2=%.2f"</span>,x1,x2);</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<a id="more"></a>
+
+
+        <h2 id="4-2-用if语句实现选择结构"   >
+          <a href="#4-2-用if语句实现选择结构" class="heading-link"><i class="fas fa-link"></i></a>4.2    用if语句实现选择结构</h2>
+      
+        <h3 id="4-2-1-用if语句处理选择结构举例"   >
+          <a href="#4-2-1-用if语句处理选择结构举例" class="heading-link"><i class="fas fa-link"></i></a>4.2.1    用if语句处理选择结构举例</h3>
+      <figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用if语句处理选择结构举例 </span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="comment">//是两个值进行互换</span></span><br><span class="line"><span class="comment">//关键是借助中间变量进行交换 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> a,b,temp;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请分别输入a,b的值\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;a,&amp;b);</span><br><span class="line">	<span class="comment">//a大于b时进行交换 </span></span><br><span class="line">	<span class="keyword">if</span>(a&lt;b)&#123;</span><br><span class="line">	&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">		temp=a;</span><br><span class="line">		a=b;</span><br><span class="line">		b=temp;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%f\t%f"</span>,a,b);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="4-2-2-if语句的一般形式"   >
+          <a href="#4-2-2-if语句的一般形式" class="heading-link"><i class="fas fa-link"></i></a>4.2.2    if语句的一般形式</h3>
+      <p><strong>一般形式</strong> </p>
+<p>​    if（表达式）语句1</p>
+<p>​        [else 语句2]      //这个部分可以有，也可以没有</p>
+<p><strong>常用三种形式</strong></p>
+<ol>
+<li><p>if (表达式) 语句1    没有else部分</p>
+</li>
+<li><p>if(表达式)</p>
+<p>​    语句1</p>
+<p>else</p>
+<p>​    语句2</p>
+</li>
+<li><p>if(表达式1)   语句1    多层if语句</p>
+<p>else if(表达式2)</p>
+<p>else if(表达式3)</p>
+<p>….</p>
+<p>else</p>
+</li>
+</ol>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li>整个if语句可以卸载多行上。也可以卸载一行上</li>
+<li>if(表达式){ 语句1 语句2 }   语句1 语句2属于内嵌语句，是if语句中的一部分。</li>
+<li>if语句无论写在几行上，都是一个整体，属于同一个语句。</li>
+<li>内嵌语句可以是简单语句，也可以是多种语句</li>
+<li>表达式的值只能是逻辑值</li>
+</ol>
+</blockquote>
+
+        <h2 id="4-3-关系运算符和关系表达式"   >
+          <a href="#4-3-关系运算符和关系表达式" class="heading-link"><i class="fas fa-link"></i></a>4.3    关系运算符和关系表达式</h2>
+      
+        <h3 id="4-3-1-关系运算符及其优先次序"   >
+          <a href="#4-3-1-关系运算符及其优先次序" class="heading-link"><i class="fas fa-link"></i></a>4.3.1    关系运算符及其优先次序</h3>
+      <p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6.png" alt="image-20200515201405868"></p>
+<p><strong>运算符的优先级</strong></p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7.png" alt="image-20200515200759248"></p>
+
+        <h3 id="4-3-2-关系表达式"   >
+          <a href="#4-3-2-关系表达式" class="heading-link"><i class="fas fa-link"></i></a>4.3.2    关系表达式</h3>
+      <p>在C的逻辑运算中，以“1”代表真，以“0”代表“假”。</p>
+<p>例：</p>
+<p>a=3,b=2,c=1</p>
+<p>特殊情况：</p>
+<p>d=a&gt;b 因为a&gt;b为真，因此关系表达式a&gt;b的值为1，所以赋值d后的值为1。</p>
+
+        <h2 id="4-4-逻辑运算符和逻辑表达式"   >
+          <a href="#4-4-逻辑运算符和逻辑表达式" class="heading-link"><i class="fas fa-link"></i></a>4.4    逻辑运算符和逻辑表达式</h2>
+      
+        <h3 id="4-4-1-逻辑运算符及其优先次序"   >
+          <a href="#4-4-1-逻辑运算符及其优先次序" class="heading-link"><i class="fas fa-link"></i></a>4.4.1    逻辑运算符及其优先次序</h3>
+      <blockquote>
+<p>逻辑表达式：用逻辑运算符将关系表达式或其他<strong>逻辑量</strong>连接起来的式子就是逻辑表达式</p>
+</blockquote>
+<p>&amp;&amp;：逻辑与：只要有量为假 表达式的值就为假</p>
+<p>||：逻辑或：只要有量为真   表达式的值就为真</p>
+<p>！：逻辑非</p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6.png" alt="image-20200516230616443"></p>
+<p>运算符的优先级：</p>
+<ol>
+<li><p>！&gt;&amp;&amp;&gt;||   从高到低排列</p>
+</li>
+<li><p>逻辑运算符中的“&amp;&amp;”和“||” 低于关系运算符，“!”高于算术运算符 </p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7.png" alt="image-20200516231230835"></p>
+
+        <h3 id="4-4-2-逻辑表达式"   >
+          <a href="#4-4-2-逻辑表达式" class="heading-link"><i class="fas fa-link"></i></a>4.4.2    逻辑表达式</h3>
+      </li>
+</ol>
+<blockquote>
+<p>逻辑表达式：用逻辑运算符将关系表达式或其他<strong>逻辑量</strong>连接起来的式子就是逻辑表达式</p>
+</blockquote>
+<p>逻辑表达式的值应该是一个逻辑量“真”或者“假”</p>
+<p>判断结果时：以数值   1   代表真，以数值    0    代表假</p>
+<p><strong>判断一个量时：以   0   代表假，以数值    非0   代表真</strong></p>
+<p>如：</p>
+<p>设a的值等于4，则!a的值为0。因为a的值为非0，被认作是真，对它进行非运算，得“假”。“假”以0为代表。</p>
+<blockquote>
+<p>注意：逻辑运算符两边的运算对象不但可以是0和1，或者是0和非0，也可以是字符型、浮点型、枚举型、或指针型的纯量型数据。</p>
+</blockquote>
+<blockquote>
+<p>注意：</p>
+<p>当a=1,b=2,c=3,d=4,m和n的原值为1是，由于“a&gt;b”的值为0，因此m=0，此时已经能判断整个表达式的值不可能为真。不必再进行”n=c&gt;d”的运算，因此n的值不是0，而仍保持原值1。</p>
+</blockquote>
+
+        <h3 id="4-4-3-逻辑型变量"   >
+          <a href="#4-4-3-逻辑型变量" class="heading-link"><i class="fas fa-link"></i></a>4.4.3    逻辑型变量</h3>
+      <p>C99所增加的一种数据类型。语法：_Bool a;</p>
+<p>在头文件stdbool.h中，将bool定义为_Bool的同义词，同时定义两个符号常量true和false  true代表1  false代表0</p>
+<p>例如：</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt; </span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">_Bool</span> a = <span class="literal">false</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"--------------%d-----------------\n"</span>,a);</span><br><span class="line">	<span class="keyword">bool</span> b = <span class="literal">true</span>; </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"--------------%d-----------------\n"</span>,b);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">运行结果：</span><br><span class="line">-------------<span class="number">-0</span>-----------------</span><br><span class="line">-------------<span class="number">-1</span>-----------------</span><br><span class="line"></span><br><span class="line">--------------------------------</span><br><span class="line"><span class="built_in">Process</span> exited after <span class="number">0.02229</span> seconds with <span class="keyword">return</span> value <span class="number">0</span></span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>注意：</p>
+<p>在使用bool之前，应该确定该编译系统是否能使用。</p>
+</blockquote>
+
+        <h2 id="4-5-条件运算符的条件表达式"   >
+          <a href="#4-5-条件运算符的条件表达式" class="heading-link"><i class="fas fa-link"></i></a>4.5    条件运算符的条件表达式</h2>
+      <p>条件运算符：  逻辑表达式  ?  值为1时 执行     :   值为0时执行;</p>
+<p>条件运算符是C语言中的唯一的三目运算符</p>
+
+        <h2 id="4-6-选择结构的嵌套"   >
+          <a href="#4-6-选择结构的嵌套" class="heading-link"><i class="fas fa-link"></i></a>4.6    选择结构的嵌套</h2>
+      <blockquote>
+<p>在if语句中又包含一个或多个if语句称为if语句的嵌套</p>
+</blockquote>
+<p>表现形式：</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>()</span><br><span class="line">	<span class="keyword">if</span>()  语句<span class="number">1</span></span><br><span class="line">	<span class="keyword">else</span>  语句<span class="number">2</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="keyword">if</span>()   语句<span class="number">3</span></span><br><span class="line">	<span class="keyword">else</span>   语句<span class="number">4</span></span><br></pre></td></tr></table></div></figure>
+
+<p>else 会就近匹配 if</p>
+<p><img src="C:/Users/20101/Desktop/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA/imgs/if-else%E5%B0%B1%E8%BF%91%E5%8C%B9%E9%85%8D.png" alt="image-20200518123739507"></p>
+
+        <h2 id="4-7-用switch语句实现多分支选择结构"   >
+          <a href="#4-7-用switch语句实现多分支选择结构" class="heading-link"><i class="fas fa-link"></i></a>4.7    用switch语句实现多分支选择结构</h2>
+      <p>语法：</p>
+<p>switch(表达式)</p>
+<p>{</p>
+<p>case 常量1：语句1；break；</p>
+<p>case 常量2：语句2；break；</p>
+<p>…….</p>
+<p>default:  语句n;</p>
+<p>}</p>
+<p>说明：</p>
+<ol>
+<li>表达式的值类型应为整数类型（包括字符型）。</li>
+<li>花括号内是一个复合语句，case 用来标记一个位置</li>
+<li>可以没有default标号，没有与switch表达式相匹配的case常量，则不执行任何语句，流程转到switch语句的下一个语句。</li>
+<li>标号的出现次序不影响执行结果</li>
+<li>case常量必须互不相同，</li>
+<li>case标号只起标记作用，根据switch表达式的值找到匹配的入口标号。</li>
+<li>case子句中虽然包含了一个以上执行语句，但可以不必用花括号括起来，会自动顺序执行此case标号后的所有语句。</li>
+<li>多个case标号可以共用一组执行语句。</li>
+</ol>
+
+        <h2 id="4-8-选择结构程序综合举例"   >
+          <a href="#4-8-选择结构程序综合举例" class="heading-link"><i class="fas fa-link"></i></a>4.8 选择结构程序综合举例</h2>
+      <p>例：判断一年是否是闰年</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">判断一年是否是闰年 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> year;</span><br><span class="line">	<span class="built_in">_Bool</span> leap;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入要判断的年份\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;year);</span><br><span class="line">	<span class="keyword">if</span>(year%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;year%<span class="number">100</span>!=<span class="number">0</span>||year%<span class="number">400</span>==<span class="number">0</span>)</span><br><span class="line">		leap=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		leap=<span class="number">0</span>;</span><br><span class="line">	<span class="comment">//将leap作为判断输入年份是否是闰年</span></span><br><span class="line">	<span class="comment">//leap=1 为闰年</span></span><br><span class="line">	<span class="comment">//leap=0 不是闰年 </span></span><br><span class="line">	<span class="keyword">if</span>(leap)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d是闰年"</span>,year);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d不是闰年"</span>,year);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>例：求方程的根</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	求ax^2+bx+c=0的根 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> a,b,c,desc,p,q,x1,x2; <span class="comment">//desc=b^2-4ac;</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请分别输入a,b,c的值\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lf%lf%lf"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">	<span class="keyword">if</span>(!a)    <span class="comment">//a=0时，二次方程不存在 </span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"这不是二次方程"</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		desc=<span class="built_in">pow</span>(b,<span class="number">2</span>)<span class="number">-4</span>*a*c;</span><br><span class="line">		<span class="keyword">if</span>(desc==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"这个方程有两个相同的实根"</span>);</span><br><span class="line">			x1=-b/(<span class="number">2.0</span>*a);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"x1=%d,x2=%d"</span>,x1,x1);</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(desc&lt;<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"这个方程没有实根"</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			p=<span class="built_in">sqrt</span>(desc)/(<span class="number">2.0</span>*a);</span><br><span class="line">			q=-b/(<span class="number">2.0</span>*a);</span><br><span class="line">			x1=p+q;</span><br><span class="line">			x2=q-p;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"x1=%d\tx2=%d"</span>,x1,x2); </span><br><span class="line">		&#125; </span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>例</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	计算运输费用 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> c,s;<span class="comment">//c表示250的倍数，s表示里程</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入相应的里程数：\n"</span>);</span><br><span class="line">	<span class="keyword">float</span> d,p,f,w;<span class="comment">//d 表示折扣 便宜d%，p表示价格，f表示总价,w表示重量 </span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;s);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入相应的单价和重量：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%f%f"</span>,&amp;p,&amp;w); </span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	计算里程倍数 </span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">if</span> (s&gt;<span class="number">3000</span>) </span><br><span class="line">		c=<span class="number">12</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		c=s/<span class="number">250</span>;</span><br><span class="line">	<span class="comment">//统计折扣 </span></span><br><span class="line">	<span class="keyword">if</span>(c&gt;=<span class="number">12</span>)&#123;</span><br><span class="line">		d=<span class="number">15</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">8</span>&lt;=c&amp;&amp;c&lt;=<span class="number">11</span>)&#123;</span><br><span class="line">		d=<span class="number">10</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (c&gt;=<span class="number">4</span>&amp;&amp;c&lt;=<span class="number">7</span>)&#123;</span><br><span class="line">		d=<span class="number">8</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span>(c&gt;=<span class="number">2</span>&amp;&amp;c&gt;=<span class="number">3</span>)&#123;</span><br><span class="line">		d=<span class="number">5</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span>(c&gt;<span class="number">0</span>&amp;&amp;c&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">		d=<span class="number">2</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"没有优惠\n"</span>);</span><br><span class="line">		d=<span class="number">0</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"优惠%f\n"</span>,d/<span class="number">100</span>);</span><br><span class="line">	<span class="comment">//计算运费</span></span><br><span class="line">	f=p*w*s*(<span class="number">1</span>-d/<span class="number">100</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"运输费用是%f\n"</span>,f); </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://www.nscblog.top">侬仕超</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://www.nscblog.top/2020/05/14/%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">http://www.nscblog.top/2020/05/14/%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.nscblog.top/tags/%E5%AD%A6%E4%B9%A0/">学习</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.nscblog.top/tags/%E4%B8%93%E5%8D%87%E6%9C%AC/">专升本</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.nscblog.top/tags/C%E8%AF%AD%E8%A8%80/">C语言</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/05/18/%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">循环结构程序设计</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/05/01/hexo-GitHub%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"><span class="paginator-prev__text">hexo+GitHub博客搭建</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#选择结构程序设计"><span class="toc-number">1.</span> <span class="toc-text">
+          选择结构程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-选择结构和判断条件"><span class="toc-number">1.1.</span> <span class="toc-text">
+          4.1 选择结构和判断条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-用if语句实现选择结构"><span class="toc-number">1.2.</span> <span class="toc-text">
+          4.2    用if语句实现选择结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-用if语句处理选择结构举例"><span class="toc-number">1.2.1.</span> <span class="toc-text">
+          4.2.1    用if语句处理选择结构举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-if语句的一般形式"><span class="toc-number">1.2.2.</span> <span class="toc-text">
+          4.2.2    if语句的一般形式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-关系运算符和关系表达式"><span class="toc-number">1.3.</span> <span class="toc-text">
+          4.3    关系运算符和关系表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-1-关系运算符及其优先次序"><span class="toc-number">1.3.1.</span> <span class="toc-text">
+          4.3.1    关系运算符及其优先次序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-2-关系表达式"><span class="toc-number">1.3.2.</span> <span class="toc-text">
+          4.3.2    关系表达式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-逻辑运算符和逻辑表达式"><span class="toc-number">1.4.</span> <span class="toc-text">
+          4.4    逻辑运算符和逻辑表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-1-逻辑运算符及其优先次序"><span class="toc-number">1.4.1.</span> <span class="toc-text">
+          4.4.1    逻辑运算符及其优先次序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-2-逻辑表达式"><span class="toc-number">1.4.2.</span> <span class="toc-text">
+          4.4.2    逻辑表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-3-逻辑型变量"><span class="toc-number">1.4.3.</span> <span class="toc-text">
+          4.4.3    逻辑型变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-条件运算符的条件表达式"><span class="toc-number">1.5.</span> <span class="toc-text">
+          4.5    条件运算符的条件表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6-选择结构的嵌套"><span class="toc-number">1.6.</span> <span class="toc-text">
+          4.6    选择结构的嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-7-用switch语句实现多分支选择结构"><span class="toc-number">1.7.</span> <span class="toc-text">
+          4.7    用switch语句实现多分支选择结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-8-选择结构程序综合举例"><span class="toc-number">1.8.</span> <span class="toc-text">
+          4.8 选择结构程序综合举例</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/head_img.jpeg" alt="avatar"></div><p class="sidebar-ov-author__text">没人会带你去钓鱼</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/t-diana/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/id201015024" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/xi-xu-33-23" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=201015024" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">9</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">0</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">5</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>侬仕超</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0-rc.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js" color="0,0,0" opacity="0.6" count="99" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="//cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="//cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: 'ab258a36734e477abf13',
+    clientSecret: '8270553dda1b5679c380128b955479f9ee61d971',
+    repo: 'comments',
+    owner: 't-diana',
+    admin: ['t-diana'],
+    distractionFreeMode: 'false',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.0.0-rc.0"></script><script src="/js/stun-boot.js?v=2.0.0-rc.0"></script><script src="/js/scroll.js?v=2.0.0-rc.0"></script><script src="/js/header.js?v=2.0.0-rc.0"></script><script src="/js/sidebar.js?v=2.0.0-rc.0"></script></body></html>
