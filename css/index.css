@@ -909,7 +909,7 @@ kbd {
   z-index: 0;
   width: 100%;
   height: 100%;
-  background: url("/images/bgImage.jpeg") no-repeat center/cover;
+  background: url("/images/TheHeaderBG.jpg") no-repeat center/cover;
 }
 .header-banner-info {
   position: absolute;
@@ -2081,9 +2081,6 @@ kbd {
 }
 .back2top__icon:hover {
   color: #fc6423;
-}
-a.fancybox {
-  cursor: zoom-in;
 }
 .zoomimg-mask {
   position: fixed;
