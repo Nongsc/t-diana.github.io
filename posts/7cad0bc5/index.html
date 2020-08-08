@@ -1,0 +1,919 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="侬仕超"><meta name="copyright" content="侬仕超"><meta name="generator" content="Hexo 4.2.0"><meta name="theme" content="hexo-theme-yun"><title>用户自己建立数据类型 | 上善若水</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="none" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.17/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_stqaphw3j4.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link class="aplayer-style-marker" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script class="aplayer-script-marker" src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" defer></script><script class="meting-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js" defer></script><script>document.addEventListener(
+  "pjax:success",
+  function() {
+    if (window.aplayers) {
+      loadMeting();
+    }
+  },
+  !1
+);</script><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><link rel="alternate" href="/atom.xml" title="上善若水"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"root":"/","title":"上善若水","version":"0.9.5","anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"local_search":{"path":"/search.xml"},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script><meta name="description" content="9.1    定义和使用结构体变量9.1.1    自己建立结构体类型C语言允许用户自己建立由不同类型数据组成的复合型数据结构，它称为结构体。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用户自己建立数据类型">
+<meta property="og:url" content="https://www.nscblog.top/posts/7cad0bc5/index.html">
+<meta property="og:site_name" content="上善若水">
+<meta property="og:description" content="9.1    定义和使用结构体变量9.1.1    自己建立结构体类型C语言允许用户自己建立由不同类型数据组成的复合型数据结构，它称为结构体。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/08/08/ybkrojAaMODePsE.png">
+<meta property="article:published_time" content="2020-06-20T16:15:28.000Z">
+<meta property="article:modified_time" content="2020-08-08T16:51:03.637Z">
+<meta property="article:author" content="侬仕超">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/08/ybkrojAaMODePsE.png"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="alternate" href="/atom.xml" title="上善若水" type="application/atom+xml">
+</head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script defer src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="侬仕超"><img width="96" loading="lazy" src="/images/head_img.jpeg" alt="侬仕超"></a><div class="site-author-name"><a href="/about/">侬仕超</a></div><a class="site-name" href="/about/site.html">上善若水</a><sub class="site-subtitle">一点一点做好，望吾热爱生活。</sub><div class="site-desciption">自助者天助之,自弃者天弃之</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">12</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">1</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">4</span></a></div><div class="site-state-item"><a href="/music/"><span class="site-state-item-icon"><i class="disc-line"></i></span></a></div><a class="site-state-item hty-icon-button" href="/about/" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&amp;uin=201015024&amp;site=qq&amp;menu=yes" title="QQ" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/t-diana" title="GitHub" target="_blank" style="color:#181717"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/id201015024" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=439028465" title="网易云音乐" target="_blank" style="color:#C10D0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/17058996" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-定义和使用结构体变量"><span class="toc-number">1.</span> <span class="toc-text">9.1    定义和使用结构体变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-1-自己建立结构体类型"><span class="toc-number">1.1.</span> <span class="toc-text">9.1.1    自己建立结构体类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-2-定义结构体类型变量"><span class="toc-number">1.2.</span> <span class="toc-text">9.1.2    定义结构体类型变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-3-结构体变量的初始化和引用"><span class="toc-number">1.3.</span> <span class="toc-text">9.1.3    结构体变量的初始化和引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-使用结构体数组"><span class="toc-number">2.</span> <span class="toc-text">9.2    使用结构体数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-1-定义结构体数组"><span class="toc-number">2.1.</span> <span class="toc-text">9.2.1    定义结构体数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-2-结构体数组的应用举例"><span class="toc-number">2.2.</span> <span class="toc-text">9.2.2    结构体数组的应用举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-结构体指针"><span class="toc-number">3.</span> <span class="toc-text">9.3    结构体指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-1-指向结构体变量的指针"><span class="toc-number">3.1.</span> <span class="toc-text">9.3.1    指向结构体变量的指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-2-指向结构体数组的指针"><span class="toc-number">3.2.</span> <span class="toc-text">9.3.2    指向结构体数组的指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-3-用结构体变量和结构体变量的指针作函数参数"><span class="toc-number">3.3.</span> <span class="toc-text">9.3.3    用结构体变量和结构体变量的指针作函数参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-4-用指针处理链表"><span class="toc-number">4.</span> <span class="toc-text">9.4    用指针处理链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4-1-什么是链表"><span class="toc-number">4.1.</span> <span class="toc-text">9.4.1    什么是链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4-2-建立简单的静态链表"><span class="toc-number">4.2.</span> <span class="toc-text">9.4.2    建立简单的静态链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4-3-建立动态链表"><span class="toc-number">4.3.</span> <span class="toc-text">9.4.3    建立动态链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4-4-输出链表"><span class="toc-number">4.4.</span> <span class="toc-text">9.4.4    输出链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-5-共用体类型"><span class="toc-number">5.</span> <span class="toc-text">9.5    共用体类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-5-1-什么是共用体类型"><span class="toc-number">5.1.</span> <span class="toc-text">9.5.1    什么是共用体类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-5-2-引用共用体变量的方式"><span class="toc-number">5.2.</span> <span class="toc-text">9.5.2    引用共用体变量的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-5-3-共用体类型数据的特点"><span class="toc-number">5.3.</span> <span class="toc-text">9.5.3    共用体类型数据的特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-6-使用枚举类型"><span class="toc-number">6.</span> <span class="toc-text">9.6    使用枚举类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-7-用typedef声明新类型名"><span class="toc-number">7.</span> <span class="toc-text">9.7    用typedef声明新类型名</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://www.nscblog.top/posts/7cad0bc5/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="侬仕超"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="上善若水"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">用户自己建立数据类型</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-06-21 00:15:28" itemprop="dateCreated datePublished" datetime="2020-06-21T00:15:28+08:00">2020-06-21</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2020-08-09 00:51:03" itemprop="dateModified" datetime="2020-08-09T00:51:03+08:00">2020-08-09</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">6.1k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">26m</span></span></span><div class="post-classify"><span class="post-category"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">专升本笔记</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">学习</span></a><a class="tag" href="/tags/C%E8%AF%AD%E8%A8%80/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">C语言</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;">
+    <div id="aplayer-zgieNtJg" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    ></div>
+
+<h2 id="9-1-定义和使用结构体变量"><a href="#9-1-定义和使用结构体变量" class="headerlink" title="9.1    定义和使用结构体变量"></a>9.1    定义和使用结构体变量</h2><h3 id="9-1-1-自己建立结构体类型"><a href="#9-1-1-自己建立结构体类型" class="headerlink" title="9.1.1    自己建立结构体类型"></a>9.1.1    自己建立结构体类型</h3><p>C语言允许用户自己建立由不同类型数据组成的复合型数据结构，它称为结构体。</p>
+<a id="more"></a>
+
+<pre><code class="c">struct Student
+{
+int num;
+char name[20];
+char sex;
+int age;
+float age;
+float score;
+char addr[30];
+};                    
+
+/*
+struct是声明结构体类型的关键字，不能省略。
+*/</code></pre>
+<p>声明一个结构体类型的一般形式为：</p>
+<blockquote>
+<p>struct 结构体名</p>
+<p>​    {成员列表};</p>
+</blockquote>
+<p>注意：</p>
+<p>1.结构体类型的名字是由一个关键字struct和结构体名组合成的(例如：struct Student)</p>
+<p>2.结构体名，如：Student(结构体名又叫结构体标记)</p>
+<p>3.花括号内的子项，称为结构体成员，对成员都应进行类型声明</p>
+<p>4.结构体类型可以有多种，成员可以属于另一个结构体类型。</p>
+<pre><code class="c">struct Date
+{
+int month;
+int year;
+int day;
+};
+
+struct Student
+{
+int num;
+char name[20];
+char sex;
+int age;
+float age;
+float score;
+char addr[30];
+struct Date birthday;            //成员birthday属于struct Date类型
+}</code></pre>
+<p>模型图</p>
+<p><img src="https://i.loli.net/2020/08/08/ybkrojAaMODePsE.png" alt="结构体模型图.png" loading="lazy"></p>
+<h3 id="9-1-2-定义结构体类型变量"><a href="#9-1-2-定义结构体类型变量" class="headerlink" title="9.1.2    定义结构体类型变量"></a>9.1.2    定义结构体类型变量</h3><p>结构体被定义声明后，没有使用，系统对之不分配存储单元。</p>
+<p>定义结构类型变量：</p>
+<ol>
+<li><p>先声明结构体类型，再定义该类型的变量</p>
+<p>如：struct Student(结构体类型名) student1,student2(结构体变量名);</p>
+<p>定义结构体变量后，系统会为之分配内存单元。</p>
+</li>
+<li><p>在声明类型的同时定义变量</p>
+<pre><code class="c">struct Student
+{
+int num;
+char name[20];
+char sex;
+int age;
+float age;
+float score;
+char addr[30];
+} student1,student2;
+/*
+在写大程序时，往往要求对类型的声明和对变量的定义分别放在不同的地方，以便程序结构清晰，便于维护，一般不采用这种方式。
+*/</code></pre>
+</li>
+<li><p>不指定类型名而直接定义结构体类型变量</p>
+<p>一般形式：</p>
+<pre><code class="c">struct
+{
+成员列表
+} 变量名列表;
+/*
+说明：
+    1.结构体类型和结构体变量是不同的东西，只能对变量赋值，在编译时，只对变量分配空间。
+    2.结构体类型成员名可以与程序中变量名相同
+    3.结构体变量中的成员，可以单独使用，作用相当于普通变量
+*/
+</code></pre>
+</li>
+</ol>
+<h3 id="9-1-3-结构体变量的初始化和引用"><a href="#9-1-3-结构体变量的初始化和引用" class="headerlink" title="9.1.3    结构体变量的初始化和引用"></a>9.1.3    结构体变量的初始化和引用</h3><p>在定义结构体变量时，可以对它初始化，即赋予初始值，然后引用这个变量。</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+int main ()
+{
+    struct Student            //定义声明结构体Student
+    {
+    int num;
+    char name[20];
+    char sex;
+    char addr[30];
+    };
+    struct Student stu={101,&quot;ahuang&quot;,&#39;W&#39;,&quot;123 Beijing Road&quot;};//进行初始化赋值
+    printf(&quot;No.:%d\nname:%s\nsex:%c\naddr:%s\n&quot;,stu.num,stu.name,stu.sex,stu.addr);
+    return 0;
+}
+
+
+/*
+1. 进行初始化时，初始化列表使用花括号括起来的一些常量。
+    C99标准允许对某一成员初始化。如：
+    struct Studnet stu={.name=&quot;xiehuangbao&quot;};
+    其他数值型被初始化为0，字符型被初始化为&#39;\0&#39;,指针变量被初始化为NULL
+2. 可以引用结构体变量中的值，引用方式：结构体变量名.成员名
+    如：stu.num=10001;//在程序中对变量的成员赋值。
+    .  是成员运算符，它在所有运算符中优先级最高，因此可以把stu.num作为一个整体看待，相当于一个变量
+    注意：不能通过输出结构体变量名输出结构体变量所有成员的值
+3. 如果成员本身又是一个结构体类型，则要用若干个成员运算符，一级一级找到最低的一级的成员。只能对最低级的成员进行赋值或存取以及运算。
+    stu.num            //访问stu成员num
+    stu.birthday.month    //访问stu成员中的成员month
+4. 对结构体变量的成员可以向普通变量一样进行各种运算(根据其类型决定可以进行的运算)。
+5. 同类的结构体变量可以进行相互赋值，如：
+    stu1=stu2
+6. 可以引用结构体变量成员的地址，也可以引用结构体变量的地址。例如：
+    scanf(&quot;%d&quot;,&amp;stu.num);    //输入&amp;stu.num的值
+    printf(&quot;%o&quot;,&amp;stu);        //输出结构体变量&amp;stu的首地址
+
+    scanf(&quot;%d,%s,%c,%d,%f,%s\n&quot;,&amp;stu);//不能用这样的语句读入结构体变量
+    结构体变量的地址主要用作函数参数，传递结构体变量地址。
+*/</code></pre>
+<pre><code class="c"># include &quot;stdio.h&quot;
+/*
+定义和使用结构体 
+*/
+int main()
+{
+    struct Student{        //定义和声明结构体Student 
+        int num;//学号
+        char name[20];
+        float score; 
+    };
+
+    struct Student stu1,stu2;
+
+    scanf(&quot;%d%s%f&quot;,&amp;stu1.num,stu1.name,&amp;stu1.score);
+    scanf(&quot;%d%s%f&quot;,&amp;stu2.num,stu2.name,&amp;stu2.score);
+
+    if(stu1.score&gt;stu2.score) printf(&quot;%d\t%s\t%f\n&quot;,stu1.num,stu1.name,stu1.score);
+    if(stu1.score&lt;stu2.score) printf(&quot;%d\t%s\t%f\n&quot;,stu2.num,stu2.name,stu2.score);
+    if(stu1.score=stu2.score) 
+    {
+        printf(&quot;%d\t%s\t%f\n&quot;,stu1.num,stu1.name,stu1.score);
+        printf(&quot;%d\t%s\t%f\n&quot;,stu2.num,stu2.name,stu2.score);
+    }
+    return 0; 
+ } </code></pre>
+<h2 id="9-2-使用结构体数组"><a href="#9-2-使用结构体数组" class="headerlink" title="9.2    使用结构体数组"></a>9.2    使用结构体数组</h2><h3 id="9-2-1-定义结构体数组"><a href="#9-2-1-定义结构体数组" class="headerlink" title="9.2.1    定义结构体数组"></a>9.2.1    定义结构体数组</h3><pre><code class="c"># include &quot;stdio.h&quot;
+# include &quot;string.h&quot;
+/*
+    定义和引用结构体数组 
+*/
+int main()
+{
+    struct Person            //声明结构体 struct Person 
+    {
+        char name[20];
+        int count;
+    };
+
+    struct Person leader[3]={            //定义结构体数组并初始化 
+        &quot;Li&quot;,0,&quot;Zhang&quot;,0,&quot;Sun&quot;,0
+    };
+
+    int i,j;
+    char lead_name[20];
+    for(i=1;i&lt;=10;i++)
+    {
+        scanf(&quot;%s&quot;,lead_name);
+        for(j=0;j&lt;3;j++)
+        if(!strcmp(lead_name,leader[j].name))leader[j].count++;
+    }
+    for(i=0;i&lt;3;i++)
+        printf(&quot;%s\t%d\n&quot;,leader[i].name,leader[i].count);
+    return 0; 
+}</code></pre>
+<p>说明：</p>
+<p>1.定义结构体数组一般形式是</p>
+<ul>
+<li>struct 结构体名{成员列表} 数组名[数组长度];</li>
+<li>先声明一个结构体类型，再用此类型定义结构体数组；</li>
+</ul>
+<p>2.对结构体数组初始化的形式是在定义数组的后面加上：={初值列表};</p>
+<p>​    如：</p>
+<p>​    struct Person leader[3]={            //定义结构体数组并初始化<br>​        “Li”,0,”Zhang”,0,”Sun”,0<br>​    };</p>
+<h3 id="9-2-2-结构体数组的应用举例"><a href="#9-2-2-结构体数组的应用举例" class="headerlink" title="9.2.2    结构体数组的应用举例"></a>9.2.2    结构体数组的应用举例</h3><pre><code class="c"># include &quot;stdio.h&quot;
+# include &quot;string.h&quot;
+/*
+    定义和引用结构体数组 
+*/
+int main()
+{
+    struct Student            //声明结构体 struct Person 
+    {
+        int num;
+        char name[20];
+        float score;
+    };
+
+    struct Student stu[5]={            //定义结构体数组并初始化 
+        10101,&quot;Zhang&quot;,78,
+        10103,&quot;Wang&quot;,98.5,
+        10106,&quot;Li&quot;,86,
+        10108,&quot;Ling&quot;,73.5,
+        10110,&quot;Sun&quot;,100
+    };
+
+    struct Student temp;//临时交换存储变量 
+
+    int i,j;
+
+    for(i=0;i&lt;=5-1;i++)
+        for(j=i;j&lt;5;j++)
+        {
+            if(stu[i].score&gt;stu[j].score)
+            {
+                temp=stu[i];
+                stu[i]=stu[j];
+                stu[j]=temp;
+            }
+        }
+    for(i=0;i&lt;5;i++)
+        printf(&quot;%d\t%d\t%f\n&quot;,stu[i].num,stu[i].name,stu[i].score);
+    return 0; 
+}
+</code></pre>
+<p>说明：</p>
+<ol>
+<li>在定义结构体数组进行初始化时，将每个学生的信息用一对花括号包起来，这样做，阅读和检查比较方便。（提供程序的可读性）</li>
+<li>注意临时变量temp定义为struct Student类型，只有同类型的结构体变量才能互相赋值，不必人为指定一个一个成员互换，这体现了结构体类型的好处。</li>
+</ol>
+<h2 id="9-3-结构体指针"><a href="#9-3-结构体指针" class="headerlink" title="9.3    结构体指针"></a>9.3    结构体指针</h2><h3 id="9-3-1-指向结构体变量的指针"><a href="#9-3-1-指向结构体变量的指针" class="headerlink" title="9.3.1    指向结构体变量的指针"></a>9.3.1    指向结构体变量的指针</h3><p>指针变量的基类型必须与结构体变量的类型相同。</p>
+<p>例如：struct Student *p;</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+# include &quot;string.h&quot;
+
+/*
+    了解什么是指向结构体变量的指针变量以及 
+    怎么使用该类型的指针变量 
+*/
+int main()
+{
+    struct Student
+    {
+        int num;
+        char name[20];
+        char sex;
+        int age;
+    };
+    struct Student stu,* p;
+    p=&amp;stu;
+    stu.num=10101;
+    strcpy(stu.name,&quot;LiLin&quot;);
+    stu.sex=&#39;M&#39;;
+    stu.age=25;
+    printf(&quot;No.:%d\nname:%s\nsex:%c\nage:%d\n&quot;,stu.num,stu.name,stu.sex,stu.age); 
+    printf(&quot;No.:%d\nname:%s\nsex:%c\nage:%d\n&quot;,(*p).num,(*p).name,(*p).sex,(*p).age);
+    return 0;
+ } 
+/*
+如果一个p指向一个结构体变量stu，以下3种方法等价：
+1.stu.成员名(如：stu.num);
+2.(*p).成员名((*p).num);
+3.p-&gt;成员名(如p-&gt;num).        -&gt;称为指向运算符
+*/</code></pre>
+<h3 id="9-3-2-指向结构体数组的指针"><a href="#9-3-2-指向结构体数组的指针" class="headerlink" title="9.3.2    指向结构体数组的指针"></a>9.3.2    指向结构体数组的指针</h3><pre><code class="c"># include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+/*
+    初步了解指向结构体数组的指针 
+*/
+int main()
+{
+    struct Student{
+        int num;
+        char name[20];
+        char sex;
+        int age;
+    };
+    struct Student stu[3]={
+        {10101,&quot;LiLin&quot;,&#39;M&#39;,18}
+       ,{10102,&quot;ZhangFang&quot;,&#39;M&#39;,19}
+       ,{10103,&quot;WangMin&quot;,&#39;F&#39;,20}
+    };                //定义结构体数组并初始化 
+
+    struct Student *p;
+    for(p=stu;p&lt;stu+3;p++)    //使指向stu数组的第一个元素 
+        printf(&quot;%d\t%s\t%c\t%d\n&quot;,p-&gt;num,p-&gt;name,p-&gt;sex,p-&gt;age);
+    return 0;
+}
+
+/*
+注意：
+1.程序定义了p是指向struct Student类型的指针变量，它用来指向一个struct Student类型的对象，但是不能指向stu数组元素中的某一成员。
+2.如果要将某一成员地址赋值给p，可以使用强制类型转换。如：p=(struct Student *)stu[0].name;
+*/</code></pre>
+<h3 id="9-3-3-用结构体变量和结构体变量的指针作函数参数"><a href="#9-3-3-用结构体变量和结构体变量的指针作函数参数" class="headerlink" title="9.3.3    用结构体变量和结构体变量的指针作函数参数"></a>9.3.3    用结构体变量和结构体变量的指针作函数参数</h3><p>将一个结构体变量的值传递给另一个函数，有3种方法：</p>
+<ol>
+<li>用结构体变量的成员作参数</li>
+<li>用结构体变量作实参。结构体作实参时，采取的也是值“传递方式”，形参也必须是同类型的结构提提变量。在函数调用期间形参也要占用内存单元。这种传递方式在空间和时间上开销较大，且因采用值传递的方式，如果在执行期间，形参改变的haul，该值是无法返回给主调函数的，这往往造成使用上的不便。</li>
+<li>用指向结构体变量的指针作实参。传递地址（推荐：减少内存开销，避免用结构体作实参的缺陷）。</li>
+</ol>
+<pre><code class="c"># include &quot;stdio.h&quot;
+# include &quot;string.h&quot;
+# include &quot;stdlib.h&quot; 
+/*
+    了解和使用结构体变量和结构体指针作函数参数 
+
+    有结构体变量，成员是学号，姓名，3门课成绩。输出平均成绩最高的学生信息 
+*/ 
+# define N 3 //定义有3个学生 
+struct Student{
+        int num;
+        char name[20];
+        float score1;
+        float score2;
+        float score3;
+        float aver;
+    }; 
+
+int main ()
+{
+    struct Student stu[N],*p,student;
+    int i=0;
+    void input_information(struct Student *p);
+    struct Student * max_aver(struct Student stu[]);
+    p=stu;//指向首个元素 
+    input_information(p);     //输入学生数据 
+    for(;i&lt;N;i++)            //输出输入的学生信息 
+        printf(&quot;%d\t%s\t%f\t%f\t%f\t%f\t\n&quot;,stu[i].num,stu[i].name,stu[i].score1,stu[i].score2,stu[i].score3,stu[i].aver);
+    p=max_aver(p);
+    printf(&quot;%d\t%s\t%f\t%f\t%f\t%f\t\n&quot;,p-&gt;num,p-&gt;name,p-&gt;score1,p-&gt;score2,p-&gt;score3,p-&gt;aver);//输出最高平均学生信息 
+    return 0;
+}
+
+void input_information(struct Student *p)
+{
+    int i=0;
+    for(;i&lt;N;p++,i++)
+    {
+        printf(&quot;请输入学生信息:\n&quot;);
+        scanf(&quot;%d%s%f%f%f&quot;,&amp;(p-&gt;num),&amp;(p-&gt;name),&amp;(p-&gt;score1),&amp;(p-&gt;score2),&amp;(p-&gt;score3));
+        p-&gt;aver=(p-&gt;score1+p-&gt;score2+p-&gt;score3)/3;
+    }
+
+}
+
+struct Student * max_aver(struct Student stu[])
+{
+    int i=0;
+    struct Student * student;
+    for(;i&lt;N-1;i++)
+        if(stu[i].aver&gt;stu[i+1].aver)
+            student=&amp;stu[i];
+        else
+            student=&amp;stu[i+1];
+    return student;
+}</code></pre>
+<h2 id="9-4-用指针处理链表"><a href="#9-4-用指针处理链表" class="headerlink" title="9.4    用指针处理链表"></a>9.4    用指针处理链表</h2><h3 id="9-4-1-什么是链表"><a href="#9-4-1-什么是链表" class="headerlink" title="9.4.1    什么是链表"></a>9.4.1    什么是链表</h3><p>链表是一种常见的重要的数据结构。它是动态的进行存储分配的一种结构。</p>
+<p>链表根据需要开辟内存单元。</p>
+<p>链表有一个“头指针”变量，它存放一个地址，该地值指向一个元素。链表中每个元素称为“结点”</p>
+<p>每个结点应该包括两个部分：</p>
+<ol>
+<li>用户需要用的实际数据；</li>
+<li>下一个结点的地址。最后一个元素的地址部分存放NULL表示链表到此结束</li>
+</ol>
+<p>链表元素在内存中的地址可以是不连续的。</p>
+<p>找一个元素，必须知道上一个元素存放该元素的地址。没有头指针整个链表无法访问。</p>
+<p>链表必须利用指针变量才能实现。一个姐弟啊应包含一个指针变量，用它存放下一个结点的地址。</p>
+<pre><code class="c">/*
+可以设计这样的结构体类型
+*/
+
+struct Student
+{
+int num;
+float score;
+struct Student * next;   //next是指针变量，指向结构体变量（即下一个元素地址）
+};
+
+/*
+num和score   是存放的实际数据
+next  是下一个元素地址
+
+一个指针类型的成员既可以指向其他类型的结构体数据，也可以指向自身所在的结构体类型的数据。
+*/</code></pre>
+<h3 id="9-4-2-建立简单的静态链表"><a href="#9-4-2-建立简单的静态链表" class="headerlink" title="9.4.2    建立简单的静态链表"></a>9.4.2    建立简单的静态链表</h3><pre><code class="c"># include &quot;stdio.h&quot;
+/*
+建立简单的静态链表 
+*/
+int main ()
+{
+    struct Student            //定义声明一个结构体 
+    {
+        int num;
+        float score;
+        struct Student * next;    
+    };
+
+    //定义结构体变量以及指针变量 
+    struct Student stu1,stu2,stu3,*p1,*p2,*head; 
+    p1=&amp;stu2;
+    p2=&amp;stu3; 
+
+    //进行赋值操作
+    stu1.num=10101;
+    stu1.score=56.5;
+    stu1.next=p1;
+
+    stu2.num=10310;
+    stu2.score=66.5;
+    stu2.next=p2;
+
+    stu3.num=10102;
+    stu3.score=55.0;
+    stu3.next=NULL;
+
+    //没有头指针，链表无法访问
+    head=&amp;stu1; 
+    do
+    {
+        printf(&quot;%d\t%f\n&quot;,head-&gt;num,head-&gt;score);
+        head=head-&gt;next;
+    }while(head!=NULL);
+
+    return 0; 
+} 
+/*
+head头指针指向stu1,stu.next指向了stu2，stu2.next指向stu3,stu3.next=NULL表示这个末尾元素，每个元素中都有实际数据，且每个元素中都有下一个元素地址，这就形成了简单的链表关系
+
+
+静态链表：结点是在程序中定义的，不是临时开辟的，也不能用完后释放。
+*/ </code></pre>
+<h3 id="9-4-3-建立动态链表"><a href="#9-4-3-建立动态链表" class="headerlink" title="9.4.3    建立动态链表"></a>9.4.3    建立动态链表</h3><p>动态链表是指在程序执行过程中建立一个链表</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+# include &quot;stdlib.h&quot;
+
+/*
+    建立动态链表 
+*/
+
+struct Student            //定义声明一个结构体 
+    {
+        int num;
+        float score;
+        struct Student * next;    
+    };
+
+int main ()
+{
+    struct Student * pt;
+    struct Student * creat();
+    pt=creat();
+    printf(&quot;%d\t%f\n&quot;,pt-&gt;num,pt-&gt;score);
+    return 0; 
+} 
+
+struct Student * creat()
+{
+    struct Student *head,*p1,*p2;
+    head=NULL;//先使头指针指向空 ，表示现在的链表是个空链表 
+    int n=0;//表示结点个数
+    p1=p2=(struct Student *)malloc(sizeof(struct Student));//开辟第一个结点，将地址赋值给p1,p2
+    printf(&quot;请分别输入学号和成绩:\n&quot;);
+    scanf(&quot;%d%f&quot;,&amp;p1-&gt;num,&amp;p1-&gt;score);//输入实际数据 
+    while(p1-&gt;num!=0) 
+    {
+        n+=1;
+        if(n==1)
+            head=p1;//表示创建一个新的链表。 当n==1时 
+        else{
+            p2-&gt;next=p1;//存放下个结点的地址 
+        }
+        p2=p1;//指向同一个结点 
+        p1=(struct Student *)malloc(sizeof(struct Student));//开辟新的结点 
+        printf(&quot;请分别输入学号和成绩:\n&quot;);
+        scanf(&quot;%d%f&quot;,&amp;p1-&gt;num,&amp;p1-&gt;score);//输入实际数据 
+    } 
+    p2-&gt;next=NULL;//没有创建结点，表示表尾 
+    return head;
+}</code></pre>
+<h3 id="9-4-4-输出链表"><a href="#9-4-4-输出链表" class="headerlink" title="9.4.4    输出链表"></a>9.4.4    输出链表</h3><p>将链表中各结点的数据依次输出。</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+# include &quot;stdlib.h&quot;
+
+/*
+    建立动态链表 
+*/
+
+struct Student            //定义声明一个结构体 
+    {
+        int num;
+        float score;
+        struct Student * next;    
+    };
+
+int main ()
+{
+    struct Student * pt;
+    struct Student * creat();
+    void printf_linked_list(struct Student * head);
+    pt=creat();
+    printf_linked_list(pt);
+    return 0; 
+} 
+
+struct Student * creat()
+{
+    struct Student *head,*p1,*p2;
+    head=NULL;//先使头指针指向空 ，表示现在的链表是个空链表 
+    int n=0;
+    p1=p2=(struct Student *)malloc(sizeof(struct Student));//开辟第一个结点，将地址赋值给p1,p2
+    printf(&quot;请分别输入学号和成绩:\n&quot;);
+    scanf(&quot;%d%f&quot;,&amp;p1-&gt;num,&amp;p1-&gt;score);//输入实际数据 
+    while(p1-&gt;num!=0) 
+    {
+        n+=1;
+        if(n==1)
+            head=p1;//表示创建一个新的链表。 当n==1时 
+        else{
+            p2-&gt;next=p1;//存放下个结点的地址 
+        }
+        p2=p1;//指向同一个结点 
+        p1=(struct Student *)malloc(sizeof(struct Student));//开辟新的结点 
+        printf(&quot;请分别输入学号和成绩:\n&quot;);
+        scanf(&quot;%d%f&quot;,&amp;p1-&gt;num,&amp;p1-&gt;score);//输入实际数据 
+    } 
+    p2-&gt;next=NULL;//没有创建结点，表示表尾 
+    return head;
+}
+
+void printf_linked_list(struct Student * head)
+{
+    struct Student * pt;
+    pt=head;
+    if(head!=NULL)            //判断头指针是否为空，为空的话，链表无法访问
+        while(pt!=NULL)
+        {
+            printf(&quot;%d\t%f\n&quot;,pt-&gt;num,pt-&gt;score);
+            pt=pt-&gt;next;
+        }
+} </code></pre>
+<h2 id="9-5-共用体类型"><a href="#9-5-共用体类型" class="headerlink" title="9.5    共用体类型"></a>9.5    共用体类型</h2><h3 id="9-5-1-什么是共用体类型"><a href="#9-5-1-什么是共用体类型" class="headerlink" title="9.5.1    什么是共用体类型"></a>9.5.1    什么是共用体类型</h3><p>在同一个地址上，使用覆盖技术，后一个数据覆盖了前面的数据。这种使几个不同的变量共享同一段内存结构，称为“共用体”类型的结构。</p>
+<p>共用体类型一般定义形式：</p>
+<blockquote>
+<p>union 共用体名</p>
+<p>{成员列表} 变量表列；</p>
+</blockquote>
+<p>定义声明和定义变量与结构体相同。但是含义不一样：</p>
+<p><strong>共用体变量所占的内存长度等于最长成员的长度。</strong></p>
+<h3 id="9-5-2-引用共用体变量的方式"><a href="#9-5-2-引用共用体变量的方式" class="headerlink" title="9.5.2    引用共用体变量的方式"></a>9.5.2    引用共用体变量的方式</h3><p> 必须先定义共用体变量，后引用。注意引用的是共用体的成员，不是共用体变量。</p>
+<p>例如：</p>
+<pre><code class="c">union Data        //声明定义一个共用体
+{
+int I;
+char ch;
+float f;
+};
+
+union Data a,b,c;    //用共用体类型定义变量
+
+a.I                    //引用共用体成员，是正确的
+a.ch
+a.f
+
+printf(&quot;%d&quot;,a);        //这样是错误的，不能引用共用体变量。
+printf(&quot;%d&quot;,a.I);    //可以写成这样
+
+/*
+union        //这样也可以声明定义  
+{
+int i;
+char ch;
+float f;
+}a,b,c;
+*/</code></pre>
+<h3 id="9-5-3-共用体类型数据的特点"><a href="#9-5-3-共用体类型数据的特点" class="headerlink" title="9.5.3    共用体类型数据的特点"></a>9.5.3    共用体类型数据的特点</h3><p>使用共用体类型数据是要注意以下一些特点：</p>
+<ol>
+<li><p>同一个内存段可以用来存放几种不同类型的成员。在每一瞬时，只能存放一个成员，也就是说，共同体变量只能存放一个值。</p>
+<pre><code class="c">union Date
+{
+int i;
+char ch;
+float f;
+};
+union Date a;
+a.i=97;
+//表示将整数97存放在共用体变量中，可以用以下输出语句：
+printf(&quot;%d&quot;,a.i);        //输出整数97
+printf(&quot;%c&quot;,a.ch);        //输出字符a
+printf(&quot;%f&quot;,a.f);        //输出实数0.000000</code></pre>
+</li>
+<li><p>可以对共用体变量初始化，但初始化表中有一个常量。</p>
+<pre><code class="c">union Data
+{
+int i;
+char ch;
+float f;
+}a={1,&#39;a&#39;,1.5};        //不能初始化3个成员，它们占用同一段存储单元
+union Data a={16};    //正确，对第一个成员初始化
+union Data a={.ch=&#39;j&#39;};//C99允许对指定的一个成员初始化</code></pre>
+</li>
+<li><p>共用体变量中起作用的成员是最后一次被赋值的成员，在共用体变量中的成员赋值后，原来变量存储单元中的值就被取代。</p>
+</li>
+<li><p>共用体变量的底子和它的各成员的地址都是相同的，因为共用同一块内存段。</p>
+</li>
+<li><p>不能对共用体变量名赋值，不能企图引用变量名来得到一个值。</p>
+<p>​    C99允许同类型的共用体变量互相赋值。</p>
+<p>a=b；        //a和b同类型的共用体变量，合法</p>
+</li>
+<li><p>C99之前规定共用体变量不能作为函数参数，但可以使用指向共用体变量的指针作函数参数。C99允许共用体变量作函数参数。</p>
+</li>
+<li><p>共用体可以出现在结构体类型定义中，数组可以作为共用体成员。</p>
+</li>
+</ol>
+<blockquote>
+<p>什么时候会用到共用体呢？</p>
+<p>处理数据是，有时需要对同一段空间安排不同的用途。</p>
+</blockquote>
+<p>例如：</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+/*
+共用体的简单使用场景 
+*/
+
+struct {
+        int num;
+        char name[10];
+        char sex;
+        char job;
+        union
+        {
+            int clazz;
+            char position[10];
+        } category;
+    }person[2];
+
+int main()
+{
+    int i=0;
+    for(;i&lt;2;i++)
+    {
+        printf(&quot;请输入当前人的信息:\n&quot;);
+        scanf(&quot;%d %s %c %c&quot;,&amp;person[i].num,&amp;person[i].name,&amp;person[i].sex,&amp;person[i].job);
+        if(person[i].job==&#39;s&#39;)//判断是学生还是老师
+            scanf(&quot;%d&quot;,&amp;person[i].category.clazz);//是学生输入相应的班级
+        else if(person[i].job==&#39;t&#39;)
+            scanf(&quot;%s&quot;,person[i].category.position);//是老师的话，输入相应的职位
+        else
+            printf(&quot;输入信息有误\n&quot;); 
+    }
+    for(i=0;i&lt;2;i++)
+    {
+        if(person[i].job==&#39;s&#39;)
+            printf(&quot;%d\t%s\t%c\t%c\t%d\n&quot;,person[i].num,person[i].name,person[i].sex,person[i].job,person[i].category.clazz);
+        if(person[i].job==&#39;t&#39;)
+            printf(&quot;%d\t%s\t%c\t%c\t%s\n&quot;,person[i].num,person[i].name,person[i].sex,person[i].job,person[i].category.position);
+    }
+    return 0;
+ } </code></pre>
+<h2 id="9-6-使用枚举类型"><a href="#9-6-使用枚举类型" class="headerlink" title="9.6    使用枚举类型"></a>9.6    使用枚举类型</h2><p>一个变量只要几种可能的值，则可以定义为枚举类型。</p>
+<p>枚举：把可能的值一一列举出来，变量值只限于列举出来的值的范围内。</p>
+<p>例如：</p>
+<p>enum Weekday {sun,mon,tue,wed,thu,fri,sat};</p>
+<p>Weekday 是枚举变量 </p>
+<p>{枚举元素或是枚举常量}</p>
+<p>声明枚举类型的一般形式为：</p>
+<blockquote>
+<p>enum [枚举名]{枚举元素列表}；</p>
+</blockquote>
+<p>说明：</p>
+<p>1.C编译对枚举类型的枚举元素按常量处理，故称为枚举常量</p>
+<p>2.每个枚举元素都代表一个整数，C语言编译按定义时顺序默认它们的值为0,1,2,3…</p>
+<p>例如： Weekday=mon； 相当于 Weekday=1;</p>
+<p>3.枚举元素可以用来作判断比较。</p>
+<p>下面我们用一个例子来介绍枚举类型的使用。</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+/*
+简单了解枚举类型的使用
+*/
+int main()
+{
+    enum Color{red,yellow,blue,white,black};//定义枚举类型  枚举元素是常量 每个元素代表一个整数
+    enum Color i,j,k,pri;//定义枚举变量
+    int n=0,loop;//loop 是循环的层数
+    for ( i = red; i &lt;=black; i++)//第一次摸球
+    {
+        /* code */
+        for ( j = red; i &lt;=black; i++)
+        {
+            /* code */
+            if (i!=j)
+            {
+                /* code */
+                for(k=red;k&lt;=black;k++)
+                {
+                    if (k!=i&amp;&amp;k!=j)
+                    {
+                        /* code */
+                        n+=1;//开始统计有几中摸球方法数量
+                        // printf(&quot;一共有%d摸球方法&quot;,n);
+                        for ( loop = 1; loop &lt;=3; loop++)
+                        {
+                            /* code */
+                            switch (loop)
+                            {
+                            case 1/* constant-expression */:
+                                pri=i;
+                                /* code */
+                                break;
+                            case 2/* constant-expression */:
+                                pri=j;
+                                /* code */
+                                break;
+                            case 3/* constant-expression */:
+                                pri=k;
+                                /* code */
+                                break;
+                            default:
+                                break;
+                            }
+
+                            switch (pri)
+                            {
+                            case  red/* constant-expression */:
+                                printf(&quot;%-10s&quot;,&quot;red&quot;);/* code */
+                                break;
+                            case  yellow/* constant-expression */:
+                                printf(&quot;%-10s&quot;,&quot;yellow&quot;);/* code */
+                                break;
+                            case  blue/* constant-expression */:
+                                printf(&quot;%-10s&quot;,&quot;blue&quot;);/* code */
+                                break;
+                            case  white/* constant-expression */:
+                                printf(&quot;%-10s&quot;,&quot;white&quot;);/* code */
+                                break; 
+                            case  black/* constant-expression */:
+                                printf(&quot;%-10s&quot;,&quot;black&quot;);/* code */
+                                break;   
+                            default:
+                                break;
+                            }
+                        }
+                        printf(&quot;\n&quot;);
+                    }
+                }
+            }
+
+        }
+
+    }
+    printf(&quot;\ntotal:%5d\n&quot;,n);
+    return 0;
+}
+
+/*
+使用枚举常量red 和用0代表红，有什么区别，其实没啥问题。
+使用枚举常量比使用常数的优点是更加直观，当出错时，更易于检查错误信息。
+*/</code></pre>
+<h2 id="9-7-用typedef声明新类型名"><a href="#9-7-用typedef声明新类型名" class="headerlink" title="9.7    用typedef声明新类型名"></a>9.7    用typedef声明新类型名</h2><p>用typedef给新的类型名来替代已有的类型名。(给已有类型取别名)</p>
+<p>有两种情况：</p>
+<ol>
+<li><p>简单地用一个新类型名代替已有的类型名。</p>
+<p>如：typedef int Integer;    //指定用Integer为类型名，作用与int相同</p>
+</li>
+<li><p>命名一个简单的类型名代替复杂的类型表示方法。</p>
+<ul>
+<li><p>命名一个新的类型名代表结构体类型</p>
+<pre><code class="c">typedef struct
+{
+    int day;
+    int month;
+    int year;
+}Date;        //定义新类型名Date,代表上面的一个结构体类型。
+
+Date birthday;    //定义结构体类型变量，因为用typedef Date就是结构体的别名。</code></pre>
+</li>
+<li><p>命名一个新类型名代表数组类型</p>
+<p>typedef int Num[100];        //声明Num为整形数组类型名</p>
+<p>Num a;                    //定义a为整形数组名，它有100个元素</p>
+</li>
+<li><p>命名一个类型代表指针类型</p>
+<p>typedef  char * String；    //声明String为字符指针类型</p>
+<p>String p,s[10];            //定义p为字符指针变量，s为字符指针数组</p>
+</li>
+<li><p>命名一个新类型名代表只想函数的指针。</p>
+<p><strong>归纳总结：声明新类型名的方法</strong></p>
+<ol>
+<li><p>按照定义变量方法写出定义体</p>
+</li>
+<li><p>将变量名换成新类型名</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>在最前面加关键字</p>
+<ol start="4">
+<li>用新类型名区定义变量</li>
+</ol>
+<p>注意：习惯上typedef声明的类型名第一个字母大写</p>
+</li>
+</ol>
+<ol>
+<li><p>以上方法实际上是为为特定的类型指定了一个同义字。</p>
+</li>
+<li><p>使用typeder只是给已有类型取了一个别名，并没有创造新类型</p>
+</li>
+<li><p>typedef声明数组类型、指针类型、结构体类型、共用体类型、枚举类型，使得编程更加方便。</p>
+</li>
+<li><p>typedef与#define表面上有相似之处。</p>
+<p>如：  typedef int Count;</p>
+<p>​        #define Count int;</p>
+<p>作用都是用Count代表int。</p>
+<p>1.#define是在预编译时完成的，只能做简单的字符串替换。</p>
+<p>2.typedef是在编译阶段处理的。并不是简单的字符串替换。例如：typedef int Num[10];Num a;并不是用Num[10]去替代int ，而是采用定义变量的方法那样先生成一类型名，然后用它去定义变量。</p>
+</li>
+<li><p>当不同源文件用到同一类型数据时，常用typedef声明一些数据类型。</p>
+</li>
+<li><p>使用typedef名称有利于程序的通用和移植。可以看书上的数据类型长度在不同编译器上不同的案例 p329。</p>
+</li>
+</ol>
+</div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>侬仕超</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://www.nscblog.top/posts/7cad0bc5/" title="用户自己建立数据类型">https://www.nscblog.top/posts/7cad0bc5/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/posts/4e1c1c23/" rel="prev" title="对文件的输入输出"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">对文件的输入输出</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/posts/659d25f6/" rel="next" title="善于利用指针"><span class="post-nav-text">善于利用指针</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" href="https://github.com/t-diana/t-diana.github.io/issues?q=is:issue+用户自己建立数据类型" target="_blank" rel="noopener">GitHub Issues</a></div><div id="valine-container"></div><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function initValine() {
+  const valineConfig = {"enable":true,"appId":"6aMnX3gvc24y4kqY8wcwlrar-gzGzoHsz","appKey":"4mjNWPzsDxvxEsrWM9upHzgE","placeholder":"Just go go","avatar":null,"meta":["nick","mail","link"],"pageSize":10,"visitor":false,"highlight":true,"recordIP":false,"enableQQ":true,"el":"#valine-container","lang":"zh-cn"}
+  valineConfig.path = window.location.pathname
+  new Valine(valineConfig)
+}
+setTimeout(initValine, 1000)</script></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 侬仕超</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v4.2.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v0.9.5</span></div><div class="live_time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  window.setTimeout(blog_live_time, 1000);
+  const start = new Date('2020-05-15T00:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
+}
+blog_live_time();
+</script></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="搜索"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-search-line"></use></svg></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="/js/search/local-search.js" defer></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close-line"></use></svg></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="搜索..." value=""></div><div id="local-search-result"></div></div><script>let date = new Date();
+let today = (date.getMonth() + 1) + "-" + date.getDate()
+if ("4-4".indexOf(today) !== -1) {
+  document.documentElement.style.filter = "grayscale(1)";
+}</script></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script></body></html>

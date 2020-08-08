@@ -1,0 +1,571 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="侬仕超"><meta name="copyright" content="侬仕超"><meta name="generator" content="Hexo 4.2.0"><meta name="theme" content="hexo-theme-yun"><title>对文件的输入输出 | 上善若水</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="none" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.17/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_stqaphw3j4.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link class="aplayer-style-marker" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script class="aplayer-script-marker" src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" defer></script><script class="meting-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js" defer></script><script>document.addEventListener(
+  "pjax:success",
+  function() {
+    if (window.aplayers) {
+      loadMeting();
+    }
+  },
+  !1
+);</script><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><link rel="alternate" href="/atom.xml" title="上善若水"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"root":"/","title":"上善若水","version":"0.9.5","anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"local_search":{"path":"/search.xml"},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script><meta name="description" content="10.1    C文件的有关基本知识10.1.1    什么是文件程序设计中主要用到两种文件：  程序文件。源文件，目标文件，可执行文件，文件内容为程序代码 数据文件。文件内容不是不是程序代码，是程序文件运行时读写的数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对文件的输入输出">
+<meta property="og:url" content="https://www.nscblog.top/posts/4e1c1c23/index.html">
+<meta property="og:site_name" content="上善若水">
+<meta property="og:description" content="10.1    C文件的有关基本知识10.1.1    什么是文件程序设计中主要用到两种文件：  程序文件。源文件，目标文件，可执行文件，文件内容为程序代码 数据文件。文件内容不是不是程序代码，是程序文件运行时读写的数据。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/08/08/4BFMWXYpA6rfkP7.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/08/dvrf1u2NTjXFhsV.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/08/JB3rkamWFYNdew1.png">
+<meta property="article:published_time" content="2020-06-28T16:15:46.000Z">
+<meta property="article:modified_time" content="2020-08-08T16:51:42.974Z">
+<meta property="article:author" content="侬仕超">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/08/4BFMWXYpA6rfkP7.png"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="alternate" href="/atom.xml" title="上善若水" type="application/atom+xml">
+</head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script defer src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="侬仕超"><img width="96" loading="lazy" src="/images/head_img.jpeg" alt="侬仕超"></a><div class="site-author-name"><a href="/about/">侬仕超</a></div><a class="site-name" href="/about/site.html">上善若水</a><sub class="site-subtitle">一点一点做好，望吾热爱生活。</sub><div class="site-desciption">自助者天助之,自弃者天弃之</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">12</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">1</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">4</span></a></div><div class="site-state-item"><a href="/music/"><span class="site-state-item-icon"><i class="disc-line"></i></span></a></div><a class="site-state-item hty-icon-button" href="/about/" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&amp;uin=201015024&amp;site=qq&amp;menu=yes" title="QQ" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/t-diana" title="GitHub" target="_blank" style="color:#181717"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/id201015024" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=439028465" title="网易云音乐" target="_blank" style="color:#C10D0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/17058996" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-C文件的有关基本知识"><span class="toc-number">1.</span> <span class="toc-text">10.1    C文件的有关基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-1-什么是文件"><span class="toc-number">1.1.</span> <span class="toc-text">10.1.1    什么是文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-2-文件名"><span class="toc-number">1.2.</span> <span class="toc-text">10.1.2    文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-3-文件的分类"><span class="toc-number">1.3.</span> <span class="toc-text">10.1.3    文件的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-4-文件缓冲区"><span class="toc-number">1.4.</span> <span class="toc-text">10.1.4    文件缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-5-文件类型指针"><span class="toc-number">1.5.</span> <span class="toc-text">10.1.5    文件类型指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-打开与关闭文件"><span class="toc-number">2.</span> <span class="toc-text">10.2    打开与关闭文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-1-用fopen函数打开数据文件"><span class="toc-number">2.1.</span> <span class="toc-text">10.2.1    用fopen函数打开数据文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-2-用fclose函数关闭数据文件"><span class="toc-number">2.2.</span> <span class="toc-text">10.2.2    用fclose函数关闭数据文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-顺序读写数据文件"><span class="toc-number">3.</span> <span class="toc-text">10.3    顺序读写数据文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-1-怎么向文件读写字符"><span class="toc-number">3.1.</span> <span class="toc-text">10.3.1    怎么向文件读写字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-2-怎样向文件读写一个字符串-避免了读入字符的麻烦"><span class="toc-number">3.2.</span> <span class="toc-text">10.3.2    怎样向文件读写一个字符串(避免了读入字符的麻烦)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-3-用格式化的方式读写文件"><span class="toc-number">3.3.</span> <span class="toc-text">10.3.3    用格式化的方式读写文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-4-用二进制方式项文件读写一组数据"><span class="toc-number">3.4.</span> <span class="toc-text">10.3.4    用二进制方式项文件读写一组数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-4-随机读写数据文件"><span class="toc-number">4.</span> <span class="toc-text">10.4    随机读写数据文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4-1-文件位置标记及其定位"><span class="toc-number">4.1.</span> <span class="toc-text">10.4.1    文件位置标记及其定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-文件位置标记"><span class="toc-number">4.1.1.</span> <span class="toc-text">1.文件位置标记</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-文件位置标记的定位"><span class="toc-number">4.1.2.</span> <span class="toc-text">2.文件位置标记的定位</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-rewind函数使文件位置标记指向文件开头。没有返回值"><span class="toc-number">4.1.2.1.</span> <span class="toc-text">1.rewind函数使文件位置标记指向文件开头。没有返回值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-用fseek函数改变文件位置标记"><span class="toc-number">4.1.2.2.</span> <span class="toc-text">2.用fseek函数改变文件位置标记</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-用ftell函数测定文件位置标记的当前位置。"><span class="toc-number">4.1.2.3.</span> <span class="toc-text">3.用ftell函数测定文件位置标记的当前位置。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4-2-随机读写"><span class="toc-number">4.2.</span> <span class="toc-text">10.4.2    随机读写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-5-文件读写的出错检测"><span class="toc-number">4.3.</span> <span class="toc-text">10.5    文件读写的出错检测</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://www.nscblog.top/posts/4e1c1c23/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="侬仕超"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="上善若水"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">对文件的输入输出</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-06-29 00:15:46" itemprop="dateCreated datePublished" datetime="2020-06-29T00:15:46+08:00">2020-06-29</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2020-08-09 00:51:42" itemprop="dateModified" datetime="2020-08-09T00:51:42+08:00">2020-08-09</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">4.6k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">18m</span></span></span><div class="post-classify"><span class="post-category"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">专升本笔记</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">学习</span></a><a class="tag" href="/tags/C%E8%AF%AD%E8%A8%80/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">C语言</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;">
+    <div id="aplayer-ERnXjwXJ" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    ></div>
+
+<h2 id="10-1-C文件的有关基本知识"><a href="#10-1-C文件的有关基本知识" class="headerlink" title="10.1    C文件的有关基本知识"></a>10.1    C文件的有关基本知识</h2><h3 id="10-1-1-什么是文件"><a href="#10-1-1-什么是文件" class="headerlink" title="10.1.1    什么是文件"></a>10.1.1    什么是文件</h3><p>程序设计中主要用到两种文件：</p>
+<ol>
+<li>程序文件。源文件，目标文件，可执行文件，文件内容为程序代码</li>
+<li>数据文件。文件内容不是不是程序代码，是程序文件运行时读写的数据。</li>
+</ol>
+<a id="more"></a>
+
+<p>本章主要讨论<strong>数据文件</strong></p>
+<p>从操作系统角度看，每个与主机相连的输入输出设备看作一个文件。</p>
+<p>文件一般指存储在外部介质上数据的集合。</p>
+<p>输入输出是数据传送的过程。输入输出也被称为流，也就是数据流。</p>
+<p>C语言把文件看做是一个字符（或字节）的序列。</p>
+<p>一个输入输出流就是一个字符或字节(内容为进制数据)流。</p>
+<p>输入输出数据流的开始和结束仅受程序控制而不受物理符号（如回车换行）的控制，这样的文件称为流式文件。</p>
+<h3 id="10-1-2-文件名"><a href="#10-1-2-文件名" class="headerlink" title="10.1.2    文件名"></a>10.1.2    文件名</h3><p>文件要有唯一的文件标识，以便用户识别和引用。</p>
+<p>文件标识包括3各部分：</p>
+<ol>
+<li>文件路径</li>
+<li>文件名主干(包含文件后缀)</li>
+<li>文件后缀：表示文件的<u><strong>性质</strong></u>(图片还是文本)</li>
+</ol>
+<p>文件标识常称为文件名，不仅仅是文件名主干</p>
+<h3 id="10-1-3-文件的分类"><a href="#10-1-3-文件的分类" class="headerlink" title="10.1.3    文件的分类"></a>10.1.3    文件的分类</h3><p>数据的组织形式，数据文件分为<strong>ASCII文件</strong>和<strong>二进制文件</strong>。</p>
+<p>映像文件：内存中的二进制数据</p>
+<p>ASCII文件又称文本文件：每一个字节放一个字符的ASCII码。</p>
+<p>字符一律以ASCII码形式存储，数值型数据既可以用ASCII码形式存储也可以用二进制存储。</p>
+<p>推荐使用二进制文件方便内存的读取和输出。</p>
+<h3 id="10-1-4-文件缓冲区"><a href="#10-1-4-文件缓冲区" class="headerlink" title="10.1.4    文件缓冲区"></a>10.1.4    文件缓冲区</h3><p>ANSI C标准采用”缓冲文件系统”处理数据文件。</p>
+<p>文件缓冲区：系统自动在内存区为程序每一个正在使用文件开辟一个文件缓冲区。</p>
+<p>从内存向磁盘输出数据，先送到内存中的缓冲区，将装满缓冲区的数据送到磁盘中去，反之亦然。</p>
+<p><img src="https://i.loli.net/2020/08/08/4BFMWXYpA6rfkP7.png" alt="文件缓冲区.png" loading="lazy"></p>
+<h3 id="10-1-5-文件类型指针"><a href="#10-1-5-文件类型指针" class="headerlink" title="10.1.5    文件类型指针"></a>10.1.5    文件类型指针</h3><p>缓冲文件系统中，关键的概念是“文件类型指针”。</p>
+<p>为方便起见，通常讲这种指向文件信息去的指针变量简称为指向文件的指针变量。</p>
+<p>用结构体存储文件信息。该结构体由系统声明，取名为FILE。</p>
+<pre><code class="c">typedef struct
+{
+    short level;                //缓冲区“满”或“空”的程度
+    unsigned flags;                //文件状态标识
+    char fd;                    //文件描述符
+    unsigned char hold;         //缓冲区无内容不读取字符
+    short bsize;                //缓冲区的大小
+    unsigned char * buffer;        //数据缓冲区的位置
+    unsigned char * curp;        //指针当前指向
+    unsigned istemp;            //临时文件指示器
+    short token；               //用于有效性检查
+}FILE;
+
+/*
+一般设置指向FILE类型变量的指针变量，然后通过它来引用这些FILE类型变量，二部定义FILE类型变量，这样使用比较方便。
+*/</code></pre>
+<h2 id="10-2-打开与关闭文件"><a href="#10-2-打开与关闭文件" class="headerlink" title="10.2    打开与关闭文件"></a>10.2    打开与关闭文件</h2><p>打开：为文件建立相应的信息区(存放有关文件的信息)和文件缓冲区(暂时存放输入输出的数据。)</p>
+<h3 id="10-2-1-用fopen函数打开数据文件"><a href="#10-2-1-用fopen函数打开数据文件" class="headerlink" title="10.2.1    用fopen函数打开数据文件"></a>10.2.1    用fopen函数打开数据文件</h3><p>fopen函数的调用方式</p>
+<p><strong>fopen(文件名，使用文件方式);</strong></p>
+<pre><code class="c">FILE *fp;
+fp=fopen(&quot;a1&quot;,&quot;r&quot;);    //将fopen函数的返回值赋值给指针变量fp</code></pre>
+<p><img src="https://i.loli.net/2020/08/08/dvrf1u2NTjXFhsV.png" alt="使用文件方式.png" loading="lazy"></p>
+<p><img src="https://i.loli.net/2020/08/08/JB3rkamWFYNdew1.png" alt="使用文件方式2.png" loading="lazy"></p>
+<p>注意：</p>
+<ol>
+<li>如果不能实现“打开”任务，返回值NULL</li>
+<li>有些编译系统可能不完全提供所有这些功能(有的只能用”r”,”w”,”a”)，有的C版本不能用“r+”,”w+”,”a+”，而用“rw”，“wr”，“ar”时，看系统是否支持。</li>
+<li>对于ASCII文件来说，遇到回车换行符，系统把它转换为一个换行符，在输出时吧吧换行符转换为回车和换行两个字符。二进制文件则不需要这要这种转换。</li>
+<li>程序中可以使用3个标准的流文件——<strong>标准输入流、标准输出流、标准出错输出流</strong>系统对这3个文件制定了与终端的对应关系。</li>
+<li>程序运行时自动打开3个标准流文件，系统定义了3个头文件指针变量<ul>
+<li>stdin-&gt;标准输入流</li>
+<li>stdout-&gt;标准输出流</li>
+<li>stderr-&gt;标准出错输出流</li>
+</ul>
+</li>
+</ol>
+<h3 id="10-2-2-用fclose函数关闭数据文件"><a href="#10-2-2-用fclose函数关闭数据文件" class="headerlink" title="10.2.2    用fclose函数关闭数据文件"></a>10.2.2    用fclose函数关闭数据文件</h3><p>使用完一个文件后应该关闭它，防止被误用。</p>
+<p>“关闭”就是 <strong>撤销文件信息区</strong>和 <strong>文件缓冲区</strong></p>
+<p>关闭文件用fclose函数。</p>
+<blockquote>
+<p>fclose(文件指针);</p>
+<p>fclose执行成功时返回0，否则返回EOF(-1)</p>
+</blockquote>
+<p>不关闭文件将会出现丢失数据，因为所修改的数据都还在缓冲区中，也就是在内存中，不在外部介质里。一旦程序结束，数据就会丢失。用fclose函数关闭文件，先把缓冲区中的数据写到文件，从而避免这个问题。应该养成在程序终止之前关闭所有文件的习惯。</p>
+<h2 id="10-3-顺序读写数据文件"><a href="#10-3-顺序读写数据文件" class="headerlink" title="10.3    顺序读写数据文件"></a>10.3    顺序读写数据文件</h2><p>顺序读写：对文件读写数据的顺序和数据在文件中的物理顺序是一致的。</p>
+<h3 id="10-3-1-怎么向文件读写字符"><a href="#10-3-1-怎么向文件读写字符" class="headerlink" title="10.3.1    怎么向文件读写字符"></a>10.3.1    怎么向文件读写字符</h3><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>调用形式</th>
+<th>功能</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fgetc</td>
+<td>fgetc(fp);//fp是文件指针</td>
+<td>从fp指向的文件读入一个字符</td>
+<td>读入成功，则返回所读字符；失败返回结束标志EOF(-1)</td>
+</tr>
+<tr>
+<td>fputc</td>
+<td>fputc(ch,fp);</td>
+<td>把字符ch写到文件指针变量fp所指向的文件中</td>
+<td>输出成功，返回输出的字符；输出失败，返回EOF(-1)</td>
+</tr>
+</tbody></table>
+<pre><code class="c"># include&lt;stdio.h&gt;
+# include&lt;stdlib.h&gt;
+/*练习顺序输出字符*/
+int main()
+{
+    FILE *fp;
+    char ch,*filename;
+    printf(&quot;请输入所用的文件名:\n&quot;);
+    scanf(&quot;%s&quot;,filename);
+    if((fp=fopen(filename,&quot;w&quot;))==NULL)
+    {
+        printf(&quot;无法打开此文件\n&quot;);
+        exit(0);
+    }
+    ch=getchar();//用来接收最后输入的回车符 回车符此时在字符缓冲区内
+    printf(&quot;请输入一个准备存储到磁盘的字符串(以#结束):\n&quot;);
+    ch=getchar();//从字符缓冲区里读取字符
+    while(ch!=&#39;#&#39;)
+    {
+        fputc(ch,fp);//向磁盘文件输出字符
+        putchar(ch);//将字符输出终端上
+        ch=getchar();//接着从字符缓冲区里取字符
+    }
+    fclose(fp);//关闭文件
+    putchar(10);//向屏幕输出一个换行符
+    return 0;
+}</code></pre>
+<pre><code class="c"># include &quot;stdio.h&quot;
+# include &quot;stdlib.h&quot;
+/*
+练习读入文件
+*/
+int main()
+{
+    FILE *fp;
+    char ch,*filename;
+    printf(&quot;请输入文件名:\n&quot;);
+    scanf(&quot;%s&quot;,filename);
+    if((fp=fopen(filename,&quot;r&quot;))==NULL)
+    {
+        printf(&quot;文件打开错误，请重新尝试。\n&quot;);
+        exit(0);
+    }
+    ch=getchar();//将字符缓冲区中的回车符处理掉，避免对读取文件内容时造成干扰。
+    while(!feof(fp))//检查fp指向的文件是否结束，如果结束函数值为1(真)
+    {
+     ch=fgetc(fp);    //从文件中读取字符
+     putchar(ch);
+    }
+    fclose(fp);//关闭文件
+    putchar(10);//打印回车
+    return 0;
+}
+
+/*
+以上文件是按文本文件方式处理的，处理二进制文件是将读入/写出方式改为rb/wb
+C系统已把fputc和fgetc函数定义宏名为put和get
+# define putc(ch,fp) fputc(ch,fp)
+# define getc(ch,fp) fputc(ch,fp)
+这是在stdio.h中定义的，因此在程序中用putc和fputc作用是一样的。
+*/</code></pre>
+<h3 id="10-3-2-怎样向文件读写一个字符串-避免了读入字符的麻烦"><a href="#10-3-2-怎样向文件读写一个字符串-避免了读入字符的麻烦" class="headerlink" title="10.3.2    怎样向文件读写一个字符串(避免了读入字符的麻烦)"></a>10.3.2    怎样向文件读写一个字符串(避免了读入字符的麻烦)</h3><p>C语言允许通过函数一次读写一个字符串。</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>调用形式</th>
+<th>功能</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fgets</td>
+<td>fgets(str,n,fp);</td>
+<td>读入一个长度为n-1的字符串，存放字符串到数组str中。</td>
+<td>读成功，返回地址str，失败返回NULL</td>
+</tr>
+<tr>
+<td>fputs</td>
+<td>fputs(str,fp);</td>
+<td>把str所指向的字符串写到文件指针变量fp所指向的文件中</td>
+<td>输出成功，返回0；否则返回非0值</td>
+</tr>
+</tbody></table>
+<p>说明：</p>
+<p>fgets函数原型:</p>
+<p>char *fgets(char *str,int n,FILE *fp);//作用是读入字符串</p>
+<p>n:代表要得到的字符个数，实际从文件中获得只有n-1个字符，因为最后一个字符作为字符串结束标志’\0’，这样把n个字符放到数组str中。</p>
+<p>在读入n-1个字符前碰到’\n’或是文件结束符EOF，读入即结束，但是将所遇到的换行符’\n’也作为一个字符读入。</p>
+<p>fputs函数原型为</p>
+<p>int fputs(char *str,FILE *fp);</p>
+<p>字符串末尾’\0’不会输出，输出成功函数值为0；失败时函数的值为EOF(-1)。</p>
+<p>fgets和fputs这两个函数的功能类似于gets和puts函数，只是gets和puts以终端为读写对象，而fgets和fputs函数以指定的文件作为读写对象。</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+/*练习输出字符串*/
+# define LEN 3
+int main()
+{
+    FILE *fp;//需要读写的文件
+    char temp[20];//输入和输出的临时字符串
+    char str[3][20];//是用来存放字符串的二维数组
+    char filename[20];//输入文件名   字符指针指向字符串常量，不是字符串变量 
+    int i,j;
+    printf(&quot;请输入想要输入的字符串:\n&quot;);
+    for (i = 0; i &lt;LEN; i++)//输入字符串
+    {
+        gets(str[i]);
+    }
+    for ( i = 0; i &lt; LEN-1;i++)//进行字符串大小
+    {
+        /* code */
+        for(j=i+1;j&lt;LEN;j++)
+            if (strcmp(str[i],str[j])&gt;0)
+            {
+                /* code */
+                strcpy(temp,str[i]);
+                strcpy(str[i],str[j]);
+                strcpy(str[j],temp);
+            }
+    }
+
+    printf(&quot;输入要打开的文件名\n&quot;);
+//    gets(filename);
+    scanf(&quot;%s&quot;,filename);
+    if ((fp=fopen(filename,&quot;w&quot;))==NULL)
+    {
+        printf(&quot;文件打开错误\n&quot;);
+        exit(0);
+    }
+    /* 进行字符串输出到文件中 */
+    for ( i = 0; i &lt;3; i++)
+    {
+        /* code */
+        fputs(str[i],fp);
+        fputs(&quot;\n&quot;,fp);
+        printf(&quot;%s\n&quot;,str[i]);
+    }
+    fclose(fp);
+    return 0;
+}</code></pre>
+<pre><code class="c">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+/*练习读入字符串*/
+int main()
+{
+    FILE *fp;//定义文件指针变量
+    char str[3][20],filename[20];
+    int i;
+    printf(&quot;请输入打开文件名:\n&quot;);
+    scanf(&quot;%s&quot;,filename); 
+    if((fp=fopen(filename,&quot;r&quot;))==NULL)
+    {
+        printf(&quot;文件打开错误！\n&quot;);
+        exit(0);
+    }
+    while(fgets(str[i],10,fp)!=NULL)
+    {
+        printf(&quot;%s&quot;,str[i]);
+        i++;
+    }
+    fclose(fp);//关闭文件
+    return 0;
+}
+/*
+1.打开文件时，文件名与路径不要输错
+2.fgets(str[i],10,fp) 读取字符串时，指定一次读入10个字符，当遇到&#39;\n&#39;,就结束字符串的输入。
+3.由于读入字符数组中的每个字符串后都一个&#39;\n&#39;,因此向屏幕输入时，不用加&#39;\n&#39;
+*/</code></pre>
+<h3 id="10-3-3-用格式化的方式读写文件"><a href="#10-3-3-用格式化的方式读写文件" class="headerlink" title="10.3.3    用格式化的方式读写文件"></a>10.3.3    用格式化的方式读写文件</h3><p>如同printf和scanf函数一样，进行格式字符的输出和输入，printf和scanf是针对终端来说的。</p>
+<p>对于文件来说，我们用fprintf和fscanf函数。一般调用形式为：</p>
+<p><strong>fprintf(文件指针,格式字符串,输出表列);</strong></p>
+<p><strong>fscanf(文件指针,格式字符串,输入表列);</strong></p>
+<p>例如：</p>
+<p>fprintf(fp,”%d,%f”,i,f);//作用是将int型变量i和float型变量f的值按%d和%f格式输出到fp指向的文件中。</p>
+<p>fscanf(fp,”%d,%f”,&amp;i,&amp;f);//从磁盘文件中读入整数送给整形变量i,读取实数送给实型变量f</p>
+<p>用fprintf和fscanf函数对磁盘文件读写，使用方便，容易理解。</p>
+<p>输入时要将文件中的ASCII码转换为二进制形式在保存到内存变量中。</p>
+<p>输出时又要将内存中的二进制形式转换成字符，需要花费许久时间。</p>
+<p>在内存与磁盘频繁交换数据时，不推荐使用。</p>
+<h3 id="10-3-4-用二进制方式项文件读写一组数据"><a href="#10-3-4-用二进制方式项文件读写一组数据" class="headerlink" title="10.3.4    用二进制方式项文件读写一组数据"></a>10.3.4    用二进制方式项文件读写一组数据</h3><p>C语言允许使用fread函数从文件中读一个数据块，用fwrite函数向文件中写一个数据块。在读写时是以二进制进行的。</p>
+<p>一般调用形式：</p>
+<pre><code class="markdown">fread(buffer,size,count,fp);//从文件中读
+fwrite(buffer,size,count,fp);//向文件中写
+1. buffer:是个地址。
+    对于fread来说用于存放从文件读入的数据存储区的地址
+    对于fwrite来说是把此地址开始的存储区中的数据向文件输出。
+2. size:读写的字节数
+3. count:要读写多少个数据项(每个数据长度为size)
+4. fp:FILE类型指针</code></pre>
+<p>如：</p>
+<p>fread(f,4,10,fp);//f是一个float数组，这个函数从fp所指向的文件读入10个4字节的数据存储到数组f中。</p>
+<p>fread和fwrite函数的类型为int型，如果fread或fwrite函数执行成功，函数返回值为形参count的值。否则返回与count不相等的值</p>
+<pre><code class="c"># include&lt;stdio.h&gt;
+# define SIZE 5
+/*
+练习二进制文件的与输出 
+*/
+struct Student_type{
+    char name[10];
+    int num;
+    int age;
+    char addr[15];
+};
+
+void save(struct Student_type * stu)
+{
+    FILE *fp;
+    char filename[20];
+    struct Student_type *st;
+    st=stu;
+    int i;
+    printf(&quot;请输入文件名\n&quot;);
+    scanf(&quot;%s&quot;,filename);
+    if((fp=fopen(filename,&quot;wb&quot;))==NULL)
+    {
+        printf(&quot;打开文件失败:\n&quot;);
+     } 
+    for(i=0;i&lt;SIZE;i++,st++)
+    {
+        /*
+        结构体变量长度为它的成员长度之和，33但实际上是36字节，是4的倍数，系统以4个字节为一字
+        */
+        if(fwrite(st,sizeof(struct Student_type),1,fp)!=1)
+        printf(&quot;文件写入失败\n&quot;);
+     } 
+     fclose(fp);
+}
+
+int main()
+{
+    int i;
+    struct Student_type stu[SIZE];
+    void save(struct Student_type * stu);
+    for(i=0;i&lt;SIZE;i++)
+    {
+        printf(&quot;Please enter data of students:\n&quot;);
+        scanf(&quot;%s %d %d %s&quot;,&amp;stu[i].name,&amp;stu[i].num,&amp;stu[i].age,&amp;stu[i].addr);
+    }
+    save(stu);
+    return 0;
+}</code></pre>
+<pre><code class="c"># include &quot;stdio.h&quot;
+# include &quot;stdlib.h&quot;
+# define SIZE 5;
+
+/*练习读取二进制文件*/
+
+struct Student_type{
+    char name[10];
+    int num;
+    int age;
+    char addr[15];
+};
+
+int main()
+{
+    int i;
+    FILE *fp;
+    char filename[20];
+    printf(&quot;请输入文件名\n&quot;);
+    scanf(&quot;%s&quot;,filename);
+    if((fp=fopen(filename,&quot;rb&quot;))==NULL)
+    {
+        printf(&quot;打开文件失败:\n&quot;);
+        exit(0);
+     }
+    for(i=0;i&lt;SIZE;i++)
+    {
+         fread(&amp;stu[i],sizeof(struct Student_type),1,fp);
+         printf(&quot;%s\t%d\t%dt\t%s\n&quot;,&amp;stu[i].name,&amp;stu[i].num,&amp;stu[i].age,&amp;stu[i].addr);
+     }
+    fclose(fp);
+    return 0;
+}</code></pre>
+<h2 id="10-4-随机读写数据文件"><a href="#10-4-随机读写数据文件" class="headerlink" title="10.4    随机读写数据文件"></a>10.4    随机读写数据文件</h2><h3 id="10-4-1-文件位置标记及其定位"><a href="#10-4-1-文件位置标记及其定位" class="headerlink" title="10.4.1    文件位置标记及其定位"></a>10.4.1    文件位置标记及其定位</h3><h4 id="1-文件位置标记"><a href="#1-文件位置标记" class="headerlink" title="1.文件位置标记"></a>1.文件位置标记</h4><p>系统为每个文件设置了一个文件读写位置标记(简称 <strong>文件位置标记</strong> 或 <strong>文件标记</strong>)：用来指示”接下来读写下一个字符的位置“。</p>
+<p>顺序读取时文件标记指向文件头，这时对文件内容依次读入，文件标记就依次向后移动，直到文件末尾。</p>
+<p>顺序写文件时与读文件类似，把所有数据写完，文件标记在最后一个数据之后。</p>
+<p>根据读写需要，人为地移动文件位置标记的位置。就是随机读写。随机读写对文件读写数据的顺序和数据在文件中的物理顺序是不一致的。(读写位置，读写内容)</p>
+<p>流式文件既可以进行顺序读写也可以进行随机读写。</p>
+<h4 id="2-文件位置标记的定位"><a href="#2-文件位置标记的定位" class="headerlink" title="2.文件位置标记的定位"></a>2.文件位置标记的定位</h4><p>可以强制是文件标记位置指向人们指定的位置。可以用以下函数实现。</p>
+<h5 id="1-rewind函数使文件位置标记指向文件开头。没有返回值"><a href="#1-rewind函数使文件位置标记指向文件开头。没有返回值" class="headerlink" title="1.rewind函数使文件位置标记指向文件开头。没有返回值"></a>1.rewind函数使文件位置标记指向文件开头。没有返回值</h5><pre><code class="c"># include &lt;stdio.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;string.h&gt;
+
+int main()
+{
+    FILE *fp1,*fp2;
+    //文件打开检查
+    if((fp1=fopen(&quot;text.txt&quot;,&quot;r&quot;))==NULL)
+    {
+        printf(&quot;text.txt打开错误\n&quot;);
+        exit(0);
+    }
+    if((fp2=fopen(&quot;file2.dat&quot;,&quot;w&quot;))==NULL)
+    {
+        printf(&quot;file2.dat打开错误\n&quot;);
+        exit(0);
+    }
+    while(!feof(fp1))
+    putchar(getc(fp1));//输出从text中读取到的字符 
+    putchar(10);//回车符 
+    rewind(fp1);//使文件标记位置回到文件头 
+    while(!feof(fp1))
+    putc(getc(fp1),fp2);//从文件头中重新逐个读字符,输出file2文件 
+    fclose(fp1);
+    fclose(fp2);
+    return 0;
+}
+</code></pre>
+<h5 id="2-用fseek函数改变文件位置标记"><a href="#2-用fseek函数改变文件位置标记" class="headerlink" title="2.用fseek函数改变文件位置标记"></a>2.用fseek函数改变文件位置标记</h5><p>fseek函数的调用形式：</p>
+<p>fseek(文件类型指针,位移量,起始点);</p>
+<p>起始点：</p>
+<ol>
+<li>0代表文件开始位置</li>
+<li>1代表当前位置</li>
+<li>2文件末尾位置</li>
+</ol>
+<p>位移量：以起始点为基点，向前移动的字节数。位移量应是long型数据</p>
+<p>fseek函数一般用于二进制文件，例如：</p>
+<p>fseek(fp,100L,0);          //将文件位置标记向前移动离文件开头100个字节处</p>
+<p>fseek(fp,50L,1);            //将文件位置标记向前移动离当前位置50个字节处</p>
+<p>fseek(fp,-100L,2);        //将文件位置标记从文件末尾向后退10个字节</p>
+<h5 id="3-用ftell函数测定文件位置标记的当前位置。"><a href="#3-用ftell函数测定文件位置标记的当前位置。" class="headerlink" title="3.用ftell函数测定文件位置标记的当前位置。"></a>3.用ftell函数测定文件位置标记的当前位置。</h5><p>ftell函数的作用是得到流式文件中文件位置的当前位置。</p>
+<p>用相对文件开头的位移量表示返回值，如果函数调用出错，ftell函数返回值为-1L</p>
+<p>如：</p>
+<pre><code class="c">i=ftell(fp);//变量i存放文件当前位置
+if(i==-1L)
+    printf(&quot;error\n&quot;);//如果调用函数时出错，输出error</code></pre>
+<h3 id="10-4-2-随机读写"><a href="#10-4-2-随机读写" class="headerlink" title="10.4.2    随机读写"></a>10.4.2    随机读写</h3><pre><code class="c"># include &lt;stdio.h&gt;
+# include &quot;stdlib.h&quot;
+# define SIZE 10
+/*
+练习随机读写 
+*/
+struct Student_type
+{
+    char name[10];
+    int num;
+    int age;
+    char addr[20];
+ }stud[SIZE];
+
+int main()
+{
+    int i;
+    FILE *fp;
+    if((fp=fopen(&quot;stu.dat&quot;,&quot;rb&quot;))==NULL)
+    {
+        printf(&quot;can not open file\n&quot;);
+        exit(0);
+    }
+    for(i=0;i&lt;10;i+=2)
+    {
+        fseek(fp,i*sizeof(struct Student_type),0);
+        fread(&amp;stud[i],sizeof(struct Student_type),1,fp);
+        printf(&quot;%-10s %4d %4d %-15s\n&quot;,stud[i].name,stud[i].num,stud[i].age,stud[i].addr);
+    }
+    fclose(fp);
+    return 0;
+ } </code></pre>
+<h3 id="10-5-文件读写的出错检测"><a href="#10-5-文件读写的出错检测" class="headerlink" title="10.5    文件读写的出错检测"></a>10.5    文件读写的出错检测</h3><p>1.ferror函数</p>
+<p>用于检测各种输入输出函数，如：putc,getc,fread,fwrite等等</p>
+<p>ferror(fp);</p>
+<p>如果返回值为0，表示未出错，返回非0数值，表示出错。</p>
+<p>每次调用输入输出函数，都会产生新的ferror函数值。</p>
+<p>执行fopen函数时，ferror函数的初始值自动设置为0</p>
+<p>2.clearerr函数</p>
+<p>用于使文件错误标志和文件结束标志置为0。比如说：当调用一个输入输出函数出现错误，ferror函数值为一个非零的值。应立即调用clearerr(fp),使ferror(fp)的值变成0，以便下一次检测。</p>
+<p>只要出现文件读写错误标志，它就会一直保留，直到对同一文件调用clearerr函数或是rewind函数，或是其他任何一个输入输出函数。</p>
+</div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>侬仕超</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://www.nscblog.top/posts/4e1c1c23/" title="对文件的输入输出">https://www.nscblog.top/posts/4e1c1c23/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/posts/7cad0bc5/" rel="next" title="用户自己建立数据类型"><span class="post-nav-text">用户自己建立数据类型</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" href="https://github.com/t-diana/t-diana.github.io/issues?q=is:issue+对文件的输入输出" target="_blank" rel="noopener">GitHub Issues</a></div><div id="valine-container"></div><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function initValine() {
+  const valineConfig = {"enable":true,"appId":"6aMnX3gvc24y4kqY8wcwlrar-gzGzoHsz","appKey":"4mjNWPzsDxvxEsrWM9upHzgE","placeholder":"Just go go","avatar":null,"meta":["nick","mail","link"],"pageSize":10,"visitor":false,"highlight":true,"recordIP":false,"enableQQ":true,"el":"#valine-container","lang":"zh-cn"}
+  valineConfig.path = window.location.pathname
+  new Valine(valineConfig)
+}
+setTimeout(initValine, 1000)</script></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 侬仕超</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v4.2.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v0.9.5</span></div><div class="live_time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  window.setTimeout(blog_live_time, 1000);
+  const start = new Date('2020-05-15T00:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
+}
+blog_live_time();
+</script></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="搜索"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-search-line"></use></svg></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="/js/search/local-search.js" defer></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close-line"></use></svg></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="搜索..." value=""></div><div id="local-search-result"></div></div><script>let date = new Date();
+let today = (date.getMonth() + 1) + "-" + date.getDate()
+if ("4-4".indexOf(today) !== -1) {
+  document.documentElement.style.filter = "grayscale(1)";
+}</script></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script></body></html>

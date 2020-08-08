@@ -1,0 +1,1036 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="侬仕超"><meta name="copyright" content="侬仕超"><meta name="generator" content="Hexo 4.2.0"><meta name="theme" content="hexo-theme-yun"><title>善于利用指针 | 上善若水</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="none" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.17/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_stqaphw3j4.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link class="aplayer-style-marker" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script class="aplayer-script-marker" src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" defer></script><script class="meting-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js" defer></script><script>document.addEventListener(
+  "pjax:success",
+  function() {
+    if (window.aplayers) {
+      loadMeting();
+    }
+  },
+  !1
+);</script><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><link rel="alternate" href="/atom.xml" title="上善若水"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"root":"/","title":"上善若水","version":"0.9.5","anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"local_search":{"path":"/search.xml"},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script><meta name="description" content="8.1    指针是什么 一个变量的地址就是该变量的“指针”  定义一个变量，系统为其分配空间 有地址指向变量空间（变量单元），地址就称为“指针”。 指针是内存空间的地址，存储单元就是所分配的内存空间。 直接访问：直接通过变量名访问。 间接访问：将变量i的地址存在另一个变量中，然后通过该变量来找到变量i的地址 指针：一个变量的地址。 指针变量：存放另一个变量的地址的变量。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="善于利用指针">
+<meta property="og:url" content="https://www.nscblog.top/posts/659d25f6/index.html">
+<meta property="og:site_name" content="上善若水">
+<meta property="og:description" content="8.1    指针是什么 一个变量的地址就是该变量的“指针”  定义一个变量，系统为其分配空间 有地址指向变量空间（变量单元），地址就称为“指针”。 指针是内存空间的地址，存储单元就是所分配的内存空间。 直接访问：直接通过变量名访问。 间接访问：将变量i的地址存在另一个变量中，然后通过该变量来找到变量i的地址 指针：一个变量的地址。 指针变量：存放另一个变量的地址的变量。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/08/09/gVREsZKfCUp5hWI.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/09/JtLZ3amgheIlPyY.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/09/LEDx7R3CklwMUh4.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/08/AcHrVilOhkG5qCM.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/08/5oyQFL6DAKVzhZ2.png">
+<meta property="og:image" content="https://i.loli.net/2020/08/08/F8JYLBtlEQqkhiv.png">
+<meta property="article:published_time" content="2020-06-05T16:14:59.000Z">
+<meta property="article:modified_time" content="2020-08-08T16:51:03.632Z">
+<meta property="article:author" content="侬仕超">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/08/09/gVREsZKfCUp5hWI.png"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="alternate" href="/atom.xml" title="上善若水" type="application/atom+xml">
+</head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script defer src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="侬仕超"><img width="96" loading="lazy" src="/images/head_img.jpeg" alt="侬仕超"></a><div class="site-author-name"><a href="/about/">侬仕超</a></div><a class="site-name" href="/about/site.html">上善若水</a><sub class="site-subtitle">一点一点做好，望吾热爱生活。</sub><div class="site-desciption">自助者天助之,自弃者天弃之</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">12</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">1</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">4</span></a></div><div class="site-state-item"><a href="/music/"><span class="site-state-item-icon"><i class="disc-line"></i></span></a></div><a class="site-state-item hty-icon-button" href="/about/" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&amp;uin=201015024&amp;site=qq&amp;menu=yes" title="QQ" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/t-diana" title="GitHub" target="_blank" style="color:#181717"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/id201015024" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=439028465" title="网易云音乐" target="_blank" style="color:#C10D0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/17058996" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-指针是什么"><span class="toc-number">1.</span> <span class="toc-text">8.1    指针是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-指针变量"><span class="toc-number">2.</span> <span class="toc-text">8.2    指针变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-1-使用指针变量的例子"><span class="toc-number">2.1.</span> <span class="toc-text">8.1.1    使用指针变量的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-2-怎样定义指针变量"><span class="toc-number">2.2.</span> <span class="toc-text">8.2.2    怎样定义指针变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-3-怎样引用指针变量"><span class="toc-number">2.3.</span> <span class="toc-text">8.2.3    怎样引用指针变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-4-指针变量作为函数参数"><span class="toc-number">2.4.</span> <span class="toc-text">8.2.4    指针变量作为函数参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-通过指针引用数组"><span class="toc-number">3.</span> <span class="toc-text">8.3    通过指针引用数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-1-数组元素的指针"><span class="toc-number">3.1.</span> <span class="toc-text">8.3.1    数组元素的指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-2-在引用数组元素时指针的运算"><span class="toc-number">3.2.</span> <span class="toc-text">8.3.2    在引用数组元素时指针的运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-3-通过指针引用数组元素"><span class="toc-number">3.3.</span> <span class="toc-text">8.3.3    通过指针引用数组元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-4-用数组名作函数参数"><span class="toc-number">3.4.</span> <span class="toc-text">8.3.4    用数组名作函数参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-5-通过指针引用多维数组"><span class="toc-number">3.5.</span> <span class="toc-text">8.3.5    通过指针引用多维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-多维数组元素的地址"><span class="toc-number">3.5.1.</span> <span class="toc-text">1.多维数组元素的地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-指向多维数组元素的指针变量"><span class="toc-number">3.5.2.</span> <span class="toc-text">2.指向多维数组元素的指针变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#指向数组元素的指针变量"><span class="toc-number">3.5.2.1.</span> <span class="toc-text">指向数组元素的指针变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指向由m个元素组成的一维数组的指针变量"><span class="toc-number">3.5.3.</span> <span class="toc-text">指向由m个元素组成的一维数组的指针变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用指向数组的指针作为函数参数"><span class="toc-number">3.5.4.</span> <span class="toc-text">用指向数组的指针作为函数参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-通过指针引用字符串"><span class="toc-number">4.</span> <span class="toc-text">8.4    通过指针引用字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-1-字符串的引用方式"><span class="toc-number">4.1.</span> <span class="toc-text">8.4.1    字符串的引用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-2-字符指针作函数参数"><span class="toc-number">4.2.</span> <span class="toc-text">8.4.2    字符指针作函数参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-3-使用字符指针变量和字符数组的比较"><span class="toc-number">4.3.</span> <span class="toc-text">8.4.3    使用字符指针变量和字符数组的比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-5-指向函数的指针"><span class="toc-number">5.</span> <span class="toc-text">8.5     指向函数的指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-1-什么是函数指针"><span class="toc-number">5.1.</span> <span class="toc-text">8.5.1    什么是函数指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-2-用函数指针变量调用函数"><span class="toc-number">5.2.</span> <span class="toc-text">8.5.2    用函数指针变量调用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-3-怎样定义和使用指向函数的指针变量"><span class="toc-number">5.3.</span> <span class="toc-text">8.5.3    怎样定义和使用指向函数的指针变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-4-用指向函数的指针做函数参数"><span class="toc-number">5.4.</span> <span class="toc-text">8.5.4    用指向函数的指针做函数参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-6-返回指针值的函数"><span class="toc-number">6.</span> <span class="toc-text">8.6    返回指针值的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-7-指针数组和多重指针"><span class="toc-number">7.</span> <span class="toc-text">8.7    指针数组和多重指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-7-1-什么是指针数组"><span class="toc-number">7.1.</span> <span class="toc-text">8.7.1 什么是指针数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-7-2-指向指针数据的指针"><span class="toc-number">7.2.</span> <span class="toc-text">8.7.2    指向指针数据的指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-7-3-指针数组作main函数的形参"><span class="toc-number">7.3.</span> <span class="toc-text">8.7.3    指针数组作main函数的形参</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-8-动态内存分配与指向它的指针变量"><span class="toc-number">8.</span> <span class="toc-text">8.8    动态内存分配与指向它的指针变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-8-1-什么是内存的动态分配"><span class="toc-number">8.1.</span> <span class="toc-text">8.8.1    什么是内存的动态分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-8-2-怎样建立内存的动态分配"><span class="toc-number">8.2.</span> <span class="toc-text">8.8.2    怎样建立内存的动态分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-3-void-指针类型"><span class="toc-number">8.3.</span> <span class="toc-text">8.3.3    void 指针类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-9-有关指针的小结"><span class="toc-number">8.4.</span> <span class="toc-text">8.9    有关指针的小结</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://www.nscblog.top/posts/659d25f6/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="侬仕超"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="上善若水"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">善于利用指针</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-06-06 00:14:59" itemprop="dateCreated datePublished" datetime="2020-06-06T00:14:59+08:00">2020-06-06</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2020-08-09 00:51:03" itemprop="dateModified" datetime="2020-08-09T00:51:03+08:00">2020-08-09</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">7.8k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">33m</span></span></span><div class="post-classify"><span class="post-category"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">专升本笔记</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">学习</span></a><a class="tag" href="/tags/C%E8%AF%AD%E8%A8%80/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">C语言</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;">
+    <div id="aplayer-csHkZAhQ" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    ></div>
+
+<h2 id="8-1-指针是什么"><a href="#8-1-指针是什么" class="headerlink" title="8.1    指针是什么"></a>8.1    指针是什么</h2><blockquote>
+<p>一个变量的地址就是该变量的“指针”</p>
+</blockquote>
+<p>定义一个变量，系统为其分配空间 有地址指向变量空间（变量单元），地址就称为“指针”。</p>
+<p>指针是内存空间的地址，存储单元就是所分配的内存空间。</p>
+<p>直接访问：直接通过变量名访问。</p>
+<p>间接访问：将变量i的地址存在另一个变量中，然后通过该变量来找到变量i的地址</p>
+<p>指针：一个变量的地址。</p>
+<p>指针变量：存放另一个变量的地址的变量。</p>
+<a id="more"></a>
+
+<h2 id="8-2-指针变量"><a href="#8-2-指针变量" class="headerlink" title="8.2    指针变量"></a>8.2    指针变量</h2><h3 id="8-1-1-使用指针变量的例子"><a href="#8-1-1-使用指针变量的例子" class="headerlink" title="8.1.1    使用指针变量的例子"></a>8.1.1    使用指针变量的例子</h3><blockquote>
+<p>指针变量：存放另一个变量的地址的变量。</p>
+</blockquote>
+<p>例8.1    通过指针变量访问整形变量</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+# include &quot;string.h&quot;
+# include &quot;math.h&quot;
+int main()
+{
+    int a=100,b=200;
+    // * pointer_a表示pointer_a所指向的变量(对象)
+    // pointer_a(地址) 表示指向   
+    int * pointer_a,* pointer_b;   
+    // 把变量a的地址指针赋值给指针变量pointer_a
+    pointer_a=&amp;a;
+    pointer_b=&amp;b;
+    printf(&quot;a=%d,b=%d\n&quot;,a,b); 
+    printf(&quot;* pointer_a=%d,* pointer_b=%d\n&quot;,* pointer_a,* pointer_b);
+    return 0; 
+ } </code></pre>
+<h3 id="8-2-2-怎样定义指针变量"><a href="#8-2-2-怎样定义指针变量" class="headerlink" title="8.2.2    怎样定义指针变量"></a>8.2.2    怎样定义指针变量</h3><blockquote>
+<p>定义指针变量一般形式：类型名 * 指针变量名；</p>
+</blockquote>
+<p>说明：</p>
+<ol>
+<li><p>指针变量前面的 * 表示该变量的类型为指针型变量</p>
+</li>
+<li><p>在定义指针变量时必须指定基类型。不指定基类型的话，我们不知道所指向的数据在内存中所占字节数和存放方式。</p>
+<p>知道存放数据类型，才能按存储单元的长度以及数据的存储形式正确地取出该数据。</p>
+<p><strong>一个变量的指针含义包括两个方面，一是以存储单元编号表示的地址，一是它指向的存储单元的数据类型。</strong></p>
+</li>
+<li><p>如何表示指针类型。<strong>指向整形数据的指针类型表示 int *  , 读作“指向int的指针或简称“int指针”。</strong></p>
+</li>
+<li><p>指针变量中只能存放地址，不要将一个整数赋给一个指针变量。如：</p>
+<pre><code>int * pointer_1,a=100;
+* pointer_1=100;//这是不合法的</code></pre></li>
+</ol>
+<h3 id="8-2-3-怎样引用指针变量"><a href="#8-2-3-怎样引用指针变量" class="headerlink" title="8.2.3    怎样引用指针变量"></a>8.2.3    怎样引用指针变量</h3><p>在引用指针变量时，可能有3种情况：</p>
+<ol>
+<li>给指针变量赋值。</li>
+<li>引用指针变量指向的变量。如：pirntf(“%d”,* p);</li>
+<li>引用指针变量的值。</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li>&amp;为取地址符。&amp;a是变量a的地址。</li>
+<li>*为指针运算符， *p 代表指针变量p指向的对象。</li>
+</ol>
+<pre><code class="c">int main()
+{
+    int *p,*p1,*p2,a,b;
+    printf(&quot;请输入两个数字：\n&quot;);
+    scanf(&quot;%d%d&quot;,&amp;a,&amp;b);
+    if(a&lt;b)
+    {
+        p2=&amp;a;//使p2变量指向变量a
+        p1=&amp;b;//使p1变量指向变量b
+    }
+    printf(&quot;a=%d\tb=%d\n&quot;,a,b);
+    printf(&quot;max=%d\tmin=%d&quot;,* p1,* p2);//输出p1和p2所指向的变量
+    return 0;
+ } </code></pre>
+<h3 id="8-2-4-指针变量作为函数参数"><a href="#8-2-4-指针变量作为函数参数" class="headerlink" title="8.2.4    指针变量作为函数参数"></a>8.2.4    指针变量作为函数参数</h3><p>指针类型变量作为函数参数的作用：将一个变量的地址传送到另一个函数中。</p>
+<p>例如：</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+/*
+    对输入的两个整数按大小顺序输出。 
+*/
+int main()
+{
+    void swap(int * p1,int * p2);
+    int a,b;
+    int * pointer_a,* pointer_b;
+    printf(&quot;请输入两个数\n&quot;);
+    scanf(&quot;%d%d&quot;,&amp;a,&amp;b);
+    pointer_a=&amp;a;
+    pointer_b=&amp;b;
+    if(a&lt;b)
+        swap(pointer_a,pointer_b); 
+    printf(&quot;max=%d\tmin=%d\n&quot;,a,b);
+    return 0;
+}
+
+void swap(int * p1,int * p2)
+{
+    int temp;
+    /*
+     下面交换的是变量的值，不是地址值，temp是int类型，不是int指针类型
+    */
+    temp= * p1;
+    * p1= * p2;
+    * p2= temp;
+ } </code></pre>
+<p>如果想通过函数调用得到n个要改变的值，可以这样做：</p>
+<ol>
+<li>在主调函数中设n个变量，用n个指针变量指向它们。</li>
+<li>设计一个函数，有n个指针形参。</li>
+<li>在主调函数中调用这个函数，在调用时将这n个指针变量作为实参，将它们的地址传给该函数的形参；</li>
+<li>在执行该函数的过程中，通过形参指针变量，改变它们所指的n个变量的值；</li>
+<li>在主调函数中就可以使用这些改变了值的变量。</li>
+</ol>
+<pre><code class="c"># include &quot;stdio.h&quot;
+/*
+    对输入的两个整数按大小顺序输出。 
+*/
+int main()
+{
+    void exchange(int * p1,int * p2,int * p3);
+    int a,b,c;
+    int * pointer_a,* pointer_b,* pointer_c;
+    printf(&quot;请输入三个数\n&quot;);
+    scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);
+    pointer_a=&amp;a;
+    pointer_b=&amp;b;
+    pointer_c=&amp;c;
+    exchange(pointer_a,pointer_b,pointer_c);
+    printf(&quot;the order is %d\t%d\t%d\n&quot;,a,b,c);
+    /*
+    C语言中实参变量和形参变量之间的数据传递是单向的“值传递”方式
+    用指针变量做函数参数时同样要遵循这个规则。
+    不能通过执行调用函数来实现改变实参指针变量的值，但是可以改变实参指针变量所指的变量的值。 
+    */
+    printf(&quot;%d%d%d&quot;,* pointer_a,* pointer_b,* pointer_c);
+    return 0;
+}
+
+void exchange(int * p1,int * p2,int * p3)
+{
+    void swap(int * sp1,int * sp2);
+    if( * p1&lt;* p2) swap(p1,p2);
+    if( * p1&lt;* p3) swap(p1,p3);
+    if( * p2&lt;* p3) swap(p2,p3);
+}
+
+void swap(int * sp1,int * sp2)
+{
+    int temp;
+    temp= * sp1;
+    * sp1= * sp2;
+    * sp2= temp;
+ } </code></pre>
+<h2 id="8-3-通过指针引用数组"><a href="#8-3-通过指针引用数组" class="headerlink" title="8.3    通过指针引用数组"></a>8.3    通过指针引用数组</h2><h3 id="8-3-1-数组元素的指针"><a href="#8-3-1-数组元素的指针" class="headerlink" title="8.3.1    数组元素的指针"></a>8.3.1    数组元素的指针</h3><p>数组元素的指针就是数组元素的地址。</p>
+<p>引用数组元素可以用下标法，也可以用指针法，使用指针法能使目标程序质量高。</p>
+<p>C语言中，数组名代表数组元素中首元素的地址。因此，下面两个语句等价：</p>
+<p>p=&amp;a[0];</p>
+<p>p=a;</p>
+<h3 id="8-3-2-在引用数组元素时指针的运算"><a href="#8-3-2-在引用数组元素时指针的运算" class="headerlink" title="8.3.2    在引用数组元素时指针的运算"></a>8.3.2    在引用数组元素时指针的运算</h3><p>在一定条件下，允许对指针进行加和减的算术运算。如：指针变量p指向数组元素</p>
+<p>指针指向数组元素时，可以对指针进行一下运算：</p>
+<ul>
+<li>加一个整数(用+或+=)，如p+1</li>
+<li>减一个整数(用-或-=)，如p-1</li>
+<li>自增运算，如p++，++p</li>
+<li>自减运算，如p–,–p</li>
+<li>两个指针相减，如p1-p2，这个两个指针变量要指向统一数组时，才有意义</li>
+</ul>
+<p>分别说明：</p>
+<ol>
+<li>如果指针变量p已指向数组中的一个元素，则p+1指向同一个数组中的下一个元素，p-1指向统一数组中的上一个元素。加1代表的是加上一个数组元素所占的字节数。</li>
+<li>如果p的初值为&amp;a[0] p+1等同于a+1</li>
+<li>*(a+5)指向的是a[5]    [] 是变地址符 将a[i]按a[i+1]计算地址，然后找出地址单元中的值</li>
+<li>如果指针变量p1和p2都指向统一数组，如执行p2-p1，再用两个地址之差除以数组元素的长度，这样就可以知道他们所知元素的相对距离。地址相加是没有意义的。</li>
+</ol>
+<h3 id="8-3-3-通过指针引用数组元素"><a href="#8-3-3-通过指针引用数组元素" class="headerlink" title="8.3.3    通过指针引用数组元素"></a>8.3.3    通过指针引用数组元素</h3><ol>
+<li>下标法</li>
+<li>指针法，如*(a+1)或者 *(p+1)</li>
+</ol>
+<pre><code class="c"># include &quot;stdio.h&quot;
+/*
+有一个整形数组a,要求输出数组中的全部元素。
+*/
+int main()
+{
+    int a[5];
+    int i;
+    printf(&quot;please enter 5 integer numbers:\n&quot;);
+    for (i=0;i&lt;5;i++)
+        scanf(&quot;%d&quot;,a+i);
+    for (i=0;i&lt;5;i++)
+        printf(&quot;%d\t&quot;,*(a+i));
+    return &#39;\0&#39;;
+ } </code></pre>
+<blockquote>
+<p>注意：C语言没有像Java那样的异常检查机制。所以我们要尽量避免逻辑上的错误，如：数组下标越界的错误。</p>
+</blockquote>
+<p>指向数组的指针变量也可以带下标，如p[i]：对p[i]处理成*(p+i),必须知道p指向数组哪个元素的地址。</p>
+<p>利用指针引用数组元素，比较灵活方便，有不少技巧。</p>
+<p>​    1、p++;  *p;</p>
+<p>p++使p指向下一元素a[1]。然后若再执行*p，则得到下一个元素a[1]的值。</p>
+<p>​    2、*p++;</p>
+<p>++和*同优先级，结合方向为自右向左，因此他等价于 *(p++),先引用p的值，实现 *p的运算，然后再使p自增一。</p>
+<p>如：for(i=0;i&lt;10;i++,p++)</p>
+<p>​            printf(“%d”,* p);</p>
+<p>可以改写为</p>
+<p>for(i=0;i&lt;10;i++)</p>
+<p>​    printf(“%d”,* p++);</p>
+<p>​    3、*(p++)和 *(++p)作用是否相同，不相同。前者是先取 *p的值，然后再使p+1后者是先使p+1 再取 *p</p>
+<p>​    4、++(*p)。表示p所指向的元素值加1，如果p=a,那么++( *p)和++a[0]等价。</p>
+<p>​    5、*（p–）== a[i–];    *（++p）== a[++i];    *（–p）== a[–i]</p>
+<h3 id="8-3-4-用数组名作函数参数"><a href="#8-3-4-用数组名作函数参数" class="headerlink" title="8.3.4    用数组名作函数参数"></a>8.3.4    用数组名作函数参数</h3><p>C编译都是将形参数组名作为指针变量来处理的。</p>
+<p>所以：void swap(int arr[],int n) 可以改写成 void swap(int * arr,int n)</p>
+<p><img src="https://i.loli.net/2020/08/09/gVREsZKfCUp5hWI.png" alt="以变量名和数组名作为函数参数的比较.png" loading="lazy"></p>
+<p>在函数调用进行虚实结合的方法都是采用“值传递”，它的值就是实参数组首元素的地址。函数执行期间，它可以再次被赋值。</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+/*
+    将数组中n个整数按相反顺序存放 
+*/
+int main()
+{
+    void inv(int *x,int n);
+    int i,a[10]={3,7,5,8,9,4,2,1,0,6};
+    printf(&quot;初始数组为\n&quot;);
+    for(i=0;i&lt;10;i++)
+        printf(&quot;%d\t&quot;,a[i]);
+    printf(&quot;\n&quot;); 
+    inv(a,10);
+    printf(&quot;调换顺序后的数组是\n&quot;);
+    for(i=0;i&lt;10;i++)
+        printf(&quot;%d\t&quot;,a[i]);
+    printf(&quot;\n&quot;);
+    return 0;
+
+ } 
+
+void inv(int * x,int n)//*x: 传入数组首个元素地址， n:需要换几个数
+{
+    int *i,*j,temp,*p,m=(n-1)/2;
+    i=x;
+    j=x+n-1;
+    p=x+m;
+    for(;i&lt;=p;i++,j--)
+    {
+        temp=*i;
+        *i=*j;
+        *j=temp;
+    }
+} 
+</code></pre>
+<p>归纳分析：如果一个实参数组，要想在函数中改变次数组中的元素的值。实参和形参对应关系如下：</p>
+<ol>
+<li>形参和实参都用数组名</li>
+<li>实参用数组名，形参用指针变量</li>
+<li>实参和形参都用指针变量</li>
+<li>实参为指针变量，形参为数组名。  实参作为指针变量，必须先指针变量指向数组常量。</li>
+</ol>
+<pre><code class="c"># include &quot;stdio.h&quot;
+/*用指针法对10个整数按由大到小排序（选择排序）.c*/
+int main()
+{
+    void sort(int a[],int n);
+    int *p,a[10],i;
+    p=a;
+    printf(&quot;请输入10个不相同的数\n&quot;); 
+    for(i=0;i&lt;10;i++)
+        scanf(&quot;%d&quot;,p++);
+    p=a;
+    sort(p,10);
+    for(i=0;i&lt;10;i++)
+        printf(&quot;%d\t&quot;,* p++);
+    return 0;
+}
+
+void sort(int a[],int n)
+{
+    int i,temp,j;
+    for(i=0;i&lt;n-1;i++)
+        for(j=i+1;j&lt;n;j++)
+        {
+            if(a[i]&lt;a[j])
+            {
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+        }
+}</code></pre>
+<h3 id="8-3-5-通过指针引用多维数组"><a href="#8-3-5-通过指针引用多维数组" class="headerlink" title="8.3.5    通过指针引用多维数组"></a>8.3.5    通过指针引用多维数组</h3><h4 id="1-多维数组元素的地址"><a href="#1-多维数组元素的地址" class="headerlink" title="1.多维数组元素的地址"></a>1.多维数组元素的地址</h4><p>C语言中，数组名代表数组元素中首元素的地址。</p>
+<p>a[0] 代表以为数组a[0]中第0列元素地址，即&amp;a [0] [0]</p>
+<p>a[1]代表&amp;a[1] [0]</p>
+<p>所以a[0] [1]==a[0]+1(求取地址)</p>
+<p><strong>二维数组指针以及指针运算规律</strong></p>
+<p><img src="https://i.loli.net/2020/08/09/JtLZ3amgheIlPyY.png" alt="二维数组指针以及指针运算规律.png" loading="lazy"></p>
+<p>二维数组a的有关指针</p>
+<p><img src="https://i.loli.net/2020/08/09/LEDx7R3CklwMUh4.png" alt="二维数组a的有关指针.png" loading="lazy"></p>
+<p><strong>二维数组名指向行，一维数组名指向列。</strong></p>
+<p><strong>在指向行的指针前面加一个*, 就转换为指针指向列的指针。</strong></p>
+<p>如：a 都是指向行的 加个 * ，就是a[0] [0]就列首地址</p>
+<p>在指向列的指针前面加&amp;，就成为指向行的指针。</p>
+<h4 id="2-指向多维数组元素的指针变量"><a href="#2-指向多维数组元素的指针变量" class="headerlink" title="2.指向多维数组元素的指针变量"></a>2.指向多维数组元素的指针变量</h4><h5 id="指向数组元素的指针变量"><a href="#指向数组元素的指针变量" class="headerlink" title="指向数组元素的指针变量"></a>指向数组元素的指针变量</h5><pre><code class="c"># include &quot;stdio.h&quot;
+/*遍历数组元素*/
+int main()
+{
+    int a[3][4]={0,1,2,3,4,5,6,7,8,9,10,11};
+    int *p;
+    for(p=a[0];p&lt;a[0]+12;p++)
+    {
+        if((p-a[0])%4==0)
+            printf(&quot;\n&quot;);
+        printf(&quot;%d\t&quot;,*p);
+     } 
+     return 0;
+ } </code></pre>
+<h4 id="指向由m个元素组成的一维数组的指针变量"><a href="#指向由m个元素组成的一维数组的指针变量" class="headerlink" title="指向由m个元素组成的一维数组的指针变量"></a>指向由m个元素组成的一维数组的指针变量</h4><pre><code class="c"># include &quot;stdio.h&quot;
+/*
+输出任意一行任意一列的元素的值 
+*/
+int main ()
+{
+    int a[3][4]={0,1,2,3,4,5,6,7,8,9,10,11};
+    /*
+    int (* p)[4]
+    表示(* p)有4个元素，每个元素为整形。
+    相当于p所指的对象是有4 个整形元素的数组 
+    p的类型不是 int* 而是int (*)[4] p被定义为指向一维数组的指针变量
+    */
+    int (* p)[4],i,j;
+    p=&amp;a;//这里不能写成p=a,这样表示p=a[0] 
+    printf(&quot;请输入要输出的数的坐标(行和列)\n&quot;);
+    scanf(&quot;%d%d&quot;,&amp;i,&amp;j);
+    printf(&quot;a[%d][%d]=%d&quot;,i,j, * ( *(p+i)+j)); 
+    return 0;
+}</code></pre>
+<h4 id="用指向数组的指针作为函数参数"><a href="#用指向数组的指针作为函数参数" class="headerlink" title="用指向数组的指针作为函数参数"></a>用指向数组的指针作为函数参数</h4><p>用指针变量作形参，来接受实参数组名传递来的地址。可以有两种方法：</p>
+<ol>
+<li>用指向变量的指针变量</li>
+<li>用指向一维数组的指针变量</li>
+</ol>
+<pre><code class="c"># include &quot;stdio.h&quot;
+/*
+计算总平均分数以及第n个学生的成绩
+*/
+int main ()
+{
+    void average(float *p,int n);
+    void search(float (* p)[4],int n);
+
+    float score[3][4]={{65,70,67,60},{80,87,90,81},{90,99,100,98}};
+
+    average( * score,12);
+
+    search(score,2);
+    return 0;
+}
+
+void average(float *p,int n)//*p 指的是二维数组0,0的坐标地址 
+{
+    float * p_end,sum=0,aver;
+    p_end=p+n-1;
+    for(;p&lt;p_end;p++)
+        sum+= * p;
+    aver=sum/n;
+    printf(&quot;average=%.5f\n&quot;,aver);
+}
+
+
+/*
+    此时p只能指向一个包含4个元素的一维数组，不能指向一维数组中的某一元素。
+    p的值就是 该一维数组的起始位置。 
+    score+i == p+i
+*/
+void search(float (* p)[4],int n)
+{
+    int i;
+    printf(&quot;the score of No.%d are :\n&quot;,n);
+    for(i=0;i&lt;4;i++)
+        printf(&quot;%5.2f\t&quot;,*(*(p+n)+i));
+    printf(&quot;\n&quot;);
+}</code></pre>
+<h2 id="8-4-通过指针引用字符串"><a href="#8-4-通过指针引用字符串" class="headerlink" title="8.4    通过指针引用字符串"></a>8.4    通过指针引用字符串</h2><p>使用字符串的更加灵活方便的方法——通过指针引用字符串。</p>
+<h3 id="8-4-1-字符串的引用方式"><a href="#8-4-1-字符串的引用方式" class="headerlink" title="8.4.1    字符串的引用方式"></a>8.4.1    字符串的引用方式</h3><p>在C程序中，字符串是存放在字符数组中的。引用字符串可以有两种方法：</p>
+<ol>
+<li><p>用数组存放一个字符串，可以通过数组名和下标引用字符串中一个字符，可以通过数组名和格式声明”%s”输出该字符串。</p>
+</li>
+<li><p>用字符指针变量指向一个字符串常量，通过字符指针变量引用字符串常量。</p>
+<p>例如：</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+int main()
+{
+    /*
+    对字符指针变量p的初始化， 
+    实际上是把字符串第一个元素地址赋值给指针变量
+    */
+    char * p=&quot;I love China.&quot;;
+    /*
+    %s是输出字符串所用的格式字符，在输出项中给出字符指针变量名p
+    系统会输出p所指向字符串第一个字符，然后自动使p加1，使之指向下一个字符
+     输出该字符，直到遇到字符串结束标志&#39;\0&#39;为止 
+    */
+    printf(&quot;%s\n&quot;,p);
+    return 0;
+ } </code></pre>
+</li>
+</ol>
+<p><strong>在C语言中只有字符变量，没有字符串变量</strong> </p>
+<h3 id="8-4-2-字符指针作函数参数"><a href="#8-4-2-字符指针作函数参数" class="headerlink" title="8.4.2    字符指针作函数参数"></a>8.4.2    字符指针作函数参数</h3><blockquote>
+<p>如果想把一个字符串从一个函数“传递”到另一个函数，可以地址传递的方法。在被调用函数中可以改变字符换的内容，在主调函数中可以引用改变后的字符串。</p>
+</blockquote>
+<p>例题8.20    用函数调用实现字符串的复制</p>
+<p>1、用字符数组名作为函数参数</p>
+<pre><code class="c"># include&lt;stdio.h&gt;
+int main ()
+{
+    void cope_string(char form[],char to[]);
+    char a[]=&quot;I am a teacher.&quot;;
+    char b[]=&quot;You are a student.&quot;;
+    printf(&quot;string a is %s\nstring b is %s\n&quot;,a,b);
+    copy_string(a,b);
+    printf(&quot;string a is %s\nstring b is %s\n&quot;,a,b);
+    return 0;
+}
+
+void copy_string(char form[],char to[])
+{
+    int i=0;
+    for(;form[i]!=&#39;\0&#39;;i++)
+    {
+    to[i]=form[i];
+    }
+    to[i]=&#39;\0&#39;;
+}</code></pre>
+<p>2、用字符型指针变量作实参</p>
+<pre><code class="c"># include&lt;stdio.h&gt;
+int main ()
+{
+    void cope_string(char form[],char to[]);
+    char a[]=&quot;I am a teacher.&quot;;
+    char b[]=&quot;You are a student.&quot;;
+    char *p1,*p2;
+    printf(&quot;string a is %s\nstring b is %s\n&quot;,a,b);
+    p1=a;p2=b;
+    copy_string(p1,p2);
+    printf(&quot;string a is %s\nstring b is %s\n&quot;,a,b);
+    return 0;
+}
+
+void copy_string(char form[],char to[])
+{
+    int i=0;
+    for(;form[i]!=&#39;\0&#39;;i++)
+    {
+    to[i]=form[i];
+    }
+    to[i]=&#39;\0&#39;;
+}</code></pre>
+<p>3、用字符型指针变量作形参和实参</p>
+<pre><code class="c"># include&lt;stdio.h&gt;
+int main ()
+{
+    void cope_string(char *form,char *to);
+    char *a=&quot;I am a teacher.&quot;;
+    char b[]=&quot;You are a student.&quot;;
+    char *p1,*p2;
+    printf(&quot;string a is %s\nstring b is %s\n&quot;,a,b);
+    p2=b;
+    copy_string(a,p2);
+    printf(&quot;string a is %s\nstring b is %s\n&quot;,a,b);
+    return 0;
+}
+
+void copy_string(char *form,char *to)
+{
+    char temp;
+    for(;*form!=&#39;\0&#39;;form++,to++)
+    {
+        *to=*form;
+    }
+    *to=&#39;\0&#39;;
+}</code></pre>
+<p><strong>注意使用%s时不会输出’\0’，而使用%c时可以输出’\0’</strong></p>
+<p>PDF282页上有程序优化，自己去看</p>
+<h3 id="8-4-3-使用字符指针变量和字符数组的比较"><a href="#8-4-3-使用字符指针变量和字符数组的比较" class="headerlink" title="8.4.3    使用字符指针变量和字符数组的比较"></a>8.4.3    使用字符指针变量和字符数组的比较</h3><p>字符数组和字符指针都能实现字符串的存储和运算</p>
+<p>但二者有区别，主要有：</p>
+<ol>
+<li><p>字符数组由若干个元素组成，每个元素中放一个字符，字符指针变量中存放的是地址，存的不是字符串。</p>
+</li>
+<li><p>赋值方式。可以对字符指针变量赋值，但不能对数组名赋值。</p>
+<p>如：</p>
+<pre><code class="c">char *a;
+a=&quot;I love China!&quot;;            //量字符串元素地址赋值给指针变量，合法。但赋值
+                            //给a的不是字符串，而是字符串第一个元素的地址。</code></pre>
+<pre><code class="c">char str[14];
+str[0]=&#39;I&#39;;
+str=&quot;I love China!&quot;;        //数组名是地址，是常量，不能被赋值。</code></pre>
+</li>
+<li><p>初始化的含义。</p>
+<p>对字符指针变量赋初始值，赋予第一个元素的地址</p>
+<p>定义字符数组，并把字符串赋值给各个元素</p>
+</li>
+<li><p>存储单元的内容</p>
+<p>数组是若干个存储单元，存着各元素的值。</p>
+<p>字符指针变量，只分配一个存储单元(Visual C++为指针变量分配4个字符)。</p>
+<blockquote>
+<p>注意：指针必须先赋值（指定指针指向），在使用。</p>
+</blockquote>
+</li>
+<li><p>指针变量的值是可以改变的，数组名代表一个固定的值，不能改变。</p>
+</li>
+<li><p>字符数组中各个元素的值是可以改变的（可以对它们再赋值），但字符指针变量指向的字符串常量中的内容是不可以改变的。</p>
+<p><a href="http://www.360doc.com/content/15/1022/16/26795867_507585396.shtml" target="_blank" rel="noopener">指向字符串的指针为何不能用来修改此字符串(c语言)</a></p>
+</li>
+<li><p>引用数组元素。都可以用下标，都可以用指针 ，使用指针之前，确保指针指向相同数组</p>
+</li>
+<li><pre><code class="c">char *format;
+format=&quot;a=%d,b=%d\n&quot;;
+printf(foramt,a,b);        //因此只要改变指针变量所指的字符串，就可以该变输入输出的格式，这种printf函数称为可变格式输出函数。</code></pre>
+<p>使用字符数组时，只能采用在定义数组时初始化或逐个对元素赋值的方法。</p>
+</li>
+</ol>
+<h2 id="8-5-指向函数的指针"><a href="#8-5-指向函数的指针" class="headerlink" title="8.5     指向函数的指针"></a>8.5     指向函数的指针</h2><h3 id="8-5-1-什么是函数指针"><a href="#8-5-1-什么是函数指针" class="headerlink" title="8.5.1    什么是函数指针"></a>8.5.1    什么是函数指针</h3><p>定义了一个函数，在编译时，编译系统为函数代码分配了一段存储空间，这段存储空间的起始地址(又称入口地址)，称为这个函数的指针。</p>
+<p>int (*p)(int,int); </p>
+<p>说明：</p>
+<ol>
+<li>这表示定义一个指向函数的指针变量，用来存放某一函数的起始地址，这意味着此指针变量指向该函数。</li>
+<li>p的类型用int(*)(int,int)表示</li>
+</ol>
+<h3 id="8-5-2-用函数指针变量调用函数"><a href="#8-5-2-用函数指针变量调用函数" class="headerlink" title="8.5.2    用函数指针变量调用函数"></a>8.5.2    用函数指针变量调用函数</h3><p>调用函数：</p>
+<p> 1.通过函数名调用；</p>
+<p> 2.通过指向函数的指针变量调用该函数</p>
+<p>例题8.22用函数求整数a和b中的大者</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+int main()
+{
+    int (*p)(int,int);
+    int max(int a,int b);
+    p=max;                 //将函数指针变量指向max函数 ，将max函数的入口地址赋值给了p
+    int a=5,b=6,c;
+    c=(*p)(a,b);
+    printf(&quot;%d&quot;,c);
+    return 0;
+ } 
+
+int max(int a,int b)
+{
+    return a&gt;b?a:b;
+}</code></pre>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li><p>int (*p)(int,int);</p>
+<p>(*p):两侧括号不能省略，表示p先与 *结合 ，是指针变量，再与后面的()结合，()表示的是函数。表明这个指向变量指向的是函数。</p>
+</li>
+<li><p>如果写成：int *p(int,int);</p>
+<p>这样相当于 int *(p(int,int)); 就成了声明一个p函数，这个函数的返回值是指向整形变量的指针。(主要是因为（）的优先级高于 *)</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="8-5-3-怎样定义和使用指向函数的指针变量"><a href="#8-5-3-怎样定义和使用指向函数的指针变量" class="headerlink" title="8.5.3    怎样定义和使用指向函数的指针变量"></a>8.5.3    怎样定义和使用指向函数的指针变量</h3><p>一般形式：</p>
+<blockquote>
+<p>类型名 (* 指针变量名) (函数参数列表)；</p>
+</blockquote>
+<p>说明：</p>
+<p>1.定义指向函数的指针变量，只能指向规定的返回类型，且参数列表相同的函数。</p>
+<p>2.如果要用指针调用函数，必须先使指针变量指向该函数。（<strong>指针变量先赋值再使用</strong>）</p>
+<p>3.再给函数指针变量赋值时，只须给出函数名而不必给出参数</p>
+<p>4.用函数指针变量调用函数时，直接用（*p）代替函数名，后面（）填写相应的实参。</p>
+<p>5.对指向函数的指针变量不能进行算术运算。进行加减是没有实际意义的</p>
+<p>6.用函数名调用函数，只能调用一个，通过指针调用函数比较灵活，可以根据不同情况进行调用。</p>
+<p>例题：输入两个数，让用户选择输出最大最小的数。</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+int main()
+{
+    int (*p)(int,int);
+    int max(int a,int b);
+    int min(int a,int b);
+    p=max;                 //将函数指针变量指向max函数 
+    int a=5,b=6,c,n;
+    printf(&quot;pleanse chose one or two:\n&quot;);
+    scanf(&quot;%d&quot;,&amp;n);
+    if(n==1)p=max;        //输入的是1的话则使指针指向max 
+    if(n==2)p=min;        //输入的是2的话则使指针指向min
+    c=(*p)(a,b);
+    printf(&quot;%d&quot;,c);
+    return 0;
+ } 
+
+int max(int a,int b)
+{
+    return a&gt;b?a:b;
+}
+
+int min(int a,int b)
+{
+    return a&gt;b?b:a;
+}</code></pre>
+<h3 id="8-5-4-用指向函数的指针做函数参数"><a href="#8-5-4-用指向函数的指针做函数参数" class="headerlink" title="8.5.4    用指向函数的指针做函数参数"></a>8.5.4    用指向函数的指针做函数参数</h3><p>例如：</p>
+<pre><code class="c">void fun(int (*p)(int),int (*p2)(int,int))//定义函数，参数两个函数指针变量
+{                                          //将两个函数名传递给函数指针变量
+    int a,b,i=3,j=5;
+    a=(*p)(i);                              //调用f1函数，i是参数
+    b=(*p2)(i,j);                          //调用f2函数，i,j是参数
+}</code></pre>
+<p>函数只有被调用时，才分配存储单元。</p>
+<p>使用函数指针变量，可以简化程序的编写，减少冗余代码，</p>
+<p>通过一个例子来展示指针函数参数的应用</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+int main()
+{
+    int (*p)(int,int);
+    int max(int a,int b);
+    int min(int a,int b);
+    int add(int a,int b);
+    int fun(int a,int b,int (*p)(int,int));
+    int a=5,b=6,c,n;
+    printf(&quot;pleanse chose one , two or three:\n&quot;);
+    scanf(&quot;%d&quot;,&amp;n);
+    if(n==1)p=max;        //输入的是1的话则使指针指向max 
+    if(n==2)p=min;        //输入的是2的话则使指针指向min
+    if(n==3)p=add;        //输入的是3的话则使指针指向add 
+    fun (a,b,p);        
+    printf(&quot;%d&quot;,c);
+    return 0;
+ } 
+
+void fun(int a,int b,int (*p)(int,int))
+{
+    printf(&quot;%d&quot;,(* p)(a,b));
+}
+
+int max(int a,int b)
+{
+    return a&gt;b?a:b;
+}
+
+int min(int a,int b)
+{
+    return a&gt;b?b:a;
+}
+
+int add(int a,int b)
+{
+    return a+b;
+}</code></pre>
+<h2 id="8-6-返回指针值的函数"><a href="#8-6-返回指针值的函数" class="headerlink" title="8.6    返回指针值的函数"></a>8.6    返回指针值的函数</h2><p>int *a (int x,int y);</p>
+<p>在a的两侧分别为* 和 () 而()的优先级要比*的高，所以a先与()结合，显然这是函数的形式。</p>
+<p>函数前有*， 表是这是一个指针型函数。</p>
+<p>定义返回指针值的函数的一般形式：</p>
+<p>类型名 * 函数名(参数列表)；</p>
+<p>例题：</p>
+<pre><code class="c"># include &lt;stdio.h&gt; 
+int main()
+{
+    float score[][4]={{60,70,80,90},{56,89,67,88},{34,78,90,66}};
+    float * search(float (*p)[4],int n);
+    float * res;
+    int i,k;
+    printf(&quot;enter the number of student:\n&quot;);
+    scanf(&quot;%d&quot;,&amp;k);
+    printf(&quot;the score of No.%d are:\n&quot;,k);
+    res=search(score,k);
+    for(i=0;i&lt;4;i++,res++)
+        printf(&quot;%.2f\t&quot;,* res);
+    printf(&quot;\n&quot;);
+    return 0;
+}
+
+float * search(float (* p)[4],int n)
+{
+    float *pt;
+    pt = * (p+n);  //pt的值是&amp;score[k][0] 
+    return pt;
+} </code></pre>
+<pre><code class="c"># include &lt;stdio.h&gt; 
+/*
+找出成绩不及格的学号以及输出学生的分数
+*/
+int main()
+{
+    float score[][4]={{60,70,80,90},{56,89,67,88},{34,78,90,66}};
+    float * search(float (*p)[4]);
+    float * res;
+    int j,i;
+
+    for(j=0;j&lt;3;j++)
+    {
+        res=search(score+j);
+        if(res==*(score+j))
+        for(i=0;i&lt;4;i++,res++)
+            printf(&quot;%.2f\t&quot;,* res);
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+
+float * search(float (* p)[4])
+{
+    float *pt;
+    int i;
+    pt=NULL;
+    for(i=0;i&lt;4;i++)
+        if(*(*p+i)&lt;60)
+            pt = * p;  //成绩不合格的，pt的值是&amp;score[k][0] 
+    return pt;
+} </code></pre>
+<h2 id="8-7-指针数组和多重指针"><a href="#8-7-指针数组和多重指针" class="headerlink" title="8.7    指针数组和多重指针"></a>8.7    指针数组和多重指针</h2><h3 id="8-7-1-什么是指针数组"><a href="#8-7-1-什么是指针数组" class="headerlink" title="8.7.1 什么是指针数组"></a>8.7.1 什么是指针数组</h3><p>一个数组，所有元素都是指针类型数据，称为指针数组。如：int  *p[3];</p>
+<p>优先级：()&gt;[]&gt;*</p>
+<p>先与优先级高者结合，然后在与优先级低者结合。</p>
+<p>int (*p)[4];            //这是指向一维数组的指针变量</p>
+<p>指针数组比较适合用来指向若干个字符串，使字符串更加方便灵活。</p>
+<pre><code class="c"># include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+/*
+数组指针的简单使用
+*/
+int main()
+{
+    void swap_string(char *str[],int n);
+    void print_str(char *str[],int n);
+    char *str[]={&quot;Follow me&quot;,&quot;BASIC&quot;,&quot;Great Wall&quot;,&quot;FORTRAN&quot;,&quot;Computer Design&quot;};
+    int n=5;
+    swap_string(str,n);
+    print_str(str,n);
+    return 0;
+} 
+
+void swap_string(char *str[],int n)
+{
+     char *temp;
+     int i,k,j;
+     for(i=0;i&lt;n-1;i++)
+     {
+         for(j=i+1;j&lt;n;j++)
+         {
+             if(strcmp(str[i],str[j])&gt;0)
+             {
+                 temp=str[i];
+                 str[i]=str[j];
+                 str[j]=temp;
+             }
+         }
+      } 
+} 
+
+void print_str(char *str[],int n)
+{
+    int i=0;
+    while(i&lt;n)
+    {
+        printf(&quot;%s\n&quot;,str[i]);//按指针数组元素的顺序输出它们所指向的字符串 
+        i++; 
+    }
+}</code></pre>
+<h3 id="8-7-2-指向指针数据的指针"><a href="#8-7-2-指向指针数据的指针" class="headerlink" title="8.7.2    指向指针数据的指针"></a>8.7.2    指向指针数据的指针</h3><p>char * str[]={“Follow me”,”BASIC”}</p>
+<p>char *p;</p>
+<p>p=str[1];</p>
+<p>p就是指向指针型数据的指针变量</p>
+<p>定义一个指向指针数据的指针变量：char **p;</p>
+<p><em>的结合性是从右到左 char *</em>p 等同于 char *( *p);</p>
+<p>(*p)表示这是一个指针变量，char * 表示p 指向的是一个字符型指针变量</p>
+<pre><code class="c"># include &quot;stdio.h&quot;
+# include &quot;string.h&quot;
+
+/*
+    使用指向指针数据的指针变量 
+*/
+
+int main()
+{
+    char * str[]={&quot;Follow me&quot;,&quot;BASIC&quot;,&quot;Great Wall&quot;};
+    char **p;
+    int i;
+    for(i=0;i&lt;3;i++)
+    {
+        p=str+i;
+        printf(&quot;%s\n&quot;,*p);
+     } 
+    return 0;
+}</code></pre>
+<pre><code class="c"># include &quot;stdio.h&quot;
+# include &quot;string.h&quot;
+
+/*
+    指针元素指向实型数据或整形数据。 
+*/
+
+int main()
+{
+    int a[]={1,3,5,7,9};
+    int * b[]={&amp;a[0],&amp;a[1],&amp;a[2],&amp;a[3],&amp;a[4]};  
+    int **p;
+    int i;
+    for(i=0;i&lt;5;i++)
+    {
+        p=b+i;
+        printf(&quot;%d\n&quot;,*p); //*p是b[i]的地址，**p是a[i]的值 
+    } 
+    return 0;
+}
+</code></pre>
+<p>如果在一个指针变量中存放一个目标变量的地址，这就是“单级间址”。指向指针数据的指针用的是“二级间址”方法。</p>
+<p><img src="https://i.loli.net/2020/08/08/AcHrVilOhkG5qCM.png" alt="多重指针.png" loading="lazy"></p>
+<h3 id="8-7-3-指针数组作main函数的形参"><a href="#8-7-3-指针数组作main函数的形参" class="headerlink" title="8.7.3    指针数组作main函数的形参"></a>8.7.3    指针数组作main函数的形参</h3><pre><code class="c">/*
+argc :参数的个数
+argv :命令行参数
+          命令行一般形式: file China Bejing
+          命令名与个参数之间用空格分隔
+          file也算一个参数
+          命令行参数都是字符串
+
+
+main函数有操作系统调用
+
+
+*/
+int main(int argc,char * argv[])
+{
+
+}</code></pre>
+<h2 id="8-8-动态内存分配与指向它的指针变量"><a href="#8-8-动态内存分配与指向它的指针变量" class="headerlink" title="8.8    动态内存分配与指向它的指针变量"></a>8.8    动态内存分配与指向它的指针变量</h2><h3 id="8-8-1-什么是内存的动态分配"><a href="#8-8-1-什么是内存的动态分配" class="headerlink" title="8.8.1    什么是内存的动态分配"></a>8.8.1    什么是内存的动态分配</h3><p>动态存储区被称为栈</p>
+<p>建立内存动态分配区域，以存放一些临时用的数据。这块区域被称为堆。</p>
+<p>临时数据不必在程序中定义声明，无需关心其声明存在期。需要时随时开辟，不需要时随时释放。</p>
+<p>由于未在声明部分定义他们为变量或数组，因此只能通过指针来引用。不能通过变量或数组引用。</p>
+<h3 id="8-8-2-怎样建立内存的动态分配"><a href="#8-8-2-怎样建立内存的动态分配" class="headerlink" title="8.8.2    怎样建立内存的动态分配"></a>8.8.2    怎样建立内存的动态分配</h3><p>内存的动态分配是通过系统提供的<strong>库函数</strong>实现的：</p>
+<ol>
+<li><p>malloc</p>
+<p>其函数原型：</p>
+<p><strong>void * malloc (unsigned int size);</strong></p>
+<p>作用：在动态存储区分配一个长度为size的连续空间</p>
+<p>返回值是所分配区域的第一个字节地址。</p>
+<blockquote>
+<p>注意：</p>
+<p>指针的基类型是void ，即不指向任何类型的数据，只提供一个地址。</p>
+<p>如果函数没有成功执行（内存空间不足），则返回空指针</p>
+</blockquote>
+</li>
+<li><p>calloc</p>
+<p>函数原型：</p>
+<p><strong>void * calloc(unsigned n,unsigned sized);</strong></p>
+<p>作用：在内存的动态存储区中分配n个长度为size的连续空间</p>
+<p>用calloc函数可以为一维数组开辟动态存储空间，n为元素个数，每个元素长度为size。这就是动态数组。</p>
+<p>函数返回指向所分配域的起始位置的指针；分配不成功，返回null</p>
+</li>
+<li><p>free</p>
+<p>函数原型：</p>
+<p><strong>void free(void * p);</strong></p>
+<p>作用：是释放指针变量p所指向的动态空间，使这部分空间能被其他变量使用。p应是最近一次调用calloc或malloc函数时得到的函数返回值。</p>
+</li>
+<li><p>realloc</p>
+<p>函数原型：</p>
+<p><strong>void * realloc (void *p,unsigned size);</strong></p>
+<p>作用： 修改已经通过malloc函数或calloc函数获得了动态空间</p>
+<p>返回值p不变，重新分配不成功返回NULL</p>
+</li>
+</ol>
+<p>以上4个函数的声明在stdlib.h头文件中</p>
+<p>C99标准以前，malloc，calloc,realloc函数的基类型为char，c99把这些函数的基类型定义为void，这种指针称为无类型指针。仅提供一个存地址，而不指向具体对象。</p>
+<h3 id="8-3-3-void-指针类型"><a href="#8-3-3-void-指针类型" class="headerlink" title="8.3.3    void 指针类型"></a>8.3.3    void 指针类型</h3><p><strong>C99允许使用基类型为void的指针空类型。</strong></p>
+<p>void类型应理解为空类型或不指向确定的类型，不应理解指向任何类型的数据</p>
+<pre><code class="c">int a=3;
+int *p1=&amp;a;
+char * p2;
+void * p3;
+p3=(void *)p1;
+p2=(char *)p3;</code></pre>
+<blockquote>
+<p>当void指针赋值给不同积累性的指针变量（相反）时，编译系统会自动进行转换，不必用户自己进行强制转换。</p>
+<p>赋值后p3得到a的地址，但不指向a，不能通过*p3输出a的值。    </p>
+</blockquote>
+<pre><code class="c"># include &quot;stdio.h&quot;
+# include &quot;stdlib.h&quot;
+/*
+    了解动态内存分配和void指针的使用 
+
+    内存的动态分配主要应用于简历程序中的动态数据结构(如：链表) 
+*/
+int main()
+{
+    void check(int *);
+    int *p1,i;
+    /*
+    sizeof运算符测定不同系统中存放的一个整数的字节数。
+    p1是空类型不确定指向，所以要进行强转 表明指向整形数据 
+    */
+    p1=(int *)malloc(5*sizeof(int));
+    for(i=0;i&lt;5;i++)
+    {
+        *(p1+i)=i+1;
+    }
+    check(p1);
+    free(p1);
+    return 0;
+} 
+
+void check(int *p)
+{
+    int i=0;
+    for(;i&lt;5;i++)
+    {
+        if(p[i]&lt;60)
+            printf(&quot;%d&quot;,p[i]);
+     } 
+    printf(&quot;\n&quot;);
+ } </code></pre>
+<h3 id="8-9-有关指针的小结"><a href="#8-9-有关指针的小结" class="headerlink" title="8.9    有关指针的小结"></a>8.9    有关指针的小结</h3><p>简单小结：</p>
+<ol>
+<li><p>指针的含义，指针就是地址</p>
+<p>指针是地址本身，指针变量是用来存放地址的变量</p>
+<p>类型名表示的是指针指向的数据类型，而不是    指针是类型名。</p>
+</li>
+<li><p>什么叫“指向”？地址就意味着指向，因为通过地址能找到该地址的对象</p>
+<p>void * 指针是一种特殊的指针，不指向任何的数据，如果需要用地址指向某类型的数据，应先对地址进行类型转换。</p>
+</li>
+<li><p>要深入掌握在对数组的操作中正确地使用指针，搞清楚指针的指向</p>
+</li>
+<li><p>指针变量的归纳比较：</p>
+<p><img src="https://i.loli.net/2020/08/08/5oyQFL6DAKVzhZ2.png" alt="指针变量的比较归纳1.png" loading="lazy"></p>
+<p><img src="https://i.loli.net/2020/08/08/F8JYLBtlEQqkhiv.png" alt="指针变量的比较归纳2.png" loading="lazy"></p>
+</li>
+<li><p>指针运算</p>
+<ol>
+<li>指针变量加（减）一个整数</li>
+<li>指针变量赋值（赋值的是地址）</li>
+<li>两个指针变量可以相减（指向同一数组）</li>
+<li>两个指针变量比较（指向同一个数组，可以元素的相对位置）</li>
+</ol>
+</li>
+<li><p>指针变量可以有NULL（空值），表示该指针变量不指向任何变量。</p>
+<p>NULL  在stdio.h预编译处理  # define NULL 0</p>
+</li>
+</ol>
+<p>指针的优点：</p>
+<ol>
+<li>提高程序效率</li>
+<li>在调用函数时当指针指向的变量值改变时，这些值能够为主调函数使用，即可以从函数调用中得到多个可改变的值。</li>
+<li>可以实现动态内存分配。</li>
+</ol>
+</div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>侬仕超</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://www.nscblog.top/posts/659d25f6/" title="善于利用指针">https://www.nscblog.top/posts/659d25f6/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/posts/7cad0bc5/" rel="prev" title="用户自己建立数据类型"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">用户自己建立数据类型</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/posts/e1d8c1a1/" rel="next" title="用函数实现模块化程序设计"><span class="post-nav-text">用函数实现模块化程序设计</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" href="https://github.com/t-diana/t-diana.github.io/issues?q=is:issue+善于利用指针" target="_blank" rel="noopener">GitHub Issues</a></div><div id="valine-container"></div><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function initValine() {
+  const valineConfig = {"enable":true,"appId":"6aMnX3gvc24y4kqY8wcwlrar-gzGzoHsz","appKey":"4mjNWPzsDxvxEsrWM9upHzgE","placeholder":"Just go go","avatar":null,"meta":["nick","mail","link"],"pageSize":10,"visitor":false,"highlight":true,"recordIP":false,"enableQQ":true,"el":"#valine-container","lang":"zh-cn"}
+  valineConfig.path = window.location.pathname
+  new Valine(valineConfig)
+}
+setTimeout(initValine, 1000)</script></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 侬仕超</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v4.2.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v0.9.5</span></div><div class="live_time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  window.setTimeout(blog_live_time, 1000);
+  const start = new Date('2020-05-15T00:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
+}
+blog_live_time();
+</script></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="搜索"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-search-line"></use></svg></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="/js/search/local-search.js" defer></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close-line"></use></svg></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="搜索..." value=""></div><div id="local-search-result"></div></div><script>let date = new Date();
+let today = (date.getMonth() + 1) + "-" + date.getDate()
+if ("4-4".indexOf(today) !== -1) {
+  document.documentElement.style.filter = "grayscale(1)";
+}</script></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script></body></html>
