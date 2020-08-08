@@ -1,222 +1,100 @@
-$(document).ready(function () {
-  var tocDepth = (CONFIG.sidebar && CONFIG.sidebar.tocMaxDepth) || 4;
-  // Optimize selector by theme config.
-  var HEADING_SELECTOR = 'h1,h2,h3,h4,h5,h6,'
-    .slice(0, tocDepth * 3)
-    .slice(0, -1);
+function toggleSidebarNav() {
+  // toggle sidebar nav and panel
+  const activeTabClass = "sidebar-nav-active";
+  const activePanelClass = "sidebar-panel-active";
+  document.querySelectorAll(".sidebar-nav li").forEach((el) => {
+    el.onclick = function() {
+      if (this.classList.contains(activeTabClass)) return;
+      document
+        .querySelector("." + activePanelClass)
+        .classList.remove(activePanelClass);
+      document
+        .querySelector("#" + this.dataset.target)
+        .classList.add(activePanelClass);
+      document
+        .querySelector("." + activeTabClass)
+        .classList.remove(activeTabClass);
+      this.classList.add(activeTabClass);
+    };
+  });
+}
 
-  function initTocDisplay () {
-    if ($('.post-body').find(HEADING_SELECTOR)[0]) {
-      return;
-    }
-    $('.sidebar-nav').addClass('hide');
-    $('.sidebar-toc').addClass('hide');
-    $('.sidebar-ov').removeClass('hide');
-  }
-
-  // The heading that reached the top currently.
-  var currHeading = null;
-  // The heading that reached the top last time.
-  var lastHeading = null;
-  var isRemovedTocClass = false;
-
-  // Automatically expand items in the article directory
-  //   based on the scrolling of heading in the article.
-  function autoSpreadToc () {
-    var $postBody = $('.post-body');
-    var $allTocItem = $('.sidebar-toc li');
-    var $headings = $postBody.find(HEADING_SELECTOR);
-    var $firsetChild = $headings.first();
-
-    $headings.each(function () {
-      var headingTop = this.getBoundingClientRect().top;
-      // The minimum distance from the top of the browser
-      //   when heading is marked as active in toc.
-      var MIN_HEIGHT_TO_TOP = 5;
-
-      if (headingTop <= MIN_HEIGHT_TO_TOP) {
-        currHeading = this.getAttribute('id');
-      }
-    });
-
-    // All heading are not to the top.
-    if (
-      $postBody[0] &&
-      $firsetChild[0] &&
-      $firsetChild[0].getBoundingClientRect().top > 0 &&
-      $firsetChild.offset().top - $(window).scrollTop() > 0
-    ) {
-      if (!isRemovedTocClass) {
-        $allTocItem.removeClass('active current');
-        isRemovedTocClass = true;
-      }
-      return;
-    }
-    if (currHeading !== lastHeading) {
-      var $targetLink = $('.sidebar-toc a[href="#' + currHeading + '"]');
-      $allTocItem.removeClass('active current');
-      $targetLink.parents('li').addClass('active');
-      $targetLink.parent().addClass('current');
-      lastHeading = currHeading;
-      isRemovedTocClass = false;
-    }
-  }
-
-  // Whether toc needs scrolling.
-  var isTocScroll = false;
-  // Scroll the post toc to the middle.
-  function scrollTocToMiddle () {
-    var $tocWrapHeight = $('.sidebar-toc').height();
-    var $tocHeight = $('.sidebar-toc > div').height();
-
-    if ($tocHeight <= $tocWrapHeight) {
-      return;
-    }
-
-    var $tocWrap = $('.sidebar-toc');
-    var $currTocItem = $('.sidebar-toc .current a');
-
-    if ($currTocItem[0] && $tocWrap[0]) {
-      var tocTop = $currTocItem.offset().top - $tocWrap.offset().top;
-      isTocScroll = tocTop > $tocWrapHeight || tocTop < 0;
-    }
-
-    if (isTocScroll) {
-      $currTocItem.velocity('stop').velocity('scroll', {
-        container: $tocWrap,
-        offset: -$tocWrapHeight / 2,
-        duration: 500,
-        easing: 'easeOutQuart'
-      });
-    }
-  }
-
-  // Distance from sidebar to top.
-  var sidebarToTop = 0;
-  if (CONFIG.sidebar && CONFIG.sidebar.offsetTop) {
-    sidebarToTop = parseInt(CONFIG.sidebar.offsetTop);
-  }
-
-  // Sticky the sidebar when it arrived the top.
-  function sidebarSticky () {
-    var $sidebar = $('#sidebar');
-    var targetY = document
-      .getElementById('content-wrap')
-      .getBoundingClientRect().top;
-
-    if (targetY < sidebarToTop) {
-      $sidebar.addClass('sidebar--sticky');
-    } else {
-      $sidebar.removeClass('sidebar--sticky');
-    }
-  }
-
-  // Update the reading progress lines of post.
-  function readProgress () {
-    // Not on post page.
-    if ($('#is-post').length === 0) {
-      return;
-    }
-
-    var $post = $('.content');
-    var postTop = $post.offset().top;
-    var postEndTop = 0;
-    var postEndHeight = 0;
-    var postReadingHeight = 0;
-    var isEnablePostEnd = false;
-    var percent = 0;
-
-    if (CONFIG.postWidget && CONFIG.postWidget.endText) {
-      isEnablePostEnd = true;
-    }
-    if (isEnablePostEnd) {
-      postEndTop = $('.post-ending').offset().top;
-      postEndHeight = $('.post-ending').outerHeight();
-      postReadingHeight = postEndTop - postTop + postEndHeight;
-    } else {
-      postEndTop = $('.post-footer').offset().top;
-      postReadingHeight = postEndTop - postTop;
-    }
-
-    var windowHeight = $(window).height();
-    var postScrollTop = 0;
-
-    if ($post.length !== 0) {
-      postScrollTop =
-        parseInt($post[0].getBoundingClientRect().top * -1) + windowHeight;
-    }
-
-    var percentNum = Number($('.sidebar-reading-info__num').text());
-    postReadingHeight = parseInt(Math.abs(postReadingHeight));
-    percent = parseInt((postScrollTop / postReadingHeight) * 100);
-    percent = percent > 100 ? 100 : percent < 0 ? 0 : percent;
-
-    // Has reached the maximum or minimum
-    if (
-      (percent === 0 && percentNum === 0) ||
-      (percent === 100 && percentNum === 100)
-    ) {
-      return;
-    }
-    $('.sidebar-reading-info__num').text(percent);
-    $('.sidebar-reading-line').css(
-      'transform',
-      'translateX(' + (percent - 100) + '%)'
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".post-toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
     );
-  }
-
-  // Initial run
-  autoSpreadToc();
-  sidebarSticky();
-  scrollTocToMiddle();
-  readProgress();
-
-  $(window).on('scroll', function () {
-    sidebarSticky();
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo(0, target.offsetTop + 1);
+    });
+    return target;
   });
 
-  $(window).on(
-    'scroll',
-    Stun.utils.throttle(function () {
-      autoSpreadToc();
-      scrollTocToMiddle();
-      readProgress();
-    }, 150)
-  );
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
 
-  Stun.utils.pjaxReloadSidebar = function () {
-    var $navToc = $('.sidebar-nav-toc');
-    var $navOv = $('.sidebar-nav-ov');
-    var $tocWrap = $('.sidebar-toc');
-    var $overview = $('.sidebar-ov');
-
-    $navToc.on('click', function (e) {
-      e.stopPropagation();
-      if ($(this).hasClass('current')) {
-        return;
-      }
-      $navToc.addClass('current');
-      $navOv.removeClass('current');
-      $tocWrap.css('display', 'block');
-      $tocWrap.velocity('stop').velocity('fadeIn');
-      $overview.css('display', 'none');
-      $overview.velocity('stop').velocity('fadeOut');
+    document.querySelectorAll(".post-toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
     });
-    $navOv.on('click', function (e) {
-      e.stopPropagation();
-      if ($(this).hasClass('current')) {
-        return;
-      }
-      $navOv.addClass('current');
-      $navToc.removeClass('current');
-      $tocWrap.css('display', 'none');
-      $tocWrap.velocity('stop').velocity('fadeOut');
-      $overview.css('display', 'block');
-      $overview.velocity('stop').velocity('fadeIn');
-    });
-    initTocDisplay();
-  };
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".post-toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
 
-  // Initialization
-  Stun.utils.pjaxReloadSidebar();
-});
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+function initSidebar() {
+  toggleSidebarNav();
+  listennSidebarTOC();
+}
+
+document.addEventListener("DOMContentLoaded", initSidebar);
+document.addEventListener("pjax:success", initSidebar);

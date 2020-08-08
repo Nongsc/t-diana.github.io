@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="侬仕超"><meta name="copyright" content="侬仕超"><meta name="generator" content="Hexo 4.2.0"><meta name="theme" content="hexo-theme-yun"><title>程序设计和C语言 | 上善若水</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="none" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.17/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_stqaphw3j4.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link class="aplayer-style-marker" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script class="aplayer-script-marker" src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" defer></script><script class="meting-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js" defer></script><script>document.addEventListener(
+  "pjax:success",
+  function() {
+    if (window.aplayers) {
+      loadMeting();
+    }
+  },
+  !1
+);</script><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><link rel="alternate" href="/atom.xml" title="上善若水"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"root":"/","title":"上善若水","version":"0.9.5","anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"local_search":{"path":"/search.xml"},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script><meta name="description" content="1.1    什么是计算机程序 程序: 一组计算机能识别和执行的指令  每条指令使计算机执行特定的操作,一个特定的指令序列(指令集合),用来完成一定的功能. 计算机的本质是程序的机器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序设计和C语言">
+<meta property="og:url" content="https://www.nscblog.top/posts/31f32bba/index.html">
+<meta property="og:site_name" content="上善若水">
+<meta property="og:description" content="1.1    什么是计算机程序 程序: 一组计算机能识别和执行的指令  每条指令使计算机执行特定的操作,一个特定的指令序列(指令集合),用来完成一定的功能. 计算机的本质是程序的机器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/p49MFkUInPSDrgB.png">
+<meta property="article:published_time" content="2020-03-20T12:47:52.000Z">
+<meta property="article:modified_time" content="2020-08-08T13:10:26.970Z">
+<meta property="article:author" content="侬仕超">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/11/p49MFkUInPSDrgB.png"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="alternate" href="/atom.xml" title="上善若水" type="application/atom+xml">
+</head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script defer src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="侬仕超"><img width="96" loading="lazy" src="/images/head_img.jpeg" alt="侬仕超"></a><div class="site-author-name"><a href="/about/">侬仕超</a></div><a class="site-name" href="/about/site.html">上善若水</a><sub class="site-subtitle">一点一点做好，望吾热爱生活。</sub><div class="site-desciption">自助者天助之,自弃者天弃之</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">9</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">1</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">5</span></a></div><div class="site-state-item"><a href="/music/"><span class="site-state-item-icon"><i class="disc-line"></i></span></a></div><a class="site-state-item hty-icon-button" href="/about/" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&amp;uin=201015024&amp;site=qq&amp;menu=yes" title="QQ" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/t-diana" title="GitHub" target="_blank" style="color:#181717"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/id201015024" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=439028465" title="网易云音乐" target="_blank" style="color:#C10D0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/17058996" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-什么是计算机程序"><span class="toc-number">1.</span> <span class="toc-text">1.1    什么是计算机程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-什么是计算机语言"><span class="toc-number">2.</span> <span class="toc-text">1.2    什么是计算机语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-C语言的发展及其特点"><span class="toc-number">3.</span> <span class="toc-text">1.3    C语言的发展及其特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-最简单的C语言程序"><span class="toc-number">4.</span> <span class="toc-text">1.4    最简单的C语言程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-1-最简单的C语言程举例"><span class="toc-number">4.1.</span> <span class="toc-text">1.4.1    最简单的C语言程举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-2-c语言程序的结构"><span class="toc-number">4.2.</span> <span class="toc-text">1.4.2 c语言程序的结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-运行C程序的步骤与方法"><span class="toc-number">5.</span> <span class="toc-text">1.5 运行C程序的步骤与方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-程序设计的任务"><span class="toc-number">6.</span> <span class="toc-text">1.6 程序设计的任务</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://www.nscblog.top/posts/31f32bba/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="侬仕超"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="上善若水"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">程序设计和C语言</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-03-20 20:47:52" itemprop="dateCreated datePublished" datetime="2020-03-20T20:47:52+08:00">2020-03-20</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2020-08-08 21:10:26" itemprop="dateModified" datetime="2020-08-08T21:10:26+08:00">2020-08-08</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">2.3k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">8m</span></span></span><div class="post-classify"><span class="post-category"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">专升本笔记</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">学习</span></a><a class="tag" href="/tags/C%E8%AF%AD%E8%A8%80/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">C语言</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;">
+    <div id="aplayer-wrrGQCQy" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    ></div>
+
+
+
+<h2 id="1-1-什么是计算机程序"><a href="#1-1-什么是计算机程序" class="headerlink" title="1.1    什么是计算机程序"></a>1.1    什么是计算机程序</h2><blockquote>
+<p>程序: 一组计算机能识别和执行的指令</p>
+</blockquote>
+<p><strong>每条指令使计算机执行特定的操作,一个特定的指令序列(指令集合),用来完成一定的功能.</strong></p>
+<p><strong><u>计算机的本质是程序的机器</u></strong></p>
+<a id="more"></a>
+
+<h2 id="1-2-什么是计算机语言"><a href="#1-2-什么是计算机语言" class="headerlink" title="1.2    什么是计算机语言"></a>1.2    什么是计算机语言</h2><p>个人简单理解:人与计算机交互的工具</p>
+<blockquote>
+<p>计算机与人都能识别的语言这就是计算机语言</p>
+</blockquote>
+<p>计算机语言的发展阶段:</p>
+<p><strong>机器语言</strong></p>
+<p><strong><u><em>计算机是基于二进制工作的</em></u></strong></p>
+<blockquote>
+<p>机器指令:计算机能够识别和接受的二进制代码.</p>
+<p>机器语言:机器指令的集合.</p>
+</blockquote>
+<p>缺点:不容易使用,难以修改程序代码</p>
+<p><strong>符号语言(汇编语言)</strong></p>
+<blockquote>
+<p>符号语言:英文数字表示一个指令</p>
+</blockquote>
+<p>例如:ADD表示 <strong>加</strong></p>
+<p>由于计算机不能直接识别 执行符号语言,所以要通过汇编程序的软件将符号语言的指令转换为机器指令. 转换的过程称为”代真”或”汇编”,因而符号语言又叫汇编语言或符号汇编</p>
+<p>优点:</p>
+<p>相对于机器语言方便使用</p>
+<p>缺点:</p>
+<p>程序可移植性差,机器依赖性强,如:机器A的上的程序无法在机器B上使用 </p>
+<p>机器语言和汇编语言是完全<strong>依赖于具体机器特性</strong>的,是面向机器的语言,相对于其他语言来说更”贴近”计算机,背称为计算机<strong>低级语言.</strong></p>
+<p><strong>高级语言</strong></p>
+<ul>
+<li><p>不依赖于具体机器，它与具体计算机距离较远。</p>
+</li>
+<li><p>世界第一个计算机高级语言  FORTRAN语言(20世纪50年代)</p>
+</li>
+<li><p>高级语言需要通过<strong>编译器</strong>程序软件转换为机器指令的程序</p>
+</li>
+<li><p>高级语言的一个语句一般对应多条机器指令</p>
+</li>
+</ul>
+<p>优点:</p>
+<ol>
+<li><p>高级语言数据结构丰富</p>
+</li>
+<li><p>不依赖于具体机器,它与具体计算机距离较远.(可移植性强)</p>
+</li>
+<li><p>简单易学,容易推广</p>
+</li>
+<li><p>高级语言的出现是计算机发展史上”惊人的成就”</p>
+</li>
+</ol>
+<p><strong>高级语言的发展阶段</strong></p>
+<p>非结构化语言</p>
+<ul>
+<li><p>符合语法要求,没有严格规范要求</p>
+</li>
+<li><p>程序难以维护和难以阅读</p>
+</li>
+<li><p>早期的BASIC FORTRAN和ALGOL都属于非结构化语言</p>
+</li>
+</ul>
+<p>结构化语言</p>
+<ul>
+<li><p>为了解决非结构化语言的缺点(程序难以维护和阅读),提出结构化程序设计方法</p>
+</li>
+<li><p>程序由良好的基本结构(顺序结构 分支结构 循环结构)构成 程序中的流程不得随意跳转</p>
+</li>
+<li><p>程序结构清晰,易于编写 阅读和维护</p>
+</li>
+<li><p>QBASIC FORTRAN77和C语言都是结构化语言 </p>
+</li>
+</ul>
+<p><u>语言特点:支持结构化程序设计方法</u></p>
+<p>缺点:</p>
+<p>​    在编写程序时需要制定具体每个过程的细节 —-&gt; 规模小的程序 还可以 规模较大的程序显得力不从心(面向过程编程)</p>
+<p>面向对象语言：对象由数据以及对数据进行的操作构成的，用于处理规模较大的程序。</p>
+<h2 id="1-3-C语言的发展及其特点"><a href="#1-3-C语言的发展及其特点" class="headerlink" title="1.3    C语言的发展及其特点"></a>1.3    C语言的发展及其特点</h2><p>C语言是国际广泛流行的计算机高级语言。</p>
+<p>c语言的祖先是BCPL语言 c语言的设计最初是为了Unix提供一种工作语言 </p>
+<p>C语言的特点:</p>
+<p>1.语言简洁 紧凑,使用方便灵活</p>
+<p>2.运算符丰富</p>
+<p>3.数据类型丰富</p>
+<p>4.具有结构化的控制语句</p>
+<p>5.语法灵活,程序设计自由度大</p>
+<p><strong>6.C语言允许直接访问物理地址</strong></p>
+<p><strong>7.C语言程序可移植性好</strong></p>
+<p><strong>8.代码质量高,程序执行效率高</strong></p>
+<p><strong>C语言原来是专门为系统软件而设计的</strong></p>
+<h2 id="1-4-最简单的C语言程序"><a href="#1-4-最简单的C语言程序" class="headerlink" title="1.4    最简单的C语言程序"></a>1.4    最简单的C语言程序</h2><h3 id="1-4-1-最简单的C语言程举例"><a href="#1-4-1-最简单的C语言程举例" class="headerlink" title="1.4.1    最简单的C语言程举例"></a>1.4.1    最简单的C语言程举例</h3><pre><code class="c">#include&lt;stdio.h&gt;
+void main()
+{
+    int max(int x, int y);//调用max函数的声明 
+    int a,b,c;//声明变量a b c
+    /*
+        &amp;: 地址符 
+        &amp;a:a变量的地址 
+    */
+    scanf(&quot;%d,%d&quot;,&amp;a,&amp;b);//scanf是一个输入函数 输入a和b的值
+    c = max(a,b);//调用max函数 将得到的值复制给C
+    printf(&quot;max=%d\n&quot;,c);//输出C的值 
+}
+
+int max(int x, int y)
+{
+    if(x&gt;y){
+        return(x);
+    }else{
+        return(y);
+    }
+}</code></pre>
+<h3 id="1-4-2-c语言程序的结构"><a href="#1-4-2-c语言程序的结构" class="headerlink" title="1.4.2 c语言程序的结构"></a>1.4.2 c语言程序的结构</h3><p>c语言程序的结构:</p>
+<p><strong>1.一个程序由一个或多个源程序文件组成。</strong></p>
+<pre><code class="markdown">- 规模较小的程序，往往只包括一个源程序文件(一个源文件中只有一个main函数)。
+一个源程序文件中可以包括3个部分:
+    1. 预处理指令 如:#include&lt;stdio.h&gt; #define
+        C编译系统在对源程序进行&quot;翻译&quot;(转换为二进制)以前,
+        先由一个&quot;预处理器&quot;对指令进行预处理:将头文件的内容读取,放在#include后面
+        编译程序对源程序进行编译得到目标程序（机器指令）
+    2. 全局声明(在函数之外进行的数据声明)
+        相当于Java中成员属性
+        作用范围:整个源程序文件
+    3. 函数定义
+        每个函数用来实现一定的功能。调用这些函数时，会完成函数定义中指定的功能。</code></pre>
+<p><strong>2.函数是C程序的主要组成部分</strong></p>
+<pre><code class="markdown">函数是C程序的基本单位，在设计良好的程序中，每个函数都用来实现一个或几个特地当的功能。
+编写C程序的主要工作就是编写一个个函数。
+C程序有且仅有一个main函数，有一个或多个函数组成
+
+当程序规模较大时，为了方便编译 调试和管理，一个程序可以包括若干个源程序文件 一个源程序文件就是一个程序模块
+
+编译时，对个源文件程序进行编译得到相应的目标程序，将目标程序连接成为一个统一的二进制可执行程序
+
+程序中调用的函数可以是自定函数，可以是库函数</code></pre>
+<p><strong>3.一个函数包括两个部分</strong></p>
+<p>int max (int x){}</p>
+<p>​    <strong>函数首部</strong></p>
+<blockquote>
+<p>int                 max             (int                             x)</p>
+<p>函数类型       函数名        函数参数类型            函数参数名</p>
+</blockquote>
+<p>​    <strong>函数体</strong>:{}(离函数首部最近的)</p>
+<p>​        声明部分:</p>
+<p>​            在调用函数中定义变量</p>
+<p>​            对被调用函数进行声明</p>
+<p>​        执行部分:</p>
+<p>​            {}中的语句,指定在函数中进行的操作 也可以什么都不做即一个空函数</p>
+<p><strong>4.程序总是从main函数开始执行的</strong></p>
+<p><strong>5.程序中对计算机的操作是由函数中的C语句完成的。</strong></p>
+<p><strong>6.在每个数据声明语句的最后必须有一个分号</strong></p>
+<p><strong>7.C语言本身不提供输入输出语句</strong></p>
+<p>​    输入输出的操作是由库函数来完成的</p>
+<p><strong>8.程序应当包含注释</strong></p>
+<p>​    增加必要的注释，提高程序的可读性。</p>
+<h2 id="1-5-运行C程序的步骤与方法"><a href="#1-5-运行C程序的步骤与方法" class="headerlink" title="1.5 运行C程序的步骤与方法"></a>1.5 运行C程序的步骤与方法</h2><p><strong>1.上机输入和编辑源程序</strong></p>
+<p><strong>2.对源程序进行编译</strong></p>
+<pre><code>1.先对程序中的预处理指令进行编译预处理
+2.在对完整的源程序进行编译
+
+编译的作用：
+首先是检查源程序中是否有语法错误
+没有语法错误之后，再编译时，自动包括了预编译和正式编译连个阶段，用户不用发出两次指令</code></pre><p><strong>3.进行连接处理</strong></p>
+<p>编译后得到的目标模块连接装配起来,再与函数库连接成一个整体,生成一个课供计算机执行的目标程序,称为 <strong>可执行程序</strong></p>
+<p>连接工作由”连接编辑程序”的软件来实现</p>
+<p><strong>4.运行可执行程序</strong></p>
+<p><img src="https://i.loli.net/2020/06/11/p49MFkUInPSDrgB.png" alt="运行C程序的流程图.png" loading="lazy"></p>
+<h2 id="1-6-程序设计的任务"><a href="#1-6-程序设计的任务" class="headerlink" title="1.6 程序设计的任务"></a>1.6 程序设计的任务</h2><blockquote>
+<p>程序设计是指从确定任务到得到结果,写出文档的全过程</p>
+</blockquote>
+<p>一般经历以下几个工作阶段:</p>
+<p><strong>1.问题分析</strong></p>
+<p>​    研究给定条件 分析最终目标,找出解题规律,选择合适的解题方法</p>
+<p><strong>2.设计算法</strong></p>
+<p>​    设计出解题的方法和具体步骤</p>
+<p><strong>3.编写程序</strong></p>
+<p>​    根据得出的算法,用高级语言编写出源程序</p>
+<p><strong>4.对源程序进行编辑 编译和连接,得到执行程序</strong></p>
+<p><strong>5.运行程序,分析结果</strong></p>
+<p>​    对程序进行调试,发现和排除程序中故障的工程</p>
+<p>​    测试:设计多组测试数据,检查不同数据的运行情况,尽量找出程序中存在的漏洞,并修改程序,使程序能够适应各种情况.</p>
+<p><strong>6.编写程序文档</strong></p>
+<p>提供程序说明书内容应该包括</p>
+<p>程序名称    程序功能    运行环境    程序安装和启动,需要输入的数据,以及使用注意事项</p>
+<blockquote>
+<p>软件是计算机程序和程序文档的总称</p>
+</blockquote>
+</div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>侬仕超</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://www.nscblog.top/posts/31f32bba/" title="程序设计和C语言">https://www.nscblog.top/posts/31f32bba/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/posts/4c65aa6d/" rel="prev" title="算法——程序的灵魂"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">算法——程序的灵魂</span></a></div><div class="post-nav-item"></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" href="https://github.com/t-diana/t-diana.github.io/issues?q=is:issue+程序设计和C语言" target="_blank" rel="noopener">GitHub Issues</a></div><div id="valine-container"></div><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function initValine() {
+  const valineConfig = {"enable":true,"appId":"6aMnX3gvc24y4kqY8wcwlrar-gzGzoHsz","appKey":"4mjNWPzsDxvxEsrWM9upHzgE","placeholder":"Just go go","avatar":null,"meta":["nick","mail","link"],"pageSize":10,"visitor":false,"highlight":true,"recordIP":false,"enableQQ":true,"el":"#valine-container","lang":"zh-cn"}
+  valineConfig.path = window.location.pathname
+  new Valine(valineConfig)
+}
+setTimeout(initValine, 1000)</script></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 侬仕超</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v4.2.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v0.9.5</span></div><div class="live_time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  window.setTimeout(blog_live_time, 1000);
+  const start = new Date('2020-05-15T00:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
+}
+blog_live_time();
+</script></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="搜索"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-search-line"></use></svg></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="/js/search/local-search.js" defer></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close-line"></use></svg></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="搜索..." value=""></div><div id="local-search-result"></div></div><script>let date = new Date();
+let today = (date.getMonth() + 1) + "-" + date.getDate()
+if ("4-4".indexOf(today) !== -1) {
+  document.documentElement.style.filter = "grayscale(1)";
+}</script></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="侬仕超"><meta name="copyright" content="侬仕超"><meta name="generator" content="Hexo 4.2.0"><meta name="theme" content="hexo-theme-yun"><title>选择结构程序设计 | 上善若水</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="none" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.17/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_stqaphw3j4.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><link rel="alternate" href="/atom.xml" title="上善若水"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"root":"/","title":"上善若水","version":"0.9.5","anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"local_search":{"path":"/search.xml"},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script><meta name="description" content="选择结构程序设计4.1 选择结构和判断条件选择结构的关键：条件判断。 C语言选择语句：  if语句 实现两个分支 switch语句，实现多分支的选择结构  &#x2F;&#x2F;使用if实现双分支选择结构 # include &lt;stdio.h&gt; # include &lt;math.h&gt; &#x2F;&#x2F;求方程实根  int main() {     double a,b,c,disc,x1,x2,p,q;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="选择结构程序设计">
+<meta property="og:url" content="https://www.nscblog.top/posts/a08e0173/index.html">
+<meta property="og:site_name" content="上善若水">
+<meta property="og:description" content="选择结构程序设计4.1 选择结构和判断条件选择结构的关键：条件判断。 C语言选择语句：  if语句 实现两个分支 switch语句，实现多分支的选择结构  &#x2F;&#x2F;使用if实现双分支选择结构 # include &lt;stdio.h&gt; # include &lt;math.h&gt; &#x2F;&#x2F;求方程实根  int main() {     double a,b,c,disc,x1,x2,p,q;&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/65Njq7AIUhRSbM4.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/oqh2uTJWb58YNtC.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/Z3CsWJlFeUhwXou.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/5ibZe9kGK8gXjFf.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/bgPFMVioYtHLjSm.png">
+<meta property="article:published_time" content="2020-05-14T12:41:49.000Z">
+<meta property="article:modified_time" content="2020-08-08T01:26:45.665Z">
+<meta property="article:author" content="侬仕超">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="专升本">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/11/65Njq7AIUhRSbM4.png"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="alternate" href="/atom.xml" title="上善若水" type="application/atom+xml">
+</head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script defer src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="侬仕超"><img width="96" loading="lazy" src="/images/head_img.jpeg" alt="侬仕超"></a><div class="site-author-name"><a href="/about/">侬仕超</a></div><a class="site-name" href="/about/site.html">上善若水</a><sub class="site-subtitle">一点一点做好，望吾热爱生活。</sub><div class="site-desciption">自助者天助之,自弃者天弃之</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">9</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">1</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">5</span></a></div><div class="site-state-item"><a href="/music/"><span class="site-state-item-icon"><i class="disc-line"></i></span></a></div><a class="site-state-item hty-icon-button" href="/about/" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&amp;uin=201015024&amp;site=qq&amp;menu=yes" title="QQ" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/t-diana" title="GitHub" target="_blank" style="color:#181717"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/id201015024" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=439028465" title="网易云音乐" target="_blank" style="color:#C10D0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/17058996" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#选择结构程序设计"><span class="toc-number">1.</span> <span class="toc-text">选择结构程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-选择结构和判断条件"><span class="toc-number">1.1.</span> <span class="toc-text">4.1 选择结构和判断条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-用if语句实现选择结构"><span class="toc-number">1.2.</span> <span class="toc-text">4.2    用if语句实现选择结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-用if语句处理选择结构举例"><span class="toc-number">1.2.1.</span> <span class="toc-text">4.2.1    用if语句处理选择结构举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-if语句的一般形式"><span class="toc-number">1.2.2.</span> <span class="toc-text">4.2.2    if语句的一般形式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-关系运算符和关系表达式"><span class="toc-number">1.3.</span> <span class="toc-text">4.3    关系运算符和关系表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-1-关系运算符及其优先次序"><span class="toc-number">1.3.1.</span> <span class="toc-text">4.3.1    关系运算符及其优先次序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-2-关系表达式"><span class="toc-number">1.3.2.</span> <span class="toc-text">4.3.2    关系表达式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-逻辑运算符和逻辑表达式"><span class="toc-number">1.4.</span> <span class="toc-text">4.4    逻辑运算符和逻辑表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-1-逻辑运算符及其优先次序"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.4.1    逻辑运算符及其优先次序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-2-逻辑表达式"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.4.2    逻辑表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-3-逻辑型变量"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.4.3    逻辑型变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-条件运算符的条件表达式"><span class="toc-number">1.5.</span> <span class="toc-text">4.5    条件运算符的条件表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6-选择结构的嵌套"><span class="toc-number">1.6.</span> <span class="toc-text">4.6    选择结构的嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-7-用switch语句实现多分支选择结构"><span class="toc-number">1.7.</span> <span class="toc-text">4.7    用switch语句实现多分支选择结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-8-选择结构程序综合举例"><span class="toc-number">1.8.</span> <span class="toc-text">4.8 选择结构程序综合举例</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://www.nscblog.top/posts/a08e0173/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="侬仕超"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="上善若水"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">选择结构程序设计</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-05-14 20:41:49" itemprop="dateCreated datePublished" datetime="2020-05-14T20:41:49+08:00">2020-05-14</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2020-08-08 09:26:45" itemprop="dateModified" datetime="2020-08-08T09:26:45+08:00">2020-08-08</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">2.1k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">9m</span></span></span><div class="post-classify"><span class="post-tag"><a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">学习</span></a><a class="tag" href="/tags/%E4%B8%93%E5%8D%87%E6%9C%AC/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">专升本</span></a><a class="tag" href="/tags/C%E8%AF%AD%E8%A8%80/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">C语言</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="选择结构程序设计"><a href="#选择结构程序设计" class="headerlink" title="选择结构程序设计"></a>选择结构程序设计</h1><h2 id="4-1-选择结构和判断条件"><a href="#4-1-选择结构和判断条件" class="headerlink" title="4.1 选择结构和判断条件"></a>4.1 选择结构和判断条件</h2><p>选择结构的关键：条件判断。</p>
+<p>C语言选择语句：</p>
+<ol>
+<li>if语句 实现两个分支</li>
+<li>switch语句，实现多分支的选择结构</li>
+</ol>
+<pre><code class="c">//使用if实现双分支选择结构
+# include &lt;stdio.h&gt;
+# include &lt;math.h&gt;
+//求方程实根 
+int main()
+{
+    double a,b,c,disc,x1,x2,p,q;//disc是判别式 b^2-4*a*c
+    printf(&quot;请分别输入a,b,c的值\n&quot;);
+    scanf(&quot;%lf%lf%lf&quot;,&amp;a,&amp;b,&amp;c);
+    printf(&quot;%f\t%f\t%f\t&quot;,a,b,c);
+    disc=pow(b,2)-4*a*c;
+    //disc大于0时才有实根
+    if(disc&lt;0){
+        printf(&quot;这个方程没有实根\n&quot;);
+    } else{
+        q=sqrt(disc)/(2.0*a);
+        p=-b/(2.0*a);
+        x1=p+q;
+        x2=p-q;
+        printf(&quot;x1=%.2f\t,x2=%.2f&quot;,x1,x2);
+    } 
+    return 0;
+}</code></pre>
+<a id="more"></a>
+
+<h2 id="4-2-用if语句实现选择结构"><a href="#4-2-用if语句实现选择结构" class="headerlink" title="4.2    用if语句实现选择结构"></a>4.2    用if语句实现选择结构</h2><h3 id="4-2-1-用if语句处理选择结构举例"><a href="#4-2-1-用if语句处理选择结构举例" class="headerlink" title="4.2.1    用if语句处理选择结构举例"></a>4.2.1    用if语句处理选择结构举例</h3><pre><code class="c">//用if语句处理选择结构举例 
+# include &lt;stdio.h&gt;
+# include &lt;math.h&gt;
+//是两个值进行互换
+//关键是借助中间变量进行交换 
+int main()
+{
+    double a,b,temp;
+    printf(&quot;请分别输入a,b的值\n&quot;);
+    scanf(&quot;%lf%lf&quot;,&amp;a,&amp;b);
+    //a大于b时进行交换 
+    if(a&lt;b){
+    } else{
+        temp=a;
+        a=b;
+        b=temp;
+    } 
+    printf(&quot;%f\t%f&quot;,a,b);
+    return 0;
+}
+</code></pre>
+<h3 id="4-2-2-if语句的一般形式"><a href="#4-2-2-if语句的一般形式" class="headerlink" title="4.2.2    if语句的一般形式"></a>4.2.2    if语句的一般形式</h3><p><strong>一般形式</strong> </p>
+<p>​    if（表达式）语句1</p>
+<p>​        [else 语句2]      //这个部分可以有，也可以没有</p>
+<p><strong>常用三种形式</strong></p>
+<ol>
+<li><p>if (表达式) 语句1    没有else部分</p>
+</li>
+<li><p>if(表达式)</p>
+<p>​    语句1</p>
+<p>else</p>
+<p>​    语句2</p>
+</li>
+<li><p>if(表达式1)   语句1    多层if语句</p>
+<p>else if(表达式2)</p>
+<p>else if(表达式3)</p>
+<p>….</p>
+<p>else</p>
+</li>
+</ol>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li>整个if语句可以卸载多行上。也可以卸载一行上</li>
+<li>if(表达式){ 语句1 语句2 }   语句1 语句2属于内嵌语句，是if语句中的一部分。</li>
+<li>if语句无论写在几行上，都是一个整体，属于同一个语句。</li>
+<li>内嵌语句可以是简单语句，也可以是多种语句</li>
+<li>表达式的值只能是逻辑值</li>
+</ol>
+</blockquote>
+<h2 id="4-3-关系运算符和关系表达式"><a href="#4-3-关系运算符和关系表达式" class="headerlink" title="4.3    关系运算符和关系表达式"></a>4.3    关系运算符和关系表达式</h2><h3 id="4-3-1-关系运算符及其优先次序"><a href="#4-3-1-关系运算符及其优先次序" class="headerlink" title="4.3.1    关系运算符及其优先次序"></a>4.3.1    关系运算符及其优先次序</h3><p><img src="https://i.loli.net/2020/06/11/65Njq7AIUhRSbM4.png" alt="关系运算符.png" loading="lazy"></p>
+<p><strong>运算符的优先级</strong></p>
+<p><img src="https://i.loli.net/2020/06/11/oqh2uTJWb58YNtC.png" alt="运算符优先级.png" loading="lazy"></p>
+<h3 id="4-3-2-关系表达式"><a href="#4-3-2-关系表达式" class="headerlink" title="4.3.2    关系表达式"></a>4.3.2    关系表达式</h3><p>在C的逻辑运算中，以“1”代表真，以“0”代表“假”。</p>
+<p>例：</p>
+<p>a=3,b=2,c=1</p>
+<p>特殊情况：</p>
+<p>d=a&gt;b 因为a&gt;b为真，因此关系表达式a&gt;b的值为1，所以赋值d后的值为1。</p>
+<h2 id="4-4-逻辑运算符和逻辑表达式"><a href="#4-4-逻辑运算符和逻辑表达式" class="headerlink" title="4.4    逻辑运算符和逻辑表达式"></a>4.4    逻辑运算符和逻辑表达式</h2><h3 id="4-4-1-逻辑运算符及其优先次序"><a href="#4-4-1-逻辑运算符及其优先次序" class="headerlink" title="4.4.1    逻辑运算符及其优先次序"></a>4.4.1    逻辑运算符及其优先次序</h3><blockquote>
+<p>逻辑表达式：用逻辑运算符将关系表达式或其他<strong>逻辑量</strong>连接起来的式子就是逻辑表达式</p>
+</blockquote>
+<p>&amp;&amp;：逻辑与：只要有量为假 表达式的值就为假</p>
+<p>||：逻辑或：只要有量为真   表达式的值就为真</p>
+<p>！：逻辑非</p>
+<p><img src="https://i.loli.net/2020/06/11/Z3CsWJlFeUhwXou.png" alt="逻辑运算符.png" loading="lazy"></p>
+<p>运算符的优先级：</p>
+<ol>
+<li><p>！&gt;&amp;&amp;&gt;||   从高到低排列</p>
+</li>
+<li><p>逻辑运算符中的“&amp;&amp;”和“||” 低于关系运算符，“!”高于算术运算符 </p>
+<p><img src="https://i.loli.net/2020/06/11/5ibZe9kGK8gXjFf.png" alt="运算符的优先级.png" loading="lazy"></p>
+<h3 id="4-4-2-逻辑表达式"><a href="#4-4-2-逻辑表达式" class="headerlink" title="4.4.2    逻辑表达式"></a>4.4.2    逻辑表达式</h3></li>
+</ol>
+<blockquote>
+<p>逻辑表达式：用逻辑运算符将关系表达式或其他<strong>逻辑量</strong>连接起来的式子就是逻辑表达式</p>
+</blockquote>
+<p>逻辑表达式的值应该是一个逻辑量“真”或者“假”</p>
+<p>判断结果时：以数值   1   代表真，以数值    0    代表假</p>
+<p><strong>判断一个量时：以   0   代表假，以数值    非0   代表真</strong></p>
+<p>如：</p>
+<p>设a的值等于4，则!a的值为0。因为a的值为非0，被认作是真，对它进行非运算，得“假”。“假”以0为代表。</p>
+<blockquote>
+<p>注意：逻辑运算符两边的运算对象不但可以是0和1，或者是0和非0，也可以是字符型、浮点型、枚举型、或指针型的纯量型数据。</p>
+</blockquote>
+<blockquote>
+<p>注意：</p>
+<p>当a=1,b=2,c=3,d=4,m和n的原值为1是，由于“a&gt;b”的值为0，因此m=0，此时已经能判断整个表达式的值不可能为真。不必再进行”n=c&gt;d”的运算，因此n的值不是0，而仍保持原值1。</p>
+</blockquote>
+<h3 id="4-4-3-逻辑型变量"><a href="#4-4-3-逻辑型变量" class="headerlink" title="4.4.3    逻辑型变量"></a>4.4.3    逻辑型变量</h3><p>C99所增加的一种数据类型。语法：_Bool a;</p>
+<p>在头文件stdbool.h中，将bool定义为_Bool的同义词，同时定义两个符号常量true和false  true代表1  false代表0</p>
+<p>例如：</p>
+<pre><code class="c"># include &lt;stdio.h&gt;
+# include &lt;stdbool.h&gt; 
+int main()
+{
+    _Bool a = false;
+    printf(&quot;--------------%d-----------------\n&quot;,a);
+    bool b = true; 
+    printf(&quot;--------------%d-----------------\n&quot;,b);
+    return 0;
+} 
+
+运行结果：
+--------------0-----------------
+--------------1-----------------
+
+--------------------------------
+Process exited after 0.02229 seconds with return value 0
+请按任意键继续. . .</code></pre>
+<blockquote>
+<p>注意：</p>
+<p>在使用bool之前，应该确定该编译系统是否能使用。</p>
+</blockquote>
+<h2 id="4-5-条件运算符的条件表达式"><a href="#4-5-条件运算符的条件表达式" class="headerlink" title="4.5    条件运算符的条件表达式"></a>4.5    条件运算符的条件表达式</h2><p>条件运算符：  逻辑表达式  ?  值为1时 执行     :   值为0时执行;</p>
+<p>条件运算符是C语言中的唯一的三目运算符</p>
+<h2 id="4-6-选择结构的嵌套"><a href="#4-6-选择结构的嵌套" class="headerlink" title="4.6    选择结构的嵌套"></a>4.6    选择结构的嵌套</h2><blockquote>
+<p>在if语句中又包含一个或多个if语句称为if语句的嵌套</p>
+</blockquote>
+<p>表现形式：</p>
+<pre><code class="c">if()
+    if()  语句1
+    else  语句2
+else
+    if()   语句3
+    else   语句4</code></pre>
+<p>else 会就近匹配 if</p>
+<p><img src="https://i.loli.net/2020/06/11/bgPFMVioYtHLjSm.png" alt="if-else就近匹配.png" loading="lazy"></p>
+<h2 id="4-7-用switch语句实现多分支选择结构"><a href="#4-7-用switch语句实现多分支选择结构" class="headerlink" title="4.7    用switch语句实现多分支选择结构"></a>4.7    用switch语句实现多分支选择结构</h2><p>语法：</p>
+<p>switch(表达式)</p>
+<p>{</p>
+<p>case 常量1：语句1；break；</p>
+<p>case 常量2：语句2；break；</p>
+<p>…….</p>
+<p>default:  语句n;</p>
+<p>}</p>
+<p>说明：</p>
+<ol>
+<li>表达式的值类型应为整数类型（包括字符型）。</li>
+<li>花括号内是一个复合语句，case 用来标记一个位置</li>
+<li>可以没有default标号，没有与switch表达式相匹配的case常量，则不执行任何语句，流程转到switch语句的下一个语句。</li>
+<li>标号的出现次序不影响执行结果</li>
+<li>case常量必须互不相同，</li>
+<li>case标号只起标记作用，根据switch表达式的值找到匹配的入口标号。</li>
+<li>case子句中虽然包含了一个以上执行语句，但可以不必用花括号括起来，会自动顺序执行此case标号后的所有语句。</li>
+<li>多个case标号可以共用一组执行语句。</li>
+</ol>
+<h2 id="4-8-选择结构程序综合举例"><a href="#4-8-选择结构程序综合举例" class="headerlink" title="4.8 选择结构程序综合举例"></a>4.8 选择结构程序综合举例</h2><p>例：判断一年是否是闰年</p>
+<pre><code class="c"># include &lt;stdio.h&gt;
+# include &lt;math.h&gt;
+# include &lt;stdbool.h&gt;
+/*
+判断一年是否是闰年 
+*/
+int main()
+{
+    int year;
+    _Bool leap;
+    printf(&quot;请输入要判断的年份\n&quot;);
+    scanf(&quot;%d&quot;,&amp;year);
+    if(year%4==0&amp;&amp;year%100!=0||year%400==0)
+        leap=1;
+    else
+        leap=0;
+    //将leap作为判断输入年份是否是闰年
+    //leap=1 为闰年
+    //leap=0 不是闰年 
+    if(leap)
+        printf(&quot;%d是闰年&quot;,year);
+    else
+        printf(&quot;%d不是闰年&quot;,year);
+    return 0;
+
+}</code></pre>
+<p>例：求方程的根</p>
+<pre><code class="c"># include &lt;stdio.h&gt;
+# include &lt;math.h&gt;
+# include &lt;stdbool.h&gt;
+/*
+    求ax^2+bx+c=0的根 
+*/
+int main()
+{
+    double a,b,c,desc,p,q,x1,x2; //desc=b^2-4ac;
+    printf(&quot;请分别输入a,b,c的值\n&quot;);
+    scanf(&quot;%lf%lf%lf&quot;,&amp;a,&amp;b,&amp;c);
+    if(!a)    //a=0时，二次方程不存在 
+        printf(&quot;这不是二次方程&quot;);
+    else
+    {
+        desc=pow(b,2)-4*a*c;
+        if(desc==0)
+        {
+            printf(&quot;这个方程有两个相同的实根&quot;);
+            x1=-b/(2.0*a);
+            printf(&quot;x1=%d,x2=%d&quot;,x1,x1);
+        } else if(desc&lt;0)
+        {
+            printf(&quot;这个方程没有实根&quot;);
+        } else
+        {
+            p=sqrt(desc)/(2.0*a);
+            q=-b/(2.0*a);
+            x1=p+q;
+            x2=q-p;
+            printf(&quot;x1=%d\tx2=%d&quot;,x1,x2); 
+        } 
+    } 
+    return 0;
+
+}</code></pre>
+<p>例</p>
+<pre><code class="c"># include &lt;stdio.h&gt;
+# include &lt;math.h&gt;
+# include &lt;stdbool.h&gt;
+/*
+    计算运输费用 
+*/
+int main()
+{
+    int c,s;//c表示250的倍数，s表示里程
+    printf(&quot;请输入相应的里程数：\n&quot;);
+    float d,p,f,w;//d 表示折扣 便宜d%，p表示价格，f表示总价,w表示重量 
+    scanf(&quot;%d&quot;,&amp;s);
+    printf(&quot;请输入相应的单价和重量：\n&quot;);
+    scanf(&quot;%f%f&quot;,&amp;p,&amp;w); 
+    /*
+    计算里程倍数 
+    */
+    if (s&gt;3000) 
+        c=12;
+    else
+        c=s/250;
+    //统计折扣 
+    if(c&gt;=12){
+        d=15;
+    } else if (8&lt;=c&amp;&amp;c&lt;=11){
+        d=10;
+    } else if (c&gt;=4&amp;&amp;c&lt;=7){
+        d=8;
+    } else if(c&gt;=2&amp;&amp;c&gt;=3){
+        d=5;
+    } else if(c&gt;0&amp;&amp;c&lt;=1){
+        d=2;
+    } else{
+        printf(&quot;没有优惠\n&quot;);
+        d=0; 
+    }
+    printf(&quot;优惠%f\n&quot;,d/100);
+    //计算运费
+    f=p*w*s*(1-d/100);
+    printf(&quot;运输费用是%f\n&quot;,f); 
+    return 0;
+
+}</code></pre>
+</div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>侬仕超</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://www.nscblog.top/posts/a08e0173/" title="选择结构程序设计">https://www.nscblog.top/posts/a08e0173/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/posts/6d0a7f0b/" rel="prev" title="循环结构程序设计"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">循环结构程序设计</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/posts/6121bfd7/" rel="next" title="hexo+GitHub博客搭建"><span class="post-nav-text">hexo+GitHub博客搭建</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" href="https://github.com/t-diana/t-diana.github.io/issues?q=is:issue+选择结构程序设计" target="_blank" rel="noopener">GitHub Issues</a></div><div id="valine-container"></div><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function initValine() {
+  const valineConfig = {"enable":true,"appId":"6aMnX3gvc24y4kqY8wcwlrar-gzGzoHsz","appKey":"4mjNWPzsDxvxEsrWM9upHzgE","placeholder":"Just go go","avatar":null,"meta":["nick","mail","link"],"pageSize":10,"visitor":false,"highlight":true,"recordIP":false,"enableQQ":true,"el":"#valine-container","lang":"zh-cn"}
+  valineConfig.path = window.location.pathname
+  new Valine(valineConfig)
+}
+setTimeout(initValine, 1000)</script></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 侬仕超</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v4.2.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v0.9.5</span></div><div class="live_time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  window.setTimeout(blog_live_time, 1000);
+  const start = new Date('2020-05-15T00:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
+}
+blog_live_time();
+</script></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="搜索"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-search-line"></use></svg></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="/js/search/local-search.js" defer></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close-line"></use></svg></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="搜索..." value=""></div><div id="local-search-result"></div></div><script>let date = new Date();
+let today = (date.getMonth() + 1) + "-" + date.getDate()
+if ("4-4".indexOf(today) !== -1) {
+  document.documentElement.style.filter = "grayscale(1)";
+}</script></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="侬仕超"><meta name="copyright" content="侬仕超"><meta name="generator" content="Hexo 4.2.0"><meta name="theme" content="hexo-theme-yun"><title>最简单的C程序设计——顺序程序设计 | 上善若水</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="none" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.17/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_stqaphw3j4.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link class="aplayer-style-marker" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script class="aplayer-script-marker" src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" defer></script><script class="meting-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js" defer></script><script>document.addEventListener(
+  "pjax:success",
+  function() {
+    if (window.aplayers) {
+      loadMeting();
+    }
+  },
+  !1
+);</script><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><link rel="alternate" href="/atom.xml" title="上善若水"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"root":"/","title":"上善若水","version":"0.9.5","anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"local_search":{"path":"/search.xml"},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script><meta name="description" content="3.1    顺序程序设计举例略,自己看资料理解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最简单的C程序设计——顺序程序设计">
+<meta property="og:url" content="https://www.nscblog.top/posts/6b82abcf/index.html">
+<meta property="og:site_name" content="上善若水">
+<meta property="og:description" content="3.1    顺序程序设计举例略,自己看资料理解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/urOSzHyIn432Lsp.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/JbyLicHAt2uP7Qg.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/VPJQ5oayq9zn612.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/JV14krTOXcBSfPW.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/6G3sbULHBklmrfy.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/XnEVwDIW7hatB83.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/4gn7aSruBK8Vict.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/AITf62XHqtn8r51.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/kT8NEGSp2nMcCFh.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/iyzK58IwEZgORUH.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/BFbM5K3pHGPgXQI.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/tX9gzvlJaYduoZ6.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/FpOZj5qstVwAY7d.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/SVI1yTgK9tdNxfC.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/11/gOVsG69tHzSQhe2.png">
+<meta property="article:published_time" content="2020-03-27T12:41:13.000Z">
+<meta property="article:modified_time" content="2020-08-08T13:25:42.034Z">
+<meta property="article:author" content="侬仕超">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/11/urOSzHyIn432Lsp.png"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="alternate" href="/atom.xml" title="上善若水" type="application/atom+xml">
+</head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script defer src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="侬仕超"><img width="96" loading="lazy" src="/images/head_img.jpeg" alt="侬仕超"></a><div class="site-author-name"><a href="/about/">侬仕超</a></div><a class="site-name" href="/about/site.html">上善若水</a><sub class="site-subtitle">一点一点做好，望吾热爱生活。</sub><div class="site-desciption">自助者天助之,自弃者天弃之</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">9</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">1</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">5</span></a></div><div class="site-state-item"><a href="/music/"><span class="site-state-item-icon"><i class="disc-line"></i></span></a></div><a class="site-state-item hty-icon-button" href="/about/" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&amp;uin=201015024&amp;site=qq&amp;menu=yes" title="QQ" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/t-diana" title="GitHub" target="_blank" style="color:#181717"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/id201015024" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=439028465" title="网易云音乐" target="_blank" style="color:#C10D0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/17058996" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-顺序程序设计举例"><span class="toc-number">1.</span> <span class="toc-text">3.1    顺序程序设计举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-数据的表现形式及其运算"><span class="toc-number">2.</span> <span class="toc-text">3.2    数据的表现形式及其运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-常量和变量"><span class="toc-number">2.1.</span> <span class="toc-text">3.2.1    常量和变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-常量"><span class="toc-number">2.1.0.1.</span> <span class="toc-text">1.    常量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-变量"><span class="toc-number">2.1.0.2.</span> <span class="toc-text">2.    变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-常变量"><span class="toc-number">2.1.0.3.</span> <span class="toc-text">3.    常变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-标识符"><span class="toc-number">2.1.0.4.</span> <span class="toc-text">4.    标识符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-数据类型"><span class="toc-number">2.2.</span> <span class="toc-text">3.2.2    数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-整形数据"><span class="toc-number">2.3.</span> <span class="toc-text">3.2.3    整形数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-基本整形-int型"><span class="toc-number">2.3.0.1.</span> <span class="toc-text">1.基本整形(int型)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-短整型"><span class="toc-number">2.3.0.2.</span> <span class="toc-text">2.    短整型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-长整形"><span class="toc-number">2.3.0.3.</span> <span class="toc-text">3.    长整形</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-字符型数据"><span class="toc-number">2.4.</span> <span class="toc-text">3.2.4    字符型数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-字符与字符代码"><span class="toc-number">2.4.0.1.</span> <span class="toc-text">1.    字符与字符代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-字符变量"><span class="toc-number">2.4.0.2.</span> <span class="toc-text">2.    字符变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-5-浮点型数据"><span class="toc-number">2.4.1.</span> <span class="toc-text">3.2.5    浮点型数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-6-怎样确定常量的类型"><span class="toc-number">2.4.2.</span> <span class="toc-text">3.2.6    怎样确定常量的类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-7-运算符和表达式"><span class="toc-number">2.4.3.</span> <span class="toc-text">3.2.7    运算符和表达式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-C语句"><span class="toc-number">3.</span> <span class="toc-text">3.3 C语句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-最基本的语句-赋值语句"><span class="toc-number">3.1.</span> <span class="toc-text">3.3.2 最基本的语句-赋值语句</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-数据的输入输出"><span class="toc-number">4.</span> <span class="toc-text">3.4 数据的输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-2-有关数据输入输出的概念"><span class="toc-number">4.1.</span> <span class="toc-text">3.4.2 有关数据输入输出的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-3-使用printf函数输出数据"><span class="toc-number">4.2.</span> <span class="toc-text">3.4.3 使用printf函数输出数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-4-用scanf函数输入数据"><span class="toc-number">4.3.</span> <span class="toc-text">3.4.4 用scanf函数输入数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-5-字符数据的输入输出"><span class="toc-number">4.4.</span> <span class="toc-text">3.4.5 字符数据的输入输出</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://www.nscblog.top/posts/6b82abcf/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="侬仕超"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="上善若水"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">最简单的C程序设计——顺序程序设计</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-03-27 20:41:13" itemprop="dateCreated datePublished" datetime="2020-03-27T20:41:13+08:00">2020-03-27</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2020-08-08 21:25:42" itemprop="dateModified" datetime="2020-08-08T21:25:42+08:00">2020-08-08</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">2.4k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">8m</span></span></span><div class="post-classify"><span class="post-category"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/%E4%B8%93%E5%8D%87%E6%9C%AC%E7%AC%94%E8%AE%B0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">专升本笔记</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">学习</span></a><a class="tag" href="/tags/C%E8%AF%AD%E8%A8%80/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">C语言</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;">
+    <div id="aplayer-jzdYTQWV" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    ></div>
+
+
+
+<h2 id="3-1-顺序程序设计举例"><a href="#3-1-顺序程序设计举例" class="headerlink" title="3.1    顺序程序设计举例"></a>3.1    顺序程序设计举例</h2><p>略,自己看资料理解</p>
+<a id="more"></a>
+
+<p><img src="https://i.loli.net/2020/06/11/urOSzHyIn432Lsp.png" alt="VisualC__6.0编译系统.png" loading="lazy"></p>
+<h2 id="3-2-数据的表现形式及其运算"><a href="#3-2-数据的表现形式及其运算" class="headerlink" title="3.2    数据的表现形式及其运算"></a>3.2    数据的表现形式及其运算</h2><blockquote>
+<p>程序中最基本的成分:数据成分,运算成分,控制成分,传输成分</p>
+</blockquote>
+<h3 id="3-2-1-常量和变量"><a href="#3-2-1-常量和变量" class="headerlink" title="3.2.1    常量和变量"></a>3.2.1    常量和变量</h3><blockquote>
+<p>在计算机高级语言中,数据有两种表现形式:常量和变量</p>
+</blockquote>
+<h5 id="1-常量"><a href="#1-常量" class="headerlink" title="1.    常量"></a>1.    常量</h5><p>概念:程序运行过程中不能被改变的量</p>
+<p>常量类型:</p>
+<ol>
+<li><p>整形常量</p>
+</li>
+<li><p>实型常量:1&gt;十进制小数形式;2&gt;指数形式</p>
+</li>
+<li><p>字符常量:普通字符常量(用单撇号括起来的);转义字符(以\开头的字符序列,如:\n)</p>
+<p><strong>ASCII码的字符表示都可以通过该字符的八进制的进行转义</strong></p>
+<p><img src="https://i.loli.net/2020/06/11/JbyLicHAt2uP7Qg.png" alt="转义字符及其作用.png" loading="lazy"></p>
+</li>
+<li><p>字符串常量:用双撇号将若干个字符括起来</p>
+</li>
+<li><p>符号常量</p>
+<p>概念:使用# define指令,指定一个符号名称代表一个常量</p>
+<p>如:    #define PI 3.1416</p>
+<p>要求:1&gt;含义清楚,即见名知义;2&gt;多处使用到同一个常量是,能做到”一改全改”.</p>
+<p>注意:</p>
+<p>​        要区分符号常量和变量</p>
+<p>​        符号常量不占内存只是一个临时符号,预编译后这个符号就不存在了,所以不能对符号常量赋新值</p>
+</li>
+</ol>
+<h5 id="2-变量"><a href="#2-变量" class="headerlink" title="2.    变量"></a>2.    变量</h5><p>变量代表一个有名字的具有特定属性的一个存储单元,它用来存放数据(变量的值)</p>
+<p>变量先声明,后使用.</p>
+<p><img src="https://i.loli.net/2020/06/11/VPJQ5oayq9zn612.png" alt="变量的样子.png" loading="lazy"></p>
+<p>变量名实际上是一个以名字为代表的一个存储地址.在对程序编译连接时由编译系统给每一个变量名分配对应的内存地址.从变量中取值,实际上是通过变量名找到相应的内存地址,从该存储单元中读取值.</p>
+<h5 id="3-常变量"><a href="#3-常变量" class="headerlink" title="3.    常变量"></a>3.    常变量</h5><p>由const进行修饰</p>
+<p>如:const float pi =3.1415926</p>
+<p>符号常量和常变量的异同</p>
+<p>​    常变量:具有变量的基本属性:有类型,占存储单元.不能改变值,可以在程序中被引用.</p>
+<p>​             具有符号常量的优点,使用方便</p>
+<p>​    符号常量:没有占存储单元</p>
+<p>​                 在预编译时进行字符串替换</p>
+<h5 id="4-标识符"><a href="#4-标识符" class="headerlink" title="4.    标识符"></a>4.    标识符</h5><p>只能由字母,数字,下划线组成,且第一个字符必须为字母或下划线</p>
+<p>严格区分大小写</p>
+<h3 id="3-2-2-数据类型"><a href="#3-2-2-数据类型" class="headerlink" title="3.2.2    数据类型"></a>3.2.2    数据类型</h3><p>在数学中,数值是抽象的</p>
+<p>在计算机,数据是存放在存储单元中的,它是具体存在的,存放数据范围是有限的</p>
+<p>单精度是小数点后6位</p>
+<p><img src="https://i.loli.net/2020/06/11/JV14krTOXcBSfPW.png" alt="数据类型.png" loading="lazy"></p>
+<p>基本类型和枚举类型变量的值都是数值.统称算术类型</p>
+<p>算术类型和指针类型统称为纯量类型(标量类型):变量值是以数字表示的,枚举类型是程序中用户定义的整数类型.</p>
+<p>枚举类型是程序中用户定义的整数内容(枚举类型的值只能是整数类型)</p>
+<p>数组类型和结构体类型统称为组合类型,共用体类型不属于组合类型因为在同一时间内只能有一个成员具有值.</p>
+<p>函数类型:用于定义函数,描述函数的接口,包括(函数返回值的数据类型和参数的类型)</p>
+<h3 id="3-2-3-整形数据"><a href="#3-2-3-整形数据" class="headerlink" title="3.2.3    整形数据"></a>3.2.3    整形数据</h3><h5 id="1-基本整形-int型"><a href="#1-基本整形-int型" class="headerlink" title="1.基本整形(int型)"></a>1.基本整形(int型)</h5><p>编译系统分配给int型数据2个字节或4个字节(由具体的C编译系统决定)</p>
+<p>Visual C++为每个整形分配四个字节</p>
+<p> 存储单元的存放方式:用整数的补码进行存放</p>
+<p>正整数的补码就是原码</p>
+<p>负数的补码是正整数的原码按位取反,进行加一</p>
+<p><img src="https://i.loli.net/2020/06/11/6G3sbULHBklmrfy.png" alt="补码原码反码.png" loading="lazy"></p>
+<p>十进制转二进制:</p>
+<p><img src="https://i.loli.net/2020/06/11/XnEVwDIW7hatB83.jpg" alt="十进制转二进制.jpg" loading="lazy"></p>
+<h5 id="2-短整型"><a href="#2-短整型" class="headerlink" title="2.    短整型"></a>2.    短整型</h5><p>Visual C++ 分配2个字节</p>
+<h5 id="3-长整形"><a href="#3-长整形" class="headerlink" title="3.    长整形"></a>3.    长整形</h5><p>Visual C++ 分配4个字节</p>
+<p><img src="https://i.loli.net/2020/06/11/4gn7aSruBK8Vict.png" alt="整形常见的存储空间和值的范围.png" loading="lazy"></p>
+<p>注意:</p>
+<p>​    只有整形包括字符型数据可以加signed或unsigned,实型数据不能加</p>
+<p>​    无符号整形数据用”%u”格式进行输出,%u表示用无符号十进制数的格式输出</p>
+<h3 id="3-2-4-字符型数据"><a href="#3-2-4-字符型数据" class="headerlink" title="3.2.4    字符型数据"></a>3.2.4    字符型数据</h3><h5 id="1-字符与字符代码"><a href="#1-字符与字符代码" class="headerlink" title="1.    字符与字符代码"></a>1.    字符与字符代码</h5><p>在程序中,只能使用系统字符集中的字符,目前大多数采用ASCII字符集.</p>
+<p><img src="https://i.loli.net/2020/06/11/AITf62XHqtn8r51.png" alt="常用的ASCII码.png" loading="lazy"></p>
+<h5 id="2-字符变量"><a href="#2-字符变量" class="headerlink" title="2.    字符变量"></a>2.    字符变量</h5><p>关键字:char 如:</p>
+<p>char a = ‘b’</p>
+<p>这个声明变量并且赋值的意思是将字符 b 对应的ASCII码赋值给变量名为a这个字符变量</p>
+<p>输出时可以选择十进制输出,或选择字符形式输出</p>
+<p>“%d”:十进制输出</p>
+<p>“%c”:字符形式输出</p>
+<p>Q:字符类型也属于整形,是否也可以使用signed和unsigned修饰符?</p>
+<p>可以</p>
+<p>第一位(8位二进制表示的数),表示符号位:数据范围就是:0-127(相当于使用了signed进行修饰)</p>
+<p>第一位不表示符号位,数据表示可以从0-255(使用了unsigned进行修饰)</p>
+<h4 id="3-2-5-浮点型数据"><a href="#3-2-5-浮点型数据" class="headerlink" title="3.2.5    浮点型数据"></a>3.2.5    浮点型数据</h4><p>在C语言中实数以指数形式存储，如图</p>
+<p><img src="https://i.loli.net/2020/06/11/kT8NEGSp2nMcCFh.png" alt="实数的构成.png" loading="lazy"></p>
+<p>比如：3.1416 可以表示为3.14159x10^0  0.314159x10^1</p>
+<p><strong>移动小数点位置的同时改变指数的值，就可以保证它的值不会变</strong></p>
+<p>小数部分占的位数越多，表示精度大</p>
+<p>指数部分占的位数越多，表示范围越大</p>
+<p>浮点数类型有：float   double</p>
+<p><img src="https://i.loli.net/2020/06/11/iyzK58IwEZgORUH.png" alt="实型数据的有关情况.png" loading="lazy"></p>
+<p>注意：C编译系统把浮点型常量按双精度处理。</p>
+<h4 id="3-2-6-怎样确定常量的类型"><a href="#3-2-6-怎样确定常量的类型" class="headerlink" title="3.2.6    怎样确定常量的类型"></a>3.2.6    怎样确定常量的类型</h4><p>整形常量：不带小数点的数值是整形常量。</p>
+<p>浮点型常量：凡是以小数形式出现的实数。</p>
+<p>区分类型和变量：</p>
+<p>类型：是变量的一个属性，代表的是一类型的数据。比如： 大学生</p>
+<p>变量：占用存储单元，是具体存在的实体。如 大学生 我</p>
+<p>大学生是抽象的  而我是具体的</p>
+<h4 id="3-2-7-运算符和表达式"><a href="#3-2-7-运算符和表达式" class="headerlink" title="3.2.7    运算符和表达式"></a>3.2.7    运算符和表达式</h4><p>1.基本的算术运算符</p>
+<p><img src="https://i.loli.net/2020/06/11/BFbM5K3pHGPgXQI.png" alt="常用的算术预算符.png" loading="lazy"></p>
+<p>2.自增、自减运算符</p>
+<p><strong>注意：自增、自减运算符只能用于变量，不能用于常量或表达式</strong></p>
+<p>3.算术表达式和运算符的优先级与结合性</p>
+<p>算术运算符中的数如果只能float，那将数值转为float，进行计算，如果有double 就转为double进行计算，float和double都有，就转为double进行计算</p>
+<p><img src="https://i.loli.net/2020/06/11/tX9gzvlJaYduoZ6.png" alt="C预算符1.png" loading="lazy"></p>
+<p><img src="https://i.loli.net/2020/06/11/FpOZj5qstVwAY7d.png" alt="C语言运算符2.png" loading="lazy"></p>
+<h2 id="3-3-C语句"><a href="#3-3-C语句" class="headerlink" title="3.3 C语句"></a>3.3 C语句</h2><p>一个函数包含声明部分和执行部分，执行部分由C语句组成</p>
+<p><img src="https://i.loli.net/2020/06/11/SVI1yTgK9tdNxfC.png" alt="C语言程序构成.png" loading="lazy"></p>
+<p>C语句分类：</p>
+<ol>
+<li><p>控制语句</p>
+<p>条件语句</p>
+<p>循环语句</p>
+<p>continue  结束本次循环语句</p>
+<p>break  终止执行switch或循环语句</p>
+<p>switch 多分支选择语句</p>
+<p>return 函数返回语句</p>
+<p>goto 转向语句，在结构化过程中基本不适用goto语句</p>
+</li>
+<li><p>函数调用语句: 由一个函数调用和一个分号组成 如 printf();</p>
+</li>
+<li><p>表达式语句 如a=3;</p>
+</li>
+<li><p>空语句 ；</p>
+</li>
+<li><p>复合语句 也称语句块（代码块）形如：{ a=3;b=4;} </p>
+<blockquote>
+<p>注意：复合语句中最后的分号不能忽略不写</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="3-3-2-最基本的语句-赋值语句"><a href="#3-3-2-最基本的语句-赋值语句" class="headerlink" title="3.3.2 最基本的语句-赋值语句"></a>3.3.2 最基本的语句-赋值语句</h3><ol>
+<li><p>赋值运算符</p>
+</li>
+<li><p>复合的赋值运算符</p>
+</li>
+<li><p>赋值表达式</p>
+</li>
+<li><p>赋值过程中的类型转换</p>
+<p>浮点类型-&gt;整形  小数部分舍弃</p>
+<p>整形-&gt;浮点类型   小数部分补零</p>
+</li>
+</ol>
+<h2 id="3-4-数据的输入输出"><a href="#3-4-数据的输入输出" class="headerlink" title="3.4 数据的输入输出"></a>3.4 数据的输入输出</h2><h3 id="3-4-2-有关数据输入输出的概念"><a href="#3-4-2-有关数据输入输出的概念" class="headerlink" title="3.4.2 有关数据输入输出的概念"></a>3.4.2 有关数据输入输出的概念</h3><ol>
+<li><p>输入输出是针对计算机而言的</p>
+</li>
+<li><p>C语言本身不提供输入输出语句，输入输出操作由C标准函数库实现的。</p>
+<p>C提供的标准函数以库的形式在C的编译系统中提供，不是C语言文本的组成部分。</p>
+</li>
+<li><p>在使用系统库函数是，要在文件的开头用预处理命令#include 把有关头文件放在本程序中</p>
+<p>#include&lt;stdio.h&gt;  stdio.h是包含了标准的I/O库有关的变量定义和宏定义以及对函数的声明</p>
+</li>
+</ol>
+<h3 id="3-4-3-使用printf函数输出数据"><a href="#3-4-3-使用printf函数输出数据" class="headerlink" title="3.4.3 使用printf函数输出数据"></a>3.4.3 使用printf函数输出数据</h3><p>printf函数的一般格式：</p>
+<p>printf(格式控制，输出列表)；</p>
+<p>printf(“%d”,c);</p>
+<table>
+<thead>
+<tr>
+<th>格式字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%d</td>
+<td>输出一个有符号的十进制</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>输出一个字符</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>输出一个字符串</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>输出浮点数        %7.2f代表数据宽度为7，其中包括2位小数           %-25.3f     代表输出数据向左对齐（当位数不足25时）%25.3f 输出数据左边以空格填充（当位数不足25位时）</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>以指数形式输出实数 VisualC++小数位默认占6位</td>
+</tr>
+</tbody></table>
+<p><img src="https://i.loli.net/2020/06/11/gOVsG69tHzSQhe2.png" alt="printf输出数据格式.png" loading="lazy"></p>
+<h3 id="3-4-4-用scanf函数输入数据"><a href="#3-4-4-用scanf函数输入数据" class="headerlink" title="3.4.4 用scanf函数输入数据"></a>3.4.4 用scanf函数输入数据</h3><p>scanf函数的一般形式（语法）</p>
+<p>scanf(格式控制，地址表列);</p>
+<p>如scanf(“%d%f”,&amp;a,&amp;b);</p>
+<p><strong>注意</strong></p>
+<blockquote>
+<ol>
+<li><p>格式控制后面应当是变量地址，而不是变量名</p>
+</li>
+<li><p>格式控制字符串中除了格式声明以外还有其他字符，则在输入数据时在对应位置输入与这些字符相同的字符。</p>
+<p>如：scanf(“a=%d,b=%c”,&amp;a,&amp;b); 则输入a=10,b=’c’</p>
+</li>
+<li><p>在使用“%c”格式声明时，空格字符和‘’转义字符 ‘’都作为有效字符。</p>
+</li>
+<li><p>在输入数值数据时，如输入空格、回车、Tab键，或遇非法字符，认为该数据结束。</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="3-4-5-字符数据的输入输出"><a href="#3-4-5-字符数据的输入输出" class="headerlink" title="3.4.5 字符数据的输入输出"></a>3.4.5 字符数据的输入输出</h3><ol>
+<li><p>用putchar()函数输出一个字符</p>
+<p>语法：putchar(c); 输出变量c</p>
+</li>
+<li><p>用getchar()函数输入一个字符</p>
+<p>语法：getchar()   注：此函数没有参数</p>
+</li>
+</ol>
+</div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>侬仕超</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://www.nscblog.top/posts/6b82abcf/" title="最简单的C程序设计——顺序程序设计">https://www.nscblog.top/posts/6b82abcf/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/posts/d0f7b26e/" rel="prev" title="学习方法论"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">学习方法论</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/posts/4c65aa6d/" rel="next" title="算法——程序的灵魂"><span class="post-nav-text">算法——程序的灵魂</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" href="https://github.com/t-diana/t-diana.github.io/issues?q=is:issue+最简单的C程序设计——顺序程序设计" target="_blank" rel="noopener">GitHub Issues</a></div><div id="valine-container"></div><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function initValine() {
+  const valineConfig = {"enable":true,"appId":"6aMnX3gvc24y4kqY8wcwlrar-gzGzoHsz","appKey":"4mjNWPzsDxvxEsrWM9upHzgE","placeholder":"Just go go","avatar":null,"meta":["nick","mail","link"],"pageSize":10,"visitor":false,"highlight":true,"recordIP":false,"enableQQ":true,"el":"#valine-container","lang":"zh-cn"}
+  valineConfig.path = window.location.pathname
+  new Valine(valineConfig)
+}
+setTimeout(initValine, 1000)</script></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 侬仕超</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v4.2.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v0.9.5</span></div><div class="live_time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  window.setTimeout(blog_live_time, 1000);
+  const start = new Date('2020-05-15T00:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
+}
+blog_live_time();
+</script></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="搜索"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-search-line"></use></svg></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="/js/search/local-search.js" defer></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close-line"></use></svg></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="搜索..." value=""></div><div id="local-search-result"></div></div><script>let date = new Date();
+let today = (date.getMonth() + 1) + "-" + date.getDate()
+if ("4-4".indexOf(today) !== -1) {
+  document.documentElement.style.filter = "grayscale(1)";
+}</script></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
