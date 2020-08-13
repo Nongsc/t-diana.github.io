@@ -4,7 +4,7 @@
     <title>学习方法论</title>
     <url>/posts/d0f7b26e/</url>
     <content><![CDATA[
-    <div id="aplayer-SmURvFss" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-JJQLHeZZ" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="29089381" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -58,10 +58,135 @@
       </tags>
   </entry>
   <entry>
+    <title>Java复习记录</title>
+    <url>/posts/318fc0d1/</url>
+    <content><![CDATA[
+    <div id="aplayer-QixjQHwg" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="5253801" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    ></div>
+
+<p>去年7月份在培训机构中培训了半年，本想以为能找个待遇不错的工作。</p>
+<p>因为学的不够精进，无缘Java开发工程师这个职位。</p>
+<p>我内心还想着干关于计算机编程的职业，我喜欢计算机编程，但还不够热爱。</p>
+<p>所以现在复习，强化自己的基础。能让自己有相应的硬实力。</p>
+<a id="more"></a>
+
+<h2 id="2020-08-12-第六天Java复习"><a href="#2020-08-12-第六天Java复习" class="headerlink" title="2020-08-12-第六天Java复习"></a>2020-08-12-第六天Java复习</h2><h3 id="重载与重写的区别"><a href="#重载与重写的区别" class="headerlink" title="重载与重写的区别"></a>重载与重写的区别</h3><h4 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h4><blockquote>
+<p><strong>发生在同一个类中</strong>，方法名相同，参数列表不同(参数个数，类型，顺序)，与返回值，访问修饰符无关。</p>
+</blockquote>
+<p><strong>注意：Java允许重载任何方法。</strong></p>
+<h4 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h4><blockquote>
+<p>重写是子类对父类的允许访问的方法的实现过程进行重新编写。重写需要两个类。</p>
+</blockquote>
+<p>重写的要求：</p>
+<ol>
+<li>方法名相同，参数列表相同。</li>
+<li>返回值返回小于父类。</li>
+<li>抛出的异常小于父类。</li>
+<li>访问修饰符大于等于父类。</li>
+</ol>
+<h3 id="Java面向对象的三大特性"><a href="#Java面向对象的三大特性" class="headerlink" title="Java面向对象的三大特性"></a>Java面向对象的三大特性</h3><h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><blockquote>
+<p>对属性进行私有化，提供相应的get/set方法。规范对属性的操作。</p>
+</blockquote>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><blockquote>
+<p>通过关键字extends实现，如果要继承，必须满足is a关系。比如：我是个人。</p>
+</blockquote>
+<p>注意：</p>
+<ol>
+<li>子类拥有父类对象所有的属性和方法，但是父类中的私有属性和方法子类是无法访问的。</li>
+<li>子类可以拥有自己的属性和方法，也就是子类可以对父类进行扩展。</li>
+<li>子类可以用自己的方法实现父类的方法。</li>
+</ol>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><blockquote>
+<p>程序中定义的引用变量所指向具体类型和通过该引用变量发出的方法调用在编译时并不确定，而是在程序运行时期间才确定。</p>
+</blockquote>
+<hr>
+
+<h2 id="2020-08-13-第七天Java复习"><a href="#2020-08-13-第七天Java复习" class="headerlink" title="2020-08-13-第七天Java复习"></a>2020-08-13-第七天Java复习</h2><h3 id="String、StringBuffer和StringBuilder之间的区别。String为什么是不可变的？"><a href="#String、StringBuffer和StringBuilder之间的区别。String为什么是不可变的？" class="headerlink" title="String、StringBuffer和StringBuilder之间的区别。String为什么是不可变的？"></a>String、StringBuffer和StringBuilder之间的区别。String为什么是不可变的？</h3><ul>
+<li><p>可变性</p>
+<p>String类中使用final关键字修饰字符数组来保存字符串。所以String对象是不可变的</p>
+<p>StringBuffer和StringBuilder继承AbstractStringBuilder类，在这个类中字符数组并没有使用final修饰，所以这两种对象是可变的</p>
+</li>
+<li><p>线程安全性</p>
+<p>String不可变，线程安全</p>
+<p>StringBuffer对方法加了些同步锁或者对调用的方法加了同步锁，所以线程安全。</p>
+<p>StringBuilder并没有对方法进行同步加锁，线程不安全。</p>
+</li>
+<li><p>性能</p>
+<p>StringBuffer线程安全，效率低</p>
+<p>StirngBuilder线程不安全，效率高。</p>
+</li>
+</ul>
+<h3 id="在静态方法内调用一个非静态成为什么是非法的？"><a href="#在静态方法内调用一个非静态成为什么是非法的？" class="headerlink" title="在静态方法内调用一个非静态成为什么是非法的？"></a>在静态方法内调用一个非静态成为什么是非法的？</h3><p>static与类有关，与对象无关，非静态成员是与对象相关联的。当通过类名调用静态方法时，并没有创建对象，从而不能调用非静态成员。</p>
+<h3 id="在Java中定义一个无参构造的作用"><a href="#在Java中定义一个无参构造的作用" class="headerlink" title="在Java中定义一个无参构造的作用"></a>在Java中定义一个无参构造的作用</h3><p>在创建子类对象前，会先用super(),也就是先创建父类对象，如果父类之定义有参构造，而没有无参构造的话，super()就无法匹配，编译报错。</p>
+<h3 id="接口和抽象类的区别"><a href="#接口和抽象类的区别" class="headerlink" title="接口和抽象类的区别"></a>接口和抽象类的区别</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>interface</th>
+<th>abstract class</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>变量</td>
+<td>公开静态最终常量</td>
+<td>没有限制</td>
+</tr>
+<tr>
+<td>方法</td>
+<td>公开抽象方法，不能有实现(Java8后可以有默认实现)</td>
+<td>可以存在非抽象方法</td>
+</tr>
+<tr>
+<td>访问修饰符</td>
+<td>默认public</td>
+<td>抽象方法是为了被重写所以不能使用private修饰</td>
+</tr>
+<tr>
+<td>设计层面</td>
+<td>接口是对行为的抽象，是一种行为规范。</td>
+<td>抽象是对类的抽象，是一种模板设计。</td>
+</tr>
+</tbody></table>
+<h3 id="创建对象用什么运算符？对象实体与对象引用有何不同？"><a href="#创建对象用什么运算符？对象实体与对象引用有何不同？" class="headerlink" title="创建对象用什么运算符？对象实体与对象引用有何不同？"></a>创建对象用什么运算符？对象实体与对象引用有何不同？</h3><p>new运算符</p>
+<p>new创建对象实例在堆内存中；对象引用指向对象实例在栈内存中。</p>
+<p>一个对象引用可以指向0或1个对象</p>
+<p>一个对象可以有n引用指向</p>
+<h3 id="什么是返回值，返回值的作用"><a href="#什么是返回值，返回值的作用" class="headerlink" title="什么是返回值，返回值的作用"></a>什么是返回值，返回值的作用</h3><p>方法运行产生的结果，接收结果，用于其他操作。</p>
+<h3 id="静态方法与实例方法有何不同"><a href="#静态方法与实例方法有何不同" class="headerlink" title="静态方法与实例方法有何不同"></a>静态方法与实例方法有何不同</h3><p>调用方式：</p>
+<p>​    1.静态方法可以通过类名调用也可以通过对象名进行调用</p>
+<p>​    2.实例方法只能通过对象名进行调用。</p>
+<p>访问本类成员：</p>
+<p>​    1.静态方法只能访问静态成员，不允许访问实例成员和实例方法。</p>
+<p>​    2.实例方法没有限制。</p>
+<h3 id="hashCode与equals"><a href="#hashCode与equals" class="headerlink" title="hashCode与equals"></a>hashCode与equals</h3><blockquote>
+<p>hashCode和equals就是为了去重，先用hashCode确定两个对象的hash值是否相同，然后equals确定是否是同一对象。</p>
+</blockquote>
+<h4 id="hashCode介绍"><a href="#hashCode介绍" class="headerlink" title="hashCode介绍"></a>hashCode介绍</h4><p>hashCode 是获取哈希码，也叫散列码。返回的是一个int整数</p>
+<h4 id="hashCode存在的理由"><a href="#hashCode存在的理由" class="headerlink" title="hashCode存在的理由"></a>hashCode存在的理由</h4><p>用于检查判断两个对象的hashCode是否相同。不同的话散列在其他位置(减少equals的次数)，相同在调用equals比较对象内容是否相同。</p>
+<p>hashCode和equals相关规定</p>
+<ol>
+<li>两个对象相等，则hashCode一定也是相同的</li>
+<li>两个对象相等，对象两个对象分别调用equals方法返回true</li>
+<li>两个对象的hashCode相同，两个对象也不定相等</li>
+<li>equals方法被覆盖过(重写)，则hashCode方法也必须被覆盖(重写)。</li>
+<li>hashCode的默认行为是对堆上的对象产生独特值，如果没有重写hashCode，则该类的两个对象无论如何都不会相等。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>面试准备记录</category>
+      </categories>
+      <tags>
+        <tag>Java基础</tag>
+        <tag>学习</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>对文件的输入输出</title>
     <url>/posts/4e1c1c23/</url>
     <content><![CDATA[
-    <div id="aplayer-SlRzexPG" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-PqTAudWR" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -551,7 +676,7 @@ int main()
     <title>用户自己建立数据类型</title>
     <url>/posts/7cad0bc5/</url>
     <content><![CDATA[
-    <div id="aplayer-tjNrOKuH" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-gRgwJHNl" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -1391,7 +1516,7 @@ Date birthday;    //定义结构体类型变量，因为用typedef Date就是结
     <title>善于利用指针</title>
     <url>/posts/659d25f6/</url>
     <content><![CDATA[
-    <div id="aplayer-AGxDwKcM" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-SMCbgkHt" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -2343,7 +2468,7 @@ void check(int *p)
     <title>用函数实现模块化程序设计</title>
     <url>/posts/e1d8c1a1/</url>
     <content><![CDATA[
-    <div id="aplayer-EuvxaQqW" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-UWGYVUTY" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -2821,7 +2946,7 @@ int max()
     <title>利用数组处理批量数据</title>
     <url>/posts/2b72a7f0/</url>
     <content><![CDATA[
-    <div id="aplayer-qvvxqYkl" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-QdhpBfrw" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3086,7 +3211,7 @@ int main()
     <title>循环结构程序设计</title>
     <url>/posts/6d0a7f0b/</url>
     <content><![CDATA[
-    <div id="aplayer-UqIloNFJ" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-pzfDBOQq" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3223,7 +3348,7 @@ int main()
     <title>选择结构程序设计</title>
     <url>/posts/a08e0173/</url>
     <content><![CDATA[
-    <div id="aplayer-vixPjVQw" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-NPjmZRrp" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3520,7 +3645,7 @@ int main()
     <title>hexo+GitHub博客搭建</title>
     <url>/posts/6121bfd7/</url>
     <content><![CDATA[
-    <div id="aplayer-UiTAGYXu" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-ZiRWfINh" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="1423285" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3645,7 +3770,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>最简单的C程序设计——顺序程序设计</title>
     <url>/posts/6b82abcf/</url>
     <content><![CDATA[
-    <div id="aplayer-eMLotwAF" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-LIaTfvHu" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3884,7 +4009,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>算法——程序的灵魂</title>
     <url>/posts/4c65aa6d/</url>
     <content><![CDATA[
-    <div id="aplayer-dQMkyGXe" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-neHNTCeT" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3978,7 +4103,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>程序设计和C语言</title>
     <url>/posts/31f32bba/</url>
     <content><![CDATA[
-    <div id="aplayer-gvVGuQWS" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-meciEThg" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
