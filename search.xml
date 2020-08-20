@@ -4,7 +4,7 @@
     <title>学习方法论</title>
     <url>/posts/d0f7b26e/</url>
     <content><![CDATA[
-    <div id="aplayer-vefQquZI" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-SUbSNRNc" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="29089381" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -61,7 +61,7 @@
     <title>Java复习记录</title>
     <url>/posts/318fc0d1/</url>
     <content><![CDATA[
-    <div id="aplayer-GfSoSEfe" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-QzJVmmXI" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="5253801" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -214,7 +214,7 @@
 </tr>
 </tbody></table>
 <p>线程创建后处于 <strong>NEW(新建)</strong>状态，调用start()开始运行线程这时处于 <strong>READY(可运行)</strong>状态，当线程获得CPU时间片后处于 <strong>RUNNING(运行)</strong>状态。</p>
-<p>当县城调用同步方法时，在没有获取到锁的情况下，线程会进入到 <strong>BLOCKED(阻塞)</strong>状态。</p>
+<p>当线程调用同步方法时，在没有获取到锁的情况下，线程会进入到 <strong>BLOCKED(阻塞)</strong>状态。</p>
 <p>线程执行Runnable的run方法后进入 <strong>TERMINATED</strong>状态。</p>
 <h3 id="关于final关键字的一些总结"><a href="#关于final关键字的一些总结" class="headerlink" title="关于final关键字的一些总结"></a>关于final关键字的一些总结</h3><ol>
 <li><p>修饰变量</p>
@@ -253,6 +253,11 @@
 <p>信息的最小存储单元都是字节。</p>
 <p>字符流是由Java虚拟机将字节码转换得到的，但如果我们不知道编码类型，容易出现乱码问题，并且Java虚拟机转换过程比较耗时，所以I/O流直接提供了操作字符的接口。</p>
 </blockquote>
+<h2 id="2020-08-20-第十天Java复习"><a href="#2020-08-20-第十天Java复习" class="headerlink" title="2020-08-20-第十天Java复习"></a>2020-08-20-第十天Java复习</h2><h3 id="BIO-NIO-AIO之间的区别"><a href="#BIO-NIO-AIO之间的区别" class="headerlink" title="BIO,NIO,AIO之间的区别"></a>BIO,NIO,AIO之间的区别</h3><ul>
+<li>BIO：同步阻塞I/O，数据的读写必须阻塞在一个线程内等待其完成。适用于连接数不是特别高的情况下</li>
+<li>NIO：同步非阻塞I/O，支持面向缓冲的，基于通道的I/O操作方法。NIO提供了与传统BIO模型中的Socket和ServerScoket相对应的SocketChannel和ServerSocketChannel两种不同的套接字通道实现，两种通道都支持阻塞和非阻塞两种模式。</li>
+<li>AIO：AIO就是NIO2，Java7引入NIO的改进版，是异步非阻塞IO模型。异步IO基于事件和回调机制实现</li>
+</ul>
 ]]></content>
       <categories>
         <category>面试准备记录</category>
@@ -267,7 +272,7 @@
     <title>对文件的输入输出</title>
     <url>/posts/4e1c1c23/</url>
     <content><![CDATA[
-    <div id="aplayer-jQmGPSQK" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-RMQoiYDV" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -757,7 +762,7 @@ int main()
     <title>用户自己建立数据类型</title>
     <url>/posts/7cad0bc5/</url>
     <content><![CDATA[
-    <div id="aplayer-yIPsPkkA" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-bvRgXpmp" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -1597,7 +1602,7 @@ Date birthday;    //定义结构体类型变量，因为用typedef Date就是结
     <title>善于利用指针</title>
     <url>/posts/659d25f6/</url>
     <content><![CDATA[
-    <div id="aplayer-NIccJiuK" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-hzZVQjFw" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -2549,7 +2554,7 @@ void check(int *p)
     <title>用函数实现模块化程序设计</title>
     <url>/posts/e1d8c1a1/</url>
     <content><![CDATA[
-    <div id="aplayer-HBQWBXnq" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-KYGpsZEp" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3027,7 +3032,7 @@ int max()
     <title>利用数组处理批量数据</title>
     <url>/posts/2b72a7f0/</url>
     <content><![CDATA[
-    <div id="aplayer-ywDowFyX" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-eUrpQZXR" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3292,7 +3297,7 @@ int main()
     <title>循环结构程序设计</title>
     <url>/posts/6d0a7f0b/</url>
     <content><![CDATA[
-    <div id="aplayer-TrsAsgVj" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-nLnmKPSE" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3429,7 +3434,7 @@ int main()
     <title>选择结构程序设计</title>
     <url>/posts/a08e0173/</url>
     <content><![CDATA[
-    <div id="aplayer-TGJjWBmN" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-twGQfqPm" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3726,7 +3731,7 @@ int main()
     <title>hexo+GitHub博客搭建</title>
     <url>/posts/6121bfd7/</url>
     <content><![CDATA[
-    <div id="aplayer-bSFRKToP" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-xffHbaVe" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="1423285" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3851,7 +3856,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>最简单的C程序设计——顺序程序设计</title>
     <url>/posts/6b82abcf/</url>
     <content><![CDATA[
-    <div id="aplayer-pBEuYaJs" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-AXcozBhp" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4090,7 +4095,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>算法——程序的灵魂</title>
     <url>/posts/4c65aa6d/</url>
     <content><![CDATA[
-    <div id="aplayer-RAgFPHZp" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-cByFevYw" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4184,7 +4189,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>程序设计和C语言</title>
     <url>/posts/31f32bba/</url>
     <content><![CDATA[
-    <div id="aplayer-AErhTKKd" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-NGARiVxt" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
