@@ -4,8 +4,8 @@
     <title>学习方法论</title>
     <url>/posts/d0f7b26e/</url>
     <content><![CDATA[
-    <div id="aplayer-lvaVvqiF" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="29089381" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-AVtKMhlo" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="29089381" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 <h2 id="关于学习"><a href="#关于学习" class="headerlink" title="关于学习"></a>关于学习</h2><h3 id="世界观："><a href="#世界观：" class="headerlink" title="世界观："></a>世界观：</h3><p>​    不学习就不会产生进步，将会愚昧无知，自甘堕落。学习就是体验痛苦，重复同样的事物，却没有任何意思。我不喜欢学习，也不喜欢学习的成果，我想要的永远没有得到过。我只是在获取在这个世界的生存方式。</p>
@@ -58,11 +58,27 @@
       </tags>
   </entry>
   <entry>
-    <title>Java复习记录</title>
+    <title>Java集合复习记录</title>
+    <url>/posts/45f2326c/</url>
+    <content><![CDATA[
+    <div id="aplayer-piGVcnrA" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="479764527" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    ></div>]]></content>
+      <categories>
+        <category>面试准备记录</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+        <tag>Java</tag>
+        <tag>Java集合</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java基础复习记录</title>
     <url>/posts/318fc0d1/</url>
     <content><![CDATA[
-    <div id="aplayer-xbjIVbnB" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="5253801" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-clupTwQA" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="5253801" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 <p>去年7月份在培训机构中培训了半年，本想以为能找个待遇不错的工作。</p>
@@ -74,7 +90,7 @@
 </blockquote>
 <a id="more"></a>
 
-<h2 id="2020-08-12-第六天Java复习"><a href="#2020-08-12-第六天Java复习" class="headerlink" title="2020-08-12-第六天Java复习"></a>2020-08-12-第六天Java复习</h2><h3 id="重载与重写的区别"><a href="#重载与重写的区别" class="headerlink" title="重载与重写的区别"></a>重载与重写的区别</h3><h4 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h4><blockquote>
+<h2 id="2020-08-12-第六天Java基础复习"><a href="#2020-08-12-第六天Java基础复习" class="headerlink" title="2020-08-12-第六天Java基础复习"></a>2020-08-12-第六天Java基础复习</h2><h3 id="重载与重写的区别"><a href="#重载与重写的区别" class="headerlink" title="重载与重写的区别"></a>重载与重写的区别</h3><h4 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h4><blockquote>
 <p><strong>发生在同一个类中</strong>，方法名相同，参数列表不同(参数个数，类型，顺序)，与返回值，访问修饰符无关。</p>
 </blockquote>
 <p><strong>注意：Java允许重载任何方法。</strong></p>
@@ -105,7 +121,7 @@
 </blockquote>
 <hr>
 
-<h2 id="2020-08-13-第七天Java复习"><a href="#2020-08-13-第七天Java复习" class="headerlink" title="2020-08-13-第七天Java复习"></a>2020-08-13-第七天Java复习</h2><h3 id="String、StringBuffer和StringBuilder之间的区别。String为什么是不可变的？"><a href="#String、StringBuffer和StringBuilder之间的区别。String为什么是不可变的？" class="headerlink" title="String、StringBuffer和StringBuilder之间的区别。String为什么是不可变的？"></a>String、StringBuffer和StringBuilder之间的区别。String为什么是不可变的？</h3><ul>
+<h2 id="2020-08-13-第七天Java基础复习"><a href="#2020-08-13-第七天Java基础复习" class="headerlink" title="2020-08-13-第七天Java基础复习"></a>2020-08-13-第七天Java基础复习</h2><h3 id="String、StringBuffer和StringBuilder之间的区别。String为什么是不可变的？"><a href="#String、StringBuffer和StringBuilder之间的区别。String为什么是不可变的？" class="headerlink" title="String、StringBuffer和StringBuilder之间的区别。String为什么是不可变的？"></a>String、StringBuffer和StringBuilder之间的区别。String为什么是不可变的？</h3><ul>
 <li><p>可变性</p>
 <p>String类中使用final关键字修饰字符数组来保存字符串。所以String对象是不可变的</p>
 <p>StringBuffer和StringBuilder继承AbstractStringBuilder类，在这个类中字符数组并没有使用final修饰，所以这两种对象是可变的</p>
@@ -177,11 +193,11 @@
 </ol>
 <hr>
 
-<h2 id="2020-08-14-第八天Java复习"><a href="#2020-08-14-第八天Java复习" class="headerlink" title="2020-08-14-第八天Java复习"></a>2020-08-14-第八天Java复习</h2><h3 id="简述线程、程序和进程的基本概念与他们之间的关系"><a href="#简述线程、程序和进程的基本概念与他们之间的关系" class="headerlink" title="简述线程、程序和进程的基本概念与他们之间的关系"></a>简述线程、程序和进程的基本概念与他们之间的关系</h3><p>线程是比进程更小的执行单位(在项目中就如同一个可以执行的功能)。同类的多个线程共享一块内存空间和一组系统资源。所以系统产生一个线程或是在各个线程之间切换工作是，负担比进程小的多，因而线程也被称为轻量级进程。</p>
+<h2 id="2020-08-14-第八天Java基础复习"><a href="#2020-08-14-第八天Java基础复习" class="headerlink" title="2020-08-14-第八天Java基础复习"></a>2020-08-14-第八天Java基础复习</h2><h3 id="简述线程、程序和进程的基本概念与他们之间的关系"><a href="#简述线程、程序和进程的基本概念与他们之间的关系" class="headerlink" title="简述线程、程序和进程的基本概念与他们之间的关系"></a>简述线程、程序和进程的基本概念与他们之间的关系</h3><p>线程是比进程更小的执行单位(在项目中就如同一个可以执行的功能)。同类的多个线程共享一块内存空间和一组系统资源。所以系统产生一个线程或是在各个线程之间切换工作是，负担比进程小的多，因而线程也被称为轻量级进程。</p>
 <p>程序就是静态的代码。</p>
 <p>进程就是程序的一次执行过程。</p>
 <p>线程和进程的最大不同在于基本上各进程是独立的，各线程不一定，同一进程中的线程可能会互相影响。</p>
-<h2 id="2020-08-19-第九天Java复习"><a href="#2020-08-19-第九天Java复习" class="headerlink" title="2020-08-19-第九天Java复习"></a>2020-08-19-第九天Java复习</h2><h3 id="线程有哪些基本状态"><a href="#线程有哪些基本状态" class="headerlink" title="线程有哪些基本状态"></a>线程有哪些基本状态</h3><table>
+<h2 id="2020-08-19-第九天Java基础复习"><a href="#2020-08-19-第九天Java基础复习" class="headerlink" title="2020-08-19-第九天Java基础复习"></a>2020-08-19-第九天Java基础复习</h2><h3 id="线程有哪些基本状态"><a href="#线程有哪些基本状态" class="headerlink" title="线程有哪些基本状态"></a>线程有哪些基本状态</h3><table>
 <thead>
 <tr>
 <th>状态名称</th>
@@ -253,7 +269,7 @@
 <p>信息的最小存储单元都是字节。</p>
 <p>字符流是由Java虚拟机将字节码转换得到的，但如果我们不知道编码类型，容易出现乱码问题，并且Java虚拟机转换过程比较耗时，所以I/O流直接提供了操作字符的接口。</p>
 </blockquote>
-<h2 id="2020-08-20-第十天Java复习"><a href="#2020-08-20-第十天Java复习" class="headerlink" title="2020-08-20-第十天Java复习"></a>2020-08-20-第十天Java复习</h2><h3 id="BIO-NIO-AIO之间的区别"><a href="#BIO-NIO-AIO之间的区别" class="headerlink" title="BIO,NIO,AIO之间的区别"></a>BIO,NIO,AIO之间的区别</h3><ul>
+<h2 id="2020-08-20-第十天Java基础复习"><a href="#2020-08-20-第十天Java基础复习" class="headerlink" title="2020-08-20-第十天Java基础复习"></a>2020-08-20-第十天Java基础复习</h2><h3 id="BIO-NIO-AIO之间的区别"><a href="#BIO-NIO-AIO之间的区别" class="headerlink" title="BIO,NIO,AIO之间的区别"></a>BIO,NIO,AIO之间的区别</h3><ul>
 <li>BIO：同步阻塞I/O，数据的读写必须阻塞在一个线程内等待其完成。适用于连接数不是特别高的情况下</li>
 <li>NIO：同步非阻塞I/O，支持面向缓冲的，基于通道的I/O操作方法。NIO提供了与传统BIO模型中的Socket和ServerScoket相对应的SocketChannel和ServerSocketChannel两种不同的套接字通道实现，两种通道都支持阻塞和非阻塞两种模式。</li>
 <li>AIO：AIO就是NIO2，Java7引入NIO的改进版，是异步非阻塞IO模型。异步IO基于事件和回调机制实现</li>
@@ -272,8 +288,8 @@
     <title>对文件的输入输出</title>
     <url>/posts/4e1c1c23/</url>
     <content><![CDATA[
-    <div id="aplayer-fYyRfuOu" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-BSJOBDPo" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 <h2 id="10-1-C文件的有关基本知识"><a href="#10-1-C文件的有关基本知识" class="headerlink" title="10.1    C文件的有关基本知识"></a>10.1    C文件的有关基本知识</h2><h3 id="10-1-1-什么是文件"><a href="#10-1-1-什么是文件" class="headerlink" title="10.1.1    什么是文件"></a>10.1.1    什么是文件</h3><p>程序设计中主要用到两种文件：</p>
@@ -762,8 +778,8 @@ int main()
     <title>用户自己建立数据类型</title>
     <url>/posts/7cad0bc5/</url>
     <content><![CDATA[
-    <div id="aplayer-mPwFhKql" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-raoWLOKv" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 <h2 id="9-1-定义和使用结构体变量"><a href="#9-1-定义和使用结构体变量" class="headerlink" title="9.1    定义和使用结构体变量"></a>9.1    定义和使用结构体变量</h2><h3 id="9-1-1-自己建立结构体类型"><a href="#9-1-1-自己建立结构体类型" class="headerlink" title="9.1.1    自己建立结构体类型"></a>9.1.1    自己建立结构体类型</h3><p>C语言允许用户自己建立由不同类型数据组成的复合型数据结构，它称为结构体。</p>
@@ -1602,8 +1618,8 @@ Date birthday;    //定义结构体类型变量，因为用typedef Date就是结
     <title>善于利用指针</title>
     <url>/posts/659d25f6/</url>
     <content><![CDATA[
-    <div id="aplayer-CIiJBBXF" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-vCBRgYak" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 <h2 id="8-1-指针是什么"><a href="#8-1-指针是什么" class="headerlink" title="8.1    指针是什么"></a>8.1    指针是什么</h2><blockquote>
@@ -2554,8 +2570,8 @@ void check(int *p)
     <title>用函数实现模块化程序设计</title>
     <url>/posts/e1d8c1a1/</url>
     <content><![CDATA[
-    <div id="aplayer-IzWQgYct" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-EFsujbia" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 <h2 id="7-1为什么要用函数"><a href="#7-1为什么要用函数" class="headerlink" title="7.1为什么要用函数"></a>7.1为什么要用函数</h2><blockquote>
@@ -3032,8 +3048,8 @@ int max()
     <title>利用数组处理批量数据</title>
     <url>/posts/2b72a7f0/</url>
     <content><![CDATA[
-    <div id="aplayer-aOYNQzaG" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-eZRcprLf" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 <blockquote>
@@ -3297,8 +3313,8 @@ int main()
     <title>循环结构程序设计</title>
     <url>/posts/6d0a7f0b/</url>
     <content><![CDATA[
-    <div id="aplayer-lWlegCHY" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-NOyjadCl" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 <h2 id="5-1-为什么需要循环控制"><a href="#5-1-为什么需要循环控制" class="headerlink" title="5.1    为什么需要循环控制"></a>5.1    为什么需要循环控制</h2><p>用于处理需要进行重复的操作。</p>
@@ -3434,8 +3450,8 @@ int main()
     <title>选择结构程序设计</title>
     <url>/posts/a08e0173/</url>
     <content><![CDATA[
-    <div id="aplayer-KjPFDBRn" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-JKrGNYXc" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 <h2 id="4-1-选择结构和判断条件"><a href="#4-1-选择结构和判断条件" class="headerlink" title="4.1 选择结构和判断条件"></a>4.1 选择结构和判断条件</h2><p>选择结构的关键：条件判断。</p>
@@ -3731,8 +3747,8 @@ int main()
     <title>hexo+GitHub博客搭建</title>
     <url>/posts/6121bfd7/</url>
     <content><![CDATA[
-    <div id="aplayer-cXbxqawV" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="1423285" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-qlsatdht" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="1423285" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><blockquote>
@@ -3856,8 +3872,8 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>最简单的C程序设计——顺序程序设计</title>
     <url>/posts/6b82abcf/</url>
     <content><![CDATA[
-    <div id="aplayer-KlNRWWgn" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-kgHqaREA" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 
@@ -4095,8 +4111,8 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>算法——程序的灵魂</title>
     <url>/posts/4c65aa6d/</url>
     <content><![CDATA[
-    <div id="aplayer-XOkpqteu" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-pgDLLuMs" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>程序包含两个方面的信息:</p>
@@ -4189,8 +4205,8 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>程序设计和C语言</title>
     <url>/posts/31f32bba/</url>
     <content><![CDATA[
-    <div id="aplayer-RdLeKUoO" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    <div id="aplayer-orDXhGuh" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
 
