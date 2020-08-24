@@ -4,7 +4,7 @@
     <title>学习方法论</title>
     <url>/posts/d0f7b26e/</url>
     <content><![CDATA[
-    <div id="aplayer-AVtKMhlo" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-HcGIkHUB" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="29089381" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -61,9 +61,57 @@
     <title>Java集合复习记录</title>
     <url>/posts/45f2326c/</url>
     <content><![CDATA[
-    <div id="aplayer-piGVcnrA" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-WnRvchnC" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="479764527" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
-    ></div>]]></content>
+    ></div>
+
+<p>Java容器复习，挺重要的，好好复习。</p>
+<p>不敲笔记，感觉都会忘完。</p>
+<a id="more"></a>
+
+<h2 id="2020-08-24-第一天Java集合复习记录"><a href="#2020-08-24-第一天Java集合复习记录" class="headerlink" title="2020-08-24-第一天Java集合复习记录"></a>2020-08-24-第一天Java集合复习记录</h2><h3 id="List-Set-Map之间的区别"><a href="#List-Set-Map之间的区别" class="headerlink" title="List,Set,Map之间的区别"></a>List,Set,Map之间的区别</h3><ul>
+<li>List:有序，可重复，有下标</li>
+<li>Set:不重复，无下标，无序</li>
+<li>Map:<ul>
+<li>使用键值对存储数据</li>
+<li>key :无序，无下标，不重复,key可以为NULL</li>
+<li>value:可以重复，value可以为NULL</li>
+</ul>
+</li>
+</ul>
+<h3 id="ArrayList和LinkedList区别"><a href="#ArrayList和LinkedList区别" class="headerlink" title="ArrayList和LinkedList区别"></a>ArrayList和LinkedList区别</h3><ol>
+<li><p>线程安全：两者都不是同步的，所以线程是不安全的</p>
+</li>
+<li><p>底层数据结构：</p>
+<ol>
+<li>ArrayList底层使用的Object数组</li>
+<li>LinkedList底层使用的是双向链表</li>
+</ol>
+</li>
+<li><p>插入和删除元素</p>
+<ol>
+<li>ArrayList采用数组存储，写操作慢，读操作快</li>
+<li>LinkedList底层是双向链表，增删快，查询慢</li>
+</ol>
+</li>
+<li><p>快速随机访问：通过序号快速获取元素</p>
+<ol>
+<li>LinkedList不支持快速随机访问</li>
+<li>ArrayList支持通过下标访问</li>
+</ol>
+</li>
+<li><p>内存空间占用：</p>
+<ol>
+<li>ArrayList的空间浪费主要体现在结尾会预留一定的容量空间</li>
+<li>LinkedList的空间花费体现在每个元素都要消耗比ArrayList更多的空间</li>
+</ol>
+</li>
+<li><blockquote>
+<p>RandomAccess是快速访问的标识，因为ArrayList天然支持快速随机访问，ArrayList实现了RandomAccess接口，ArrayList就具有快速随机访问功能</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="ArrayList的扩容机制"><a href="#ArrayList的扩容机制" class="headerlink" title="ArrayList的扩容机制"></a>ArrayList的扩容机制</h3>]]></content>
       <categories>
         <category>面试准备记录</category>
       </categories>
@@ -77,7 +125,7 @@
     <title>Java基础复习记录</title>
     <url>/posts/318fc0d1/</url>
     <content><![CDATA[
-    <div id="aplayer-clupTwQA" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-xdaidXMM" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="5253801" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -288,7 +336,7 @@
     <title>对文件的输入输出</title>
     <url>/posts/4e1c1c23/</url>
     <content><![CDATA[
-    <div id="aplayer-BSJOBDPo" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-hGFUYLWo" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -778,7 +826,7 @@ int main()
     <title>用户自己建立数据类型</title>
     <url>/posts/7cad0bc5/</url>
     <content><![CDATA[
-    <div id="aplayer-raoWLOKv" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-rmOVEChi" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -1618,7 +1666,7 @@ Date birthday;    //定义结构体类型变量，因为用typedef Date就是结
     <title>善于利用指针</title>
     <url>/posts/659d25f6/</url>
     <content><![CDATA[
-    <div id="aplayer-vCBRgYak" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-mhpuFrqm" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -2570,7 +2618,7 @@ void check(int *p)
     <title>用函数实现模块化程序设计</title>
     <url>/posts/e1d8c1a1/</url>
     <content><![CDATA[
-    <div id="aplayer-EFsujbia" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-XdNjudFk" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3048,7 +3096,7 @@ int max()
     <title>利用数组处理批量数据</title>
     <url>/posts/2b72a7f0/</url>
     <content><![CDATA[
-    <div id="aplayer-eZRcprLf" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-OYTuEakY" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3313,7 +3361,7 @@ int main()
     <title>循环结构程序设计</title>
     <url>/posts/6d0a7f0b/</url>
     <content><![CDATA[
-    <div id="aplayer-NOyjadCl" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-ahsNWPzg" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3450,7 +3498,7 @@ int main()
     <title>选择结构程序设计</title>
     <url>/posts/a08e0173/</url>
     <content><![CDATA[
-    <div id="aplayer-JKrGNYXc" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-grrdZTIj" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3747,7 +3795,7 @@ int main()
     <title>hexo+GitHub博客搭建</title>
     <url>/posts/6121bfd7/</url>
     <content><![CDATA[
-    <div id="aplayer-qlsatdht" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-DHEEoLIQ" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="1423285" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3872,7 +3920,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>最简单的C程序设计——顺序程序设计</title>
     <url>/posts/6b82abcf/</url>
     <content><![CDATA[
-    <div id="aplayer-kgHqaREA" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-AgxENgos" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4111,7 +4159,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>算法——程序的灵魂</title>
     <url>/posts/4c65aa6d/</url>
     <content><![CDATA[
-    <div id="aplayer-pgDLLuMs" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-rrUwSzcr" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4205,7 +4253,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>程序设计和C语言</title>
     <url>/posts/31f32bba/</url>
     <content><![CDATA[
-    <div id="aplayer-orDXhGuh" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-JWlGHdEK" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
