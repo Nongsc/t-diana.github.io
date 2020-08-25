@@ -4,7 +4,7 @@
     <title>学习方法论</title>
     <url>/posts/d0f7b26e/</url>
     <content><![CDATA[
-    <div id="aplayer-HcGIkHUB" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-nIQDBRDZ" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="29089381" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -58,10 +58,62 @@
       </tags>
   </entry>
   <entry>
+    <title>微信小程序开发-基础篇</title>
+    <url>/posts/d2a29eb/</url>
+    <content><![CDATA[
+    <div id="aplayer-JPPrSvfJ" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="187672" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    ></div>
+
+<p>想知道微信小程序时怎么玩的，所以开始记录学习过程，不记录的话，感觉很快就忘掉。</p>
+<p>但愿达到可以熟练开发的程序，慢慢坚持。</p>
+<a id="more"></a>
+
+<h2 id="项目目录讲解"><a href="#项目目录讲解" class="headerlink" title="项目目录讲解"></a>项目目录讲解</h2><ul>
+<li>app.json ：小程序的入口文件，也是小程序的公共配置</li>
+<li>app.js：小程序全局逻辑管理设置</li>
+<li>app.wxss：小程序的公共样式表，不一定需要</li>
+<li>pages文件夹：小程序页面管理，每个页面以文件夹形式存在，文件夹内包含各自的逻辑（js），样式表（wxss），配置表（json），页面结构(wxml)</li>
+</ul>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li>app.json配置页面路径时，不能用绝对路径，只能用相对路径。</li>
+<li>json文件中不允许存在注释</li>
+<li>根据错误信息调错，console内的错误信息基本是语法错误</li>
+</ol>
+</blockquote>
+<h2 id="页面结构基础组件-view-text-image"><a href="#页面结构基础组件-view-text-image" class="headerlink" title="页面结构基础组件(view,text,image)"></a>页面结构基础组件(view,text,image)</h2><p>view组件相当于HTML中的div容器元素</p>
+<p>text和image和HTML中的标签相似</p>
+<h2 id="基本快速布局设置"><a href="#基本快速布局设置" class="headerlink" title="基本快速布局设置"></a>基本快速布局设置</h2><p>使用快速弹性布局设置，设置纵向平均分布时，需要设置相应的高度，设置横向分布时参考纵向分布。</p>
+<h2 id="响应式长度单位rpx"><a href="#响应式长度单位rpx" class="headerlink" title="响应式长度单位rpx"></a>响应式长度单位rpx</h2><p>用于适应不同屏幕的尺寸</p>
+<h2 id="使用navigator组件"><a href="#使用navigator组件" class="headerlink" title="使用navigator组件"></a>使用navigator组件</h2><blockquote>
+<p>作用：创建导航链接</p>
+</blockquote>
+<p>基本属性：</p>
+<ul>
+<li>open-type:指定跳转方式，重定向和传统方式，主要体现在左上角的标志<ul>
+<li>标志为房屋，说明是从定向，不能放上一页，直接放回主页</li>
+<li>标志为左箭头，是传统方式跳转，可以放回上一页，不能直接返回主页</li>
+</ul>
+</li>
+<li>hover-class和其他样式指向同一个属性时，哪个样式在后面，后面的样式就会覆盖前一个相应的样式。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>微信小程序开发学习记录</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+        <tag>微信小程序</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java集合复习记录</title>
     <url>/posts/45f2326c/</url>
     <content><![CDATA[
-    <div id="aplayer-WnRvchnC" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-EOBVygel" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="479764527" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -111,21 +163,44 @@
 </blockquote>
 </li>
 </ol>
-<h3 id="ArrayList的扩容机制"><a href="#ArrayList的扩容机制" class="headerlink" title="ArrayList的扩容机制"></a>ArrayList的扩容机制</h3>]]></content>
+<h3 id="ArrayList的扩容机制"><a href="#ArrayList的扩容机制" class="headerlink" title="ArrayList的扩容机制"></a>ArrayList的扩容机制</h3><p>默认初始容量为：</p>
+<pre><code class="Java">/**
+ * Default initial capacity.
+ */
+private static final int DEFAULT_CAPACITY = 10;</code></pre>
+<p>无参构造初始是一个空的数组：</p>
+<pre><code class="Java">/**
+ * Constructs an empty list with an initial capacity of ten.
+ */
+public ArrayList() {
+    this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+}</code></pre>
+<p>设置初始容量的有参构造：</p>
+<pre><code class="Java">public ArrayList(int initialCapacity) {
+    if (initialCapacity &gt; 0) {//正确容量的话，给一个大小为容量的Object数组
+        this.elementData = new Object[initialCapacity];
+    } else if (initialCapacity == 0) {//当容量为0，设置空数组
+        this.elementData = EMPTY_ELEMENTDATA;
+    } else {//否则就抛出异常
+        throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+
+                                           initialCapacity);
+    }
+}</code></pre>
+]]></content>
       <categories>
         <category>面试准备记录</category>
       </categories>
       <tags>
+        <tag>Java集合</tag>
         <tag>学习</tag>
         <tag>Java</tag>
-        <tag>Java集合</tag>
       </tags>
   </entry>
   <entry>
     <title>Java基础复习记录</title>
     <url>/posts/318fc0d1/</url>
     <content><![CDATA[
-    <div id="aplayer-xdaidXMM" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-RexphKOH" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="5253801" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -327,16 +402,16 @@
         <category>面试准备记录</category>
       </categories>
       <tags>
-        <tag>Java基础</tag>
         <tag>学习</tag>
         <tag>Java</tag>
+        <tag>Java基础</tag>
       </tags>
   </entry>
   <entry>
     <title>对文件的输入输出</title>
     <url>/posts/4e1c1c23/</url>
     <content><![CDATA[
-    <div id="aplayer-hGFUYLWo" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-mTbFWgDR" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -826,7 +901,7 @@ int main()
     <title>用户自己建立数据类型</title>
     <url>/posts/7cad0bc5/</url>
     <content><![CDATA[
-    <div id="aplayer-rmOVEChi" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-wVGNfVdF" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -1666,7 +1741,7 @@ Date birthday;    //定义结构体类型变量，因为用typedef Date就是结
     <title>善于利用指针</title>
     <url>/posts/659d25f6/</url>
     <content><![CDATA[
-    <div id="aplayer-mhpuFrqm" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-XqLTAHiK" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -2618,7 +2693,7 @@ void check(int *p)
     <title>用函数实现模块化程序设计</title>
     <url>/posts/e1d8c1a1/</url>
     <content><![CDATA[
-    <div id="aplayer-XdNjudFk" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-PsCPhwnn" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3096,7 +3171,7 @@ int max()
     <title>利用数组处理批量数据</title>
     <url>/posts/2b72a7f0/</url>
     <content><![CDATA[
-    <div id="aplayer-OYTuEakY" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-yolNOuTT" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3361,7 +3436,7 @@ int main()
     <title>循环结构程序设计</title>
     <url>/posts/6d0a7f0b/</url>
     <content><![CDATA[
-    <div id="aplayer-ahsNWPzg" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-QdWqRQzt" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3498,7 +3573,7 @@ int main()
     <title>选择结构程序设计</title>
     <url>/posts/a08e0173/</url>
     <content><![CDATA[
-    <div id="aplayer-grrdZTIj" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-IaNiaCtT" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3795,7 +3870,7 @@ int main()
     <title>hexo+GitHub博客搭建</title>
     <url>/posts/6121bfd7/</url>
     <content><![CDATA[
-    <div id="aplayer-DHEEoLIQ" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-DWnfsPEH" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="1423285" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3920,7 +3995,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>最简单的C程序设计——顺序程序设计</title>
     <url>/posts/6b82abcf/</url>
     <content><![CDATA[
-    <div id="aplayer-AgxENgos" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-dzNjyLRg" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4159,7 +4234,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>算法——程序的灵魂</title>
     <url>/posts/4c65aa6d/</url>
     <content><![CDATA[
-    <div id="aplayer-rrUwSzcr" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-pPrOFCbu" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4253,7 +4328,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>程序设计和C语言</title>
     <url>/posts/31f32bba/</url>
     <content><![CDATA[
-    <div id="aplayer-JWlGHdEK" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-TsJRIkZd" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
