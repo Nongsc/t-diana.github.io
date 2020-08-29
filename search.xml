@@ -4,7 +4,7 @@
     <title>学习方法论</title>
     <url>/posts/d0f7b26e/</url>
     <content><![CDATA[
-    <div id="aplayer-nIQDBRDZ" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-gjpfzVeB" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="29089381" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -61,7 +61,7 @@
     <title>微信小程序开发-基础篇</title>
     <url>/posts/d2a29eb/</url>
     <content><![CDATA[
-    <div id="aplayer-JPPrSvfJ" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-iEIntZfT" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="187672" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -78,7 +78,7 @@
 <blockquote>
 <p>注意：</p>
 <ol>
-<li>app.json配置页面路径时，不能用绝对路径，只能用相对路径。</li>
+<li>app.json配置页面路径时，只能用绝对路径，不能用相对路径。</li>
 <li>json文件中不允许存在注释</li>
 <li>根据错误信息调错，console内的错误信息基本是语法错误</li>
 </ol>
@@ -88,7 +88,7 @@
 <h2 id="基本快速布局设置"><a href="#基本快速布局设置" class="headerlink" title="基本快速布局设置"></a>基本快速布局设置</h2><p>使用快速弹性布局设置，设置纵向平均分布时，需要设置相应的高度，设置横向分布时参考纵向分布。</p>
 <h2 id="响应式长度单位rpx"><a href="#响应式长度单位rpx" class="headerlink" title="响应式长度单位rpx"></a>响应式长度单位rpx</h2><p>用于适应不同屏幕的尺寸</p>
 <h2 id="使用navigator组件"><a href="#使用navigator组件" class="headerlink" title="使用navigator组件"></a>使用navigator组件</h2><blockquote>
-<p>作用：创建导航链接</p>
+<p>作用：链接跳转</p>
 </blockquote>
 <p>基本属性：</p>
 <ul>
@@ -99,6 +99,178 @@
 </li>
 <li>hover-class和其他样式指向同一个属性时，哪个样式在后面，后面的样式就会覆盖前一个相应的样式。</li>
 </ul>
+<p>about.wxml中的代码：</p>
+<pre><code class="xml">&lt;navigator url=&quot;/pages/weekly/weekly&quot; open-type=&quot;switchTab&quot; hover-class=&quot;click-class&quot; class=&quot;re&quot;&gt;每周推荐&lt;/navigator&gt;</code></pre>
+<h2 id="全局配置——tabBar"><a href="#全局配置——tabBar" class="headerlink" title="全局配置——tabBar"></a>全局配置——tabBar</h2><blockquote>
+<p>作用：用于标签页的切换</p>
+</blockquote>
+<p>使用时，navigator的open-type使用默认属性值时，navigator将会失效</p>
+<p>app.json中的代码</p>
+<pre><code class="json">&quot;tabBar&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;text&quot;: &quot;每周推荐&quot;,
+        &quot;pagePath&quot;: &quot;pages/weekly/weekly&quot;
+      },
+      {
+        &quot;text&quot;: &quot;关于&quot;,
+        &quot;pagePath&quot;: &quot;pages/about/about&quot;
+      }
+    ],
+    &quot;color&quot;: &quot;#000000&quot;,
+    &quot;selectedColor&quot;: &quot;#ffffff&quot;,
+    &quot;backgroundColor&quot;: &quot;#BEBEBE&quot;
+  }</code></pre>
+<h2 id="全局配置——window"><a href="#全局配置——window" class="headerlink" title="全局配置——window"></a>全局配置——window</h2><blockquote>
+<p>用于设置小程序的状态栏、导航条、标题、窗口背景色。</p>
+</blockquote>
+<p>自行上机看效果</p>
+<pre><code class="json">&quot;window&quot;: {
+    &quot;navigationBarBackgroundColor&quot;: &quot;#BEBEBE&quot;, #导航栏背景色
+    &quot;navigationBarTextStyle&quot;: &quot;white&quot;,#导航栏文字颜色，属性值只有white | black
+    &quot;navigationBarTitleText&quot;: &quot;电影周周看&quot; #导航栏标题文字
+  }</code></pre>
+<h2 id="数据绑定——从视图中抽离出数据"><a href="#数据绑定——从视图中抽离出数据" class="headerlink" title="数据绑定——从视图中抽离出数据"></a>数据绑定——从视图中抽离出数据</h2><blockquote>
+<p>WXML 中的动态数据均来自对应 Page 的 data。</p>
+</blockquote>
+<p>如同在配置文件中动态的给相应的数据</p>
+<p>页面结构：</p>
+<pre><code class="xml">&lt;view class=&quot;container&quot;&gt;
+  &lt;text&gt;本周推荐&lt;/text&gt;
+  &lt;image class=&quot;weekly-banner&quot; src=&quot;{{thisWeekMovie.imageSrc}}&quot;&gt;&lt;/image&gt;
+  &lt;text&gt;{{thisWeekMovie.name}}&lt;/text&gt;
+  &lt;text&gt;{{thisWeekMovie.comment}}&lt;/text&gt;
+&lt;/view&gt;</code></pre>
+<p>js中文件数据：</p>
+<pre><code class="javascript">Page({
+  data:{
+    thisWeekMovie:{
+      name:&quot;教父&quot;,
+      imageSrc:&quot;/images/timg.png&quot;,
+      comment:&quot;点评：最精彩的剧本，最真实的黑帮社会。&quot;
+    }
+  }
+})</code></pre>
+<blockquote>
+<p>注意：</p>
+<p>可以同过开发者工具调试器的APPdata，实时调试每个页面的所有内部状态变量的取值。</p>
+</blockquote>
+<h2 id="小程序运行环境与基本架构"><a href="#小程序运行环境与基本架构" class="headerlink" title="小程序运行环境与基本架构"></a>小程序运行环境与基本架构</h2><p>观看<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/framework.html#%E6%B8%B2%E6%9F%93%E5%B1%82%E5%92%8C%E9%80%BB%E8%BE%91%E5%B1%82" target="_blank" rel="noopener">官方文档</a></p>
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><p><strong>wx:if</strong></p>
+<p>在框架中，使用 <code>wx:if=&quot;&quot;</code> 来判断是否需要渲染该代码块：</p>
+<p>与hidden的区别，默认为true时，你想要的结构要为false才展示。不管怎么样，hidden都要先渲染，内存开销比较大。</p>
+<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><blockquote>
+<p>重复的渲染生成组件</p>
+</blockquote>
+<p>通过wx:for实现</p>
+<p>页面结构</p>
+<pre><code class="xml">&lt;view class=&quot;movie&quot; wx:for=&quot;{{weeklyMovieList}}&quot;&gt;
+    &lt;image class=&quot;weekly-banner&quot; src=&quot;{{item.imageSrc}}&quot;&gt;&lt;/image&gt;
+    &lt;view class=&quot;movie-detail&quot;&gt;
+      &lt;text&gt;{{item.name}}&lt;/text&gt;
+      &lt;text&gt;{{item.comment}}&lt;/text&gt;
+      &lt;text wx:if=&quot;{{item.isRecommded}}&quot; style=&quot;color:red; font-weight:bold;&quot;&gt;强烈推荐&lt;/text&gt;
+    &lt;/view&gt;</code></pre>
+<p>逻辑代码</p>
+<pre><code class="javascript">Page({
+  data:{
+    weeklyMovieList:
+    [
+      {
+        name:&quot;教父&quot;,
+        imageSrc:&quot;/images/timg.png&quot;,
+        comment:&quot;点评：最精彩的剧本，最真实的黑帮社会。&quot;,
+        isRecommded:true
+      },
+      {
+        name:&quot;教父&quot;,
+        imageSrc:&quot;/images/timg.png&quot;,
+        comment:&quot;点评：最精彩的剧本，最真实的黑帮社会。&quot;,
+        isRecommded:false
+      },
+      {
+        name:&quot;教父&quot;,
+        imageSrc:&quot;/images/timg.png&quot;,
+        comment:&quot;点评：最精彩的剧本，最真实的黑帮社会。&quot;,
+        isRecommded:false
+      },
+      {
+        name:&quot;教父&quot;,
+        imageSrc:&quot;/images/timg.png&quot;,
+        comment:&quot;点评：最精彩的剧本，最真实的黑帮社会。&quot;,
+        isRecommded:false
+      },
+      {
+        name:&quot;教父&quot;,
+        imageSrc:&quot;/images/timg.png&quot;,
+        comment:&quot;点评：最精彩的剧本，最真实的黑帮社会。&quot;,
+        isRecommded:false
+      }
+    ]
+  }
+})</code></pre>
+<h2 id="swiper视图容器组件"><a href="#swiper视图容器组件" class="headerlink" title="swiper视图容器组件"></a>swiper视图容器组件</h2><blockquote>
+<p>滑块视图容器。其中只可放置<a href="https://developers.weixin.qq.com/miniprogram/dev/component/swiper-item.html" target="_blank" rel="noopener">swiper-item</a>组件，否则会导致未定义的行为。</p>
+</blockquote>
+<p>页面结构代码(weekly.wxml)</p>
+<pre><code class="xml">&lt;swiper class=&quot;movie-swiper&quot; indicator-dots=&quot;{{true}}&quot;&gt;
+    &lt;swiper-item class=&quot;movie&quot; wx:for=&quot;{{weeklyMovieList}}&quot;&gt;
+      &lt;view class=&quot;container movie-detail&quot;&gt;
+        &lt;image class=&quot;weekly-banner&quot; src=&quot;{{item.imageSrc}}&quot;&gt;&lt;/image&gt;
+        &lt;text&gt;{{item.name}}&lt;/text&gt;
+        &lt;text&gt;{{item.comment}}&lt;/text&gt;
+        &lt;text wx:if=&quot;{{item.isRecommded}}&quot; style=&quot;color:red; font-weight:bold;&quot;&gt;强烈推荐&lt;/text&gt;
+      &lt;/view&gt;
+    &lt;/swiper-item&gt;
+  &lt;/swiper&gt;</code></pre>
+<h2 id="页面的生命周期函数"><a href="#页面的生命周期函数" class="headerlink" title="页面的生命周期函数"></a>页面的生命周期函数</h2><p><img src="https://res.wx.qq.com/wxdoc/dist/assets/img/page-lifecycle.2e646c86.png" alt="小程序页面路径" loading="lazy"></p>
+<p>图片来自<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page-life-cycle.html" target="_blank" rel="noopener">官方文档</a></p>
+<p>页面生命周期：</p>
+<ol>
+<li>onLoad：首次进入页面加载时触发，可以在 onLoad 的参数中获取打开当前页面路径中的参数。</li>
+<li>onShow：重新进入页面时触发。</li>
+<li>onReady：页面首次渲染完成时触发。</li>
+<li>onHide：从前台切到后台或进入其他页面触发。</li>
+<li>onUnload：页面卸载时触发。</li>
+</ol>
+<h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><blockquote>
+<p>在小程序中对内部状态数据进行更新，不能采用直接赋值方式写入。</p>
+<p>小程序中视图层内部变量的数据变化，不会对逻辑层内部变量数据产生影响。说明逻辑层对视图层数据绑定为单向数据绑定，不是双向绑定。</p>
+</blockquote>
+<p>this.setData()：</p>
+<ol>
+<li>更新数据需要通过其函数进行调用。</li>
+<li>当data中没有内部变量时，会往data中添加一个内部变量，然后进行赋值。</li>
+<li>可以对局部数据进行更新。</li>
+</ol>
+<pre><code class="javascript">onShow:function (event) {
+    this.setData({
+      &quot;weeklyMovieList[0].name&quot;:&quot;yellow3&quot;, /*局部变量更新*/
+    })
+  }</code></pre>
+<h2 id="事件机制-响应用户交互"><a href="#事件机制-响应用户交互" class="headerlink" title="事件机制-响应用户交互"></a>事件机制-响应用户交互</h2><p>冒泡事件：子类事件会触发父类的事件。</p>
+<p>非冒泡事件：子类事件不会触发父类的事件。</p>
+<p>bindtap和catchtap属性之间的区别：</p>
+<blockquote>
+<p>除 <code>bind</code> 外，也可以用 <code>catch</code> 来绑定事件。与 <code>bind</code> 不同， <code>catch</code> 会阻止事件向上冒泡。</p>
+</blockquote>
+<p>事件编程：</p>
+<p>​     js中的事件要素</p>
+<p>​     1、事件源：通常指发生事件的标签 HTML</p>
+<p>​     2、事件属性：发生事件的性质  单击 双击 鼠标移入…</p>
+<p>​     3、事件监听：发生事件后执行的功能 函数</p>
+<p>结构代码:</p>
+<pre><code class="xml">&lt;text class=&quot;return-thisWeek&quot; catchtap=&quot;returnButton&quot; wx:if=&quot;{{index<currentIndex}}&quot;&gt;返回本周&lt;/text&gt;
+&lt;!--catcah：是不会触发冒泡事件--&gt;</code></pre>
+<p>逻辑代码：</p>
+<pre><code class="javascript">returnButton:function (event) {
+    this.setData({
+        /*
+        对当前页进行更新
+        */
+      currentIndex:this.data.weeklyMovieList.length-1
+    })
+  }</code></pre>
 ]]></content>
       <categories>
         <category>微信小程序开发学习记录</category>
@@ -113,7 +285,7 @@
     <title>Java集合复习记录</title>
     <url>/posts/45f2326c/</url>
     <content><![CDATA[
-    <div id="aplayer-EOBVygel" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-SUoNjaLp" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="479764527" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -191,16 +363,16 @@ public ArrayList() {
         <category>面试准备记录</category>
       </categories>
       <tags>
-        <tag>Java集合</tag>
         <tag>学习</tag>
         <tag>Java</tag>
+        <tag>Java集合</tag>
       </tags>
   </entry>
   <entry>
     <title>Java基础复习记录</title>
     <url>/posts/318fc0d1/</url>
     <content><![CDATA[
-    <div id="aplayer-RexphKOH" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-jjwfYVzc" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="5253801" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -402,16 +574,16 @@ public ArrayList() {
         <category>面试准备记录</category>
       </categories>
       <tags>
+        <tag>Java基础</tag>
         <tag>学习</tag>
         <tag>Java</tag>
-        <tag>Java基础</tag>
       </tags>
   </entry>
   <entry>
     <title>对文件的输入输出</title>
     <url>/posts/4e1c1c23/</url>
     <content><![CDATA[
-    <div id="aplayer-mTbFWgDR" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-iMDMcUar" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -901,7 +1073,7 @@ int main()
     <title>用户自己建立数据类型</title>
     <url>/posts/7cad0bc5/</url>
     <content><![CDATA[
-    <div id="aplayer-wVGNfVdF" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-ekThMpwt" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -1741,7 +1913,7 @@ Date birthday;    //定义结构体类型变量，因为用typedef Date就是结
     <title>善于利用指针</title>
     <url>/posts/659d25f6/</url>
     <content><![CDATA[
-    <div id="aplayer-XqLTAHiK" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-uQyrytsk" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -2693,7 +2865,7 @@ void check(int *p)
     <title>用函数实现模块化程序设计</title>
     <url>/posts/e1d8c1a1/</url>
     <content><![CDATA[
-    <div id="aplayer-PsCPhwnn" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-LpaIJIHG" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3171,7 +3343,7 @@ int max()
     <title>利用数组处理批量数据</title>
     <url>/posts/2b72a7f0/</url>
     <content><![CDATA[
-    <div id="aplayer-yolNOuTT" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-OkbVnTrS" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3436,7 +3608,7 @@ int main()
     <title>循环结构程序设计</title>
     <url>/posts/6d0a7f0b/</url>
     <content><![CDATA[
-    <div id="aplayer-QdWqRQzt" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-MEXAqsKO" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3573,7 +3745,7 @@ int main()
     <title>选择结构程序设计</title>
     <url>/posts/a08e0173/</url>
     <content><![CDATA[
-    <div id="aplayer-IaNiaCtT" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-fhNDXPbW" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3870,7 +4042,7 @@ int main()
     <title>hexo+GitHub博客搭建</title>
     <url>/posts/6121bfd7/</url>
     <content><![CDATA[
-    <div id="aplayer-DWnfsPEH" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-FFYVommo" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="1423285" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3995,7 +4167,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>最简单的C程序设计——顺序程序设计</title>
     <url>/posts/6b82abcf/</url>
     <content><![CDATA[
-    <div id="aplayer-dzNjyLRg" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-mOqnCEAv" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4234,7 +4406,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>算法——程序的灵魂</title>
     <url>/posts/4c65aa6d/</url>
     <content><![CDATA[
-    <div id="aplayer-pPrOFCbu" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-wveAAGGw" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4328,7 +4500,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>程序设计和C语言</title>
     <url>/posts/31f32bba/</url>
     <content><![CDATA[
-    <div id="aplayer-TsJRIkZd" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-GsWwcfJh" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 

@@ -43,15 +43,17 @@
 <meta property="og:site_name" content="上善若水">
 <meta property="og:description" content="想知道微信小程序时怎么玩的，所以开始记录学习过程，不记录的话，感觉很快就忘掉。 但愿达到可以熟练开发的程序，慢慢坚持。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://res.wx.qq.com/wxdoc/dist/assets/img/page-lifecycle.2e646c86.png">
 <meta property="article:published_time" content="2020-08-25T11:20:52.000Z">
-<meta property="article:modified_time" content="2020-08-25T14:54:58.459Z">
+<meta property="article:modified_time" content="2020-08-29T15:33:33.386Z">
 <meta property="article:author" content="侬仕超">
 <meta property="article:tag" content="学习">
 <meta property="article:tag" content="微信小程序">
 <meta property="article:tag" content="JavaScript">
-<meta name="twitter:card" content="summary"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="alternate" href="/atom.xml" title="上善若水" type="application/atom+xml">
-</head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script defer src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="侬仕超"><img width="96" loading="lazy" src="/images/head_img.jpeg" alt="侬仕超"></a><div class="site-author-name"><a href="/about/">侬仕超</a></div><a class="site-name" href="/about/site.html">上善若水</a><sub class="site-subtitle">一点一点做好，望吾热爱生活。</sub><div class="site-desciption">自助者天助之,自弃者天弃之</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">15</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">3</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">9</span></a></div><div class="site-state-item"><a href="/music/"><span class="site-state-item-icon"><i class="disc-line"></i></span></a></div><a class="site-state-item hty-icon-button" href="/about/" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&amp;uin=201015024&amp;site=qq&amp;menu=yes" title="QQ" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/t-diana" title="GitHub" target="_blank" style="color:#181717"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/id201015024" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=439028465" title="网易云音乐" target="_blank" style="color:#C10D0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/17058996" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目目录讲解"><span class="toc-number">1.</span> <span class="toc-text">项目目录讲解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面结构基础组件-view-text-image"><span class="toc-number">2.</span> <span class="toc-text">页面结构基础组件(view,text,image)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本快速布局设置"><span class="toc-number">3.</span> <span class="toc-text">基本快速布局设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#响应式长度单位rpx"><span class="toc-number">4.</span> <span class="toc-text">响应式长度单位rpx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用navigator组件"><span class="toc-number">5.</span> <span class="toc-text">使用navigator组件</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://www.nscblog.top/posts/d2a29eb/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="侬仕超"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="上善若水"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">微信小程序开发-基础篇</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-08-25 19:20:52" itemprop="dateCreated datePublished" datetime="2020-08-25T19:20:52+08:00">2020-08-25</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">447</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">1m</span></span></span><div class="post-classify"><span class="post-category"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">微信小程序开发学习记录</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">学习</span></a><a class="tag" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">微信小程序</span></a><a class="tag" href="/tags/JavaScript/" style="--text-color:#F4DF4F"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">JavaScript</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;">
-    <div id="aplayer-JPPrSvfJ" class="aplayer aplayer-tag-marker meting-tag-marker"
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.wx.qq.com/wxdoc/dist/assets/img/page-lifecycle.2e646c86.png"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="alternate" href="/atom.xml" title="上善若水" type="application/atom+xml">
+</head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script defer src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="侬仕超"><img width="96" loading="lazy" src="/images/head_img.jpeg" alt="侬仕超"></a><div class="site-author-name"><a href="/about/">侬仕超</a></div><a class="site-name" href="/about/site.html">上善若水</a><sub class="site-subtitle">一点一点做好，望吾热爱生活。</sub><div class="site-desciption">自助者天助之,自弃者天弃之</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">15</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">3</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">9</span></a></div><div class="site-state-item"><a href="/music/"><span class="site-state-item-icon"><i class="disc-line"></i></span></a></div><a class="site-state-item hty-icon-button" href="/about/" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&amp;uin=201015024&amp;site=qq&amp;menu=yes" title="QQ" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/t-diana" title="GitHub" target="_blank" style="color:#181717"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/id201015024" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=439028465" title="网易云音乐" target="_blank" style="color:#C10D0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/17058996" title="哔哩哔哩动画" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目目录讲解"><span class="toc-number">1.</span> <span class="toc-text">项目目录讲解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面结构基础组件-view-text-image"><span class="toc-number">2.</span> <span class="toc-text">页面结构基础组件(view,text,image)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本快速布局设置"><span class="toc-number">3.</span> <span class="toc-text">基本快速布局设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#响应式长度单位rpx"><span class="toc-number">4.</span> <span class="toc-text">响应式长度单位rpx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用navigator组件"><span class="toc-number">5.</span> <span class="toc-text">使用navigator组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全局配置——tabBar"><span class="toc-number">6.</span> <span class="toc-text">全局配置——tabBar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全局配置——window"><span class="toc-number">7.</span> <span class="toc-text">全局配置——window</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据绑定——从视图中抽离出数据"><span class="toc-number">8.</span> <span class="toc-text">数据绑定——从视图中抽离出数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小程序运行环境与基本架构"><span class="toc-number">9.</span> <span class="toc-text">小程序运行环境与基本架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#条件渲染"><span class="toc-number">10.</span> <span class="toc-text">条件渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表渲染"><span class="toc-number">11.</span> <span class="toc-text">列表渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#swiper视图容器组件"><span class="toc-number">12.</span> <span class="toc-text">swiper视图容器组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面的生命周期函数"><span class="toc-number">13.</span> <span class="toc-text">页面的生命周期函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新数据"><span class="toc-number">14.</span> <span class="toc-text">更新数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件机制-响应用户交互"><span class="toc-number">15.</span> <span class="toc-text">事件机制-响应用户交互</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://www.nscblog.top/posts/d2a29eb/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="侬仕超"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="上善若水"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">微信小程序开发-基础篇</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-08-25 19:20:52" itemprop="dateCreated datePublished" datetime="2020-08-25T19:20:52+08:00">2020-08-25</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2020-08-29 23:33:33" itemprop="dateModified" datetime="2020-08-29T23:33:33+08:00">2020-08-29</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">1.8k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">7m</span></span></span><div class="post-classify"><span class="post-category"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">微信小程序开发学习记录</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">学习</span></a><a class="tag" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">微信小程序</span></a><a class="tag" href="/tags/JavaScript/" style="--text-color:#F4DF4F"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">JavaScript</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;">
+    <div id="aplayer-iEIntZfT" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="187672" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -68,7 +70,7 @@
 <blockquote>
 <p>注意：</p>
 <ol>
-<li>app.json配置页面路径时，不能用绝对路径，只能用相对路径。</li>
+<li>app.json配置页面路径时，只能用绝对路径，不能用相对路径。</li>
 <li>json文件中不允许存在注释</li>
 <li>根据错误信息调错，console内的错误信息基本是语法错误</li>
 </ol>
@@ -78,7 +80,7 @@
 <h2 id="基本快速布局设置"><a href="#基本快速布局设置" class="headerlink" title="基本快速布局设置"></a>基本快速布局设置</h2><p>使用快速弹性布局设置，设置纵向平均分布时，需要设置相应的高度，设置横向分布时参考纵向分布。</p>
 <h2 id="响应式长度单位rpx"><a href="#响应式长度单位rpx" class="headerlink" title="响应式长度单位rpx"></a>响应式长度单位rpx</h2><p>用于适应不同屏幕的尺寸</p>
 <h2 id="使用navigator组件"><a href="#使用navigator组件" class="headerlink" title="使用navigator组件"></a>使用navigator组件</h2><blockquote>
-<p>作用：创建导航链接</p>
+<p>作用：链接跳转</p>
 </blockquote>
 <p>基本属性：</p>
 <ul>
@@ -89,6 +91,178 @@
 </li>
 <li>hover-class和其他样式指向同一个属性时，哪个样式在后面，后面的样式就会覆盖前一个相应的样式。</li>
 </ul>
+<p>about.wxml中的代码：</p>
+<pre><code class="xml">&lt;navigator url=&quot;/pages/weekly/weekly&quot; open-type=&quot;switchTab&quot; hover-class=&quot;click-class&quot; class=&quot;re&quot;&gt;每周推荐&lt;/navigator&gt;</code></pre>
+<h2 id="全局配置——tabBar"><a href="#全局配置——tabBar" class="headerlink" title="全局配置——tabBar"></a>全局配置——tabBar</h2><blockquote>
+<p>作用：用于标签页的切换</p>
+</blockquote>
+<p>使用时，navigator的open-type使用默认属性值时，navigator将会失效</p>
+<p>app.json中的代码</p>
+<pre><code class="json">&quot;tabBar&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;text&quot;: &quot;每周推荐&quot;,
+        &quot;pagePath&quot;: &quot;pages/weekly/weekly&quot;
+      },
+      {
+        &quot;text&quot;: &quot;关于&quot;,
+        &quot;pagePath&quot;: &quot;pages/about/about&quot;
+      }
+    ],
+    &quot;color&quot;: &quot;#000000&quot;,
+    &quot;selectedColor&quot;: &quot;#ffffff&quot;,
+    &quot;backgroundColor&quot;: &quot;#BEBEBE&quot;
+  }</code></pre>
+<h2 id="全局配置——window"><a href="#全局配置——window" class="headerlink" title="全局配置——window"></a>全局配置——window</h2><blockquote>
+<p>用于设置小程序的状态栏、导航条、标题、窗口背景色。</p>
+</blockquote>
+<p>自行上机看效果</p>
+<pre><code class="json">&quot;window&quot;: {
+    &quot;navigationBarBackgroundColor&quot;: &quot;#BEBEBE&quot;, #导航栏背景色
+    &quot;navigationBarTextStyle&quot;: &quot;white&quot;,#导航栏文字颜色，属性值只有white | black
+    &quot;navigationBarTitleText&quot;: &quot;电影周周看&quot; #导航栏标题文字
+  }</code></pre>
+<h2 id="数据绑定——从视图中抽离出数据"><a href="#数据绑定——从视图中抽离出数据" class="headerlink" title="数据绑定——从视图中抽离出数据"></a>数据绑定——从视图中抽离出数据</h2><blockquote>
+<p>WXML 中的动态数据均来自对应 Page 的 data。</p>
+</blockquote>
+<p>如同在配置文件中动态的给相应的数据</p>
+<p>页面结构：</p>
+<pre><code class="xml">&lt;view class=&quot;container&quot;&gt;
+  &lt;text&gt;本周推荐&lt;/text&gt;
+  &lt;image class=&quot;weekly-banner&quot; src=&quot;{{thisWeekMovie.imageSrc}}&quot;&gt;&lt;/image&gt;
+  &lt;text&gt;{{thisWeekMovie.name}}&lt;/text&gt;
+  &lt;text&gt;{{thisWeekMovie.comment}}&lt;/text&gt;
+&lt;/view&gt;</code></pre>
+<p>js中文件数据：</p>
+<pre><code class="javascript">Page({
+  data:{
+    thisWeekMovie:{
+      name:&quot;教父&quot;,
+      imageSrc:&quot;/images/timg.png&quot;,
+      comment:&quot;点评：最精彩的剧本，最真实的黑帮社会。&quot;
+    }
+  }
+})</code></pre>
+<blockquote>
+<p>注意：</p>
+<p>可以同过开发者工具调试器的APPdata，实时调试每个页面的所有内部状态变量的取值。</p>
+</blockquote>
+<h2 id="小程序运行环境与基本架构"><a href="#小程序运行环境与基本架构" class="headerlink" title="小程序运行环境与基本架构"></a>小程序运行环境与基本架构</h2><p>观看<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/framework.html#%E6%B8%B2%E6%9F%93%E5%B1%82%E5%92%8C%E9%80%BB%E8%BE%91%E5%B1%82" target="_blank" rel="noopener">官方文档</a></p>
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><p><strong>wx:if</strong></p>
+<p>在框架中，使用 <code>wx:if=&quot;&quot;</code> 来判断是否需要渲染该代码块：</p>
+<p>与hidden的区别，默认为true时，你想要的结构要为false才展示。不管怎么样，hidden都要先渲染，内存开销比较大。</p>
+<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><blockquote>
+<p>重复的渲染生成组件</p>
+</blockquote>
+<p>通过wx:for实现</p>
+<p>页面结构</p>
+<pre><code class="xml">&lt;view class=&quot;movie&quot; wx:for=&quot;{{weeklyMovieList}}&quot;&gt;
+    &lt;image class=&quot;weekly-banner&quot; src=&quot;{{item.imageSrc}}&quot;&gt;&lt;/image&gt;
+    &lt;view class=&quot;movie-detail&quot;&gt;
+      &lt;text&gt;{{item.name}}&lt;/text&gt;
+      &lt;text&gt;{{item.comment}}&lt;/text&gt;
+      &lt;text wx:if=&quot;{{item.isRecommded}}&quot; style=&quot;color:red; font-weight:bold;&quot;&gt;强烈推荐&lt;/text&gt;
+    &lt;/view&gt;</code></pre>
+<p>逻辑代码</p>
+<pre><code class="javascript">Page({
+  data:{
+    weeklyMovieList:
+    [
+      {
+        name:&quot;教父&quot;,
+        imageSrc:&quot;/images/timg.png&quot;,
+        comment:&quot;点评：最精彩的剧本，最真实的黑帮社会。&quot;,
+        isRecommded:true
+      },
+      {
+        name:&quot;教父&quot;,
+        imageSrc:&quot;/images/timg.png&quot;,
+        comment:&quot;点评：最精彩的剧本，最真实的黑帮社会。&quot;,
+        isRecommded:false
+      },
+      {
+        name:&quot;教父&quot;,
+        imageSrc:&quot;/images/timg.png&quot;,
+        comment:&quot;点评：最精彩的剧本，最真实的黑帮社会。&quot;,
+        isRecommded:false
+      },
+      {
+        name:&quot;教父&quot;,
+        imageSrc:&quot;/images/timg.png&quot;,
+        comment:&quot;点评：最精彩的剧本，最真实的黑帮社会。&quot;,
+        isRecommded:false
+      },
+      {
+        name:&quot;教父&quot;,
+        imageSrc:&quot;/images/timg.png&quot;,
+        comment:&quot;点评：最精彩的剧本，最真实的黑帮社会。&quot;,
+        isRecommded:false
+      }
+    ]
+  }
+})</code></pre>
+<h2 id="swiper视图容器组件"><a href="#swiper视图容器组件" class="headerlink" title="swiper视图容器组件"></a>swiper视图容器组件</h2><blockquote>
+<p>滑块视图容器。其中只可放置<a href="https://developers.weixin.qq.com/miniprogram/dev/component/swiper-item.html" target="_blank" rel="noopener">swiper-item</a>组件，否则会导致未定义的行为。</p>
+</blockquote>
+<p>页面结构代码(weekly.wxml)</p>
+<pre><code class="xml">&lt;swiper class=&quot;movie-swiper&quot; indicator-dots=&quot;{{true}}&quot;&gt;
+    &lt;swiper-item class=&quot;movie&quot; wx:for=&quot;{{weeklyMovieList}}&quot;&gt;
+      &lt;view class=&quot;container movie-detail&quot;&gt;
+        &lt;image class=&quot;weekly-banner&quot; src=&quot;{{item.imageSrc}}&quot;&gt;&lt;/image&gt;
+        &lt;text&gt;{{item.name}}&lt;/text&gt;
+        &lt;text&gt;{{item.comment}}&lt;/text&gt;
+        &lt;text wx:if=&quot;{{item.isRecommded}}&quot; style=&quot;color:red; font-weight:bold;&quot;&gt;强烈推荐&lt;/text&gt;
+      &lt;/view&gt;
+    &lt;/swiper-item&gt;
+  &lt;/swiper&gt;</code></pre>
+<h2 id="页面的生命周期函数"><a href="#页面的生命周期函数" class="headerlink" title="页面的生命周期函数"></a>页面的生命周期函数</h2><p><img src="https://res.wx.qq.com/wxdoc/dist/assets/img/page-lifecycle.2e646c86.png" alt="小程序页面路径" loading="lazy"></p>
+<p>图片来自<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page-life-cycle.html" target="_blank" rel="noopener">官方文档</a></p>
+<p>页面生命周期：</p>
+<ol>
+<li>onLoad：首次进入页面加载时触发，可以在 onLoad 的参数中获取打开当前页面路径中的参数。</li>
+<li>onShow：重新进入页面时触发。</li>
+<li>onReady：页面首次渲染完成时触发。</li>
+<li>onHide：从前台切到后台或进入其他页面触发。</li>
+<li>onUnload：页面卸载时触发。</li>
+</ol>
+<h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><blockquote>
+<p>在小程序中对内部状态数据进行更新，不能采用直接赋值方式写入。</p>
+<p>小程序中视图层内部变量的数据变化，不会对逻辑层内部变量数据产生影响。说明逻辑层对视图层数据绑定为单向数据绑定，不是双向绑定。</p>
+</blockquote>
+<p>this.setData()：</p>
+<ol>
+<li>更新数据需要通过其函数进行调用。</li>
+<li>当data中没有内部变量时，会往data中添加一个内部变量，然后进行赋值。</li>
+<li>可以对局部数据进行更新。</li>
+</ol>
+<pre><code class="javascript">onShow:function (event) {
+    this.setData({
+      &quot;weeklyMovieList[0].name&quot;:&quot;yellow3&quot;, /*局部变量更新*/
+    })
+  }</code></pre>
+<h2 id="事件机制-响应用户交互"><a href="#事件机制-响应用户交互" class="headerlink" title="事件机制-响应用户交互"></a>事件机制-响应用户交互</h2><p>冒泡事件：子类事件会触发父类的事件。</p>
+<p>非冒泡事件：子类事件不会触发父类的事件。</p>
+<p>bindtap和catchtap属性之间的区别：</p>
+<blockquote>
+<p>除 <code>bind</code> 外，也可以用 <code>catch</code> 来绑定事件。与 <code>bind</code> 不同， <code>catch</code> 会阻止事件向上冒泡。</p>
+</blockquote>
+<p>事件编程：</p>
+<p>​     js中的事件要素</p>
+<p>​     1、事件源：通常指发生事件的标签 HTML</p>
+<p>​     2、事件属性：发生事件的性质  单击 双击 鼠标移入…</p>
+<p>​     3、事件监听：发生事件后执行的功能 函数</p>
+<p>结构代码:</p>
+<pre><code class="xml">&lt;text class=&quot;return-thisWeek&quot; catchtap=&quot;returnButton&quot; wx:if=&quot;{{index<currentIndex}}&quot;&gt;返回本周&lt;/text&gt;
+&lt;!--catcah：是不会触发冒泡事件--&gt;</code></pre>
+<p>逻辑代码：</p>
+<pre><code class="javascript">returnButton:function (event) {
+    this.setData({
+        /*
+        对当前页进行更新
+        */
+      currentIndex:this.data.weeklyMovieList.length-1
+    })
+  }</code></pre>
 </div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>侬仕超</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://www.nscblog.top/posts/d2a29eb/" title="微信小程序开发-基础篇">https://www.nscblog.top/posts/d2a29eb/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/posts/45f2326c/" rel="next" title="Java集合复习记录"><span class="post-nav-text">Java集合复习记录</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" href="https://github.com/t-diana/t-diana.github.io/issues?q=is:issue+微信小程序开发-基础篇" target="_blank" rel="noopener">GitHub Issues</a></div><div id="valine-container"></div><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function initValine() {
   const valineConfig = {"enable":true,"appId":"6aMnX3gvc24y4kqY8wcwlrar-gzGzoHsz","appKey":"4mjNWPzsDxvxEsrWM9upHzgE","placeholder":"欢迎在评论区留言","avatar":null,"meta":["nick","mail","link"],"pageSize":10,"visitor":false,"highlight":true,"recordIP":false,"enableQQ":true,"el":"#valine-container","lang":"zh-cn"}
   valineConfig.path = window.location.pathname
