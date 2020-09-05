@@ -4,7 +4,7 @@
     <title>学习方法论</title>
     <url>/posts/d0f7b26e/</url>
     <content><![CDATA[
-    <div id="aplayer-gjpfzVeB" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-jurAyCoq" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="29089381" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -61,7 +61,7 @@
     <title>微信小程序开发-基础篇</title>
     <url>/posts/d2a29eb/</url>
     <content><![CDATA[
-    <div id="aplayer-iEIntZfT" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-JbyJSfQZ" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="187672" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -271,6 +271,57 @@
       currentIndex:this.data.weeklyMovieList.length-1
     })
   }</code></pre>
+<h2 id="组件的自定义属性"><a href="#组件的自定义属性" class="headerlink" title="组件的自定义属性"></a>组件的自定义属性</h2><blockquote>
+<p>作用：想逻辑层传递业务数据</p>
+</blockquote>
+<p>页面结构代码：</p>
+<pre><code class="xml">&lt;view class=&quot;container movie-detail&quot; bindtap=&quot;toDetail&quot; data-movieId=&quot;{{item.id}}&quot;&gt;</code></pre>
+<p>逻辑层代码：</p>
+<pre><code class="javascript">toDetail:function(event){
+    var movieId=event.currentTarget.dataset.movieid;
+    console.log(event.currentTarget);
+    wx.navigateTo({
+      url: &#39;/pages/detail/detail?id=&#39;+movieId,
+    })
+  }</code></pre>
+<p>组件自定义属性：</p>
+<ul>
+<li>以<code>data-属性名</code> 命名,如页面结构代码中的data-movieId</li>
+<li>在逻辑层中通过<code>event.currentTarget.dataset.属性名</code>来获取属性名对应的属性值，注意组件自定义属性默认全小写，除非两个单词之间用<code>-</code>分隔，如：data-movie-id;</li>
+</ul>
+<p>这次写的练习项目因为涉及到了页面跳转，在<a href="https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html" target="_blank" rel="noopener">官方文档</a>中称为路由</p>
+<h2 id="发起请求API"><a href="#发起请求API" class="headerlink" title="发起请求API"></a>发起请求API</h2><p>类似于Ajax的使用，异步请求</p>
+<pre><code class="javascript">onLoad:function(options){
+    // console.log(options)
+    wx.request({//与Ajax相同的异步请求
+      url: &#39;url&#39;,//请求地址 这个地址必须在后台存在，域名必须是经过备案的
+      data:{},//请求参数
+      method:&#39;GET&#39;,//请求方式
+      header:{
+        //请求数据MIMA格式，比如默认的：aplication/json
+      },
+      success:function(res){//成功时执行的回调函数
+          //this.setdata();//这样是不合理的，this这时指向的是success
+      },
+      fail:function(){},//失败时执行的回调函数
+      complete:function(){},//完成时执行的回调函数
+    })
+  }</code></pre>
+<h2 id="动态设置导航栏loading状态"><a href="#动态设置导航栏loading状态" class="headerlink" title="动态设置导航栏loading状态"></a>动态设置导航栏loading状态</h2><blockquote>
+<p>作用：在当前页面显示导航条加载动画</p>
+</blockquote>
+<p>个人觉得只是给用户心里安慰，用于缓解网络延迟带来的影响</p>
+<pre><code class="JavaScript">wx.showNavigationBarLoading(Object object){
+    success:function(){
+        //加载成功
+    },
+    fail:function(){
+        //加载失败
+    },
+    complete:function(){
+        //加载完成后执行的回调函数，不管失败还是成功，都会执行
+    }
+}</code></pre>
 ]]></content>
       <categories>
         <category>微信小程序开发学习记录</category>
@@ -285,7 +336,7 @@
     <title>Java集合复习记录</title>
     <url>/posts/45f2326c/</url>
     <content><![CDATA[
-    <div id="aplayer-SUoNjaLp" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-RHwYozBu" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="479764527" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -372,7 +423,7 @@ public ArrayList() {
     <title>Java基础复习记录</title>
     <url>/posts/318fc0d1/</url>
     <content><![CDATA[
-    <div id="aplayer-jjwfYVzc" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-vtGbozYq" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="5253801" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -583,7 +634,7 @@ public ArrayList() {
     <title>对文件的输入输出</title>
     <url>/posts/4e1c1c23/</url>
     <content><![CDATA[
-    <div id="aplayer-iMDMcUar" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-LAzCSLDF" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -1073,7 +1124,7 @@ int main()
     <title>用户自己建立数据类型</title>
     <url>/posts/7cad0bc5/</url>
     <content><![CDATA[
-    <div id="aplayer-ekThMpwt" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-ztQNieRb" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -1913,7 +1964,7 @@ Date birthday;    //定义结构体类型变量，因为用typedef Date就是结
     <title>善于利用指针</title>
     <url>/posts/659d25f6/</url>
     <content><![CDATA[
-    <div id="aplayer-uQyrytsk" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-IuHtkLEO" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -2865,7 +2916,7 @@ void check(int *p)
     <title>用函数实现模块化程序设计</title>
     <url>/posts/e1d8c1a1/</url>
     <content><![CDATA[
-    <div id="aplayer-LpaIJIHG" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-gZwHxnGd" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3343,7 +3394,7 @@ int max()
     <title>利用数组处理批量数据</title>
     <url>/posts/2b72a7f0/</url>
     <content><![CDATA[
-    <div id="aplayer-OkbVnTrS" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-uPktrZzp" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3608,7 +3659,7 @@ int main()
     <title>循环结构程序设计</title>
     <url>/posts/6d0a7f0b/</url>
     <content><![CDATA[
-    <div id="aplayer-MEXAqsKO" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-pqgbXuyS" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3745,7 +3796,7 @@ int main()
     <title>选择结构程序设计</title>
     <url>/posts/a08e0173/</url>
     <content><![CDATA[
-    <div id="aplayer-fhNDXPbW" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-SZqWWglp" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4042,7 +4093,7 @@ int main()
     <title>hexo+GitHub博客搭建</title>
     <url>/posts/6121bfd7/</url>
     <content><![CDATA[
-    <div id="aplayer-FFYVommo" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-sQCFaOOO" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="1423285" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4167,7 +4218,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>最简单的C程序设计——顺序程序设计</title>
     <url>/posts/6b82abcf/</url>
     <content><![CDATA[
-    <div id="aplayer-mOqnCEAv" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-wqKjJCRf" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4406,7 +4457,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>算法——程序的灵魂</title>
     <url>/posts/4c65aa6d/</url>
     <content><![CDATA[
-    <div id="aplayer-wveAAGGw" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-WkYQiyCK" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4500,7 +4551,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>程序设计和C语言</title>
     <url>/posts/31f32bba/</url>
     <content><![CDATA[
-    <div id="aplayer-GsWwcfJh" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-GikNVlde" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
