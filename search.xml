@@ -4,7 +4,7 @@
     <title>学习方法论</title>
     <url>/posts/d0f7b26e/</url>
     <content><![CDATA[
-    <div id="aplayer-ZiERocaN" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-llBNofCx" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="29089381" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -58,10 +58,28 @@
       </tags>
   </entry>
   <entry>
+    <title>数据库系统-绪论</title>
+    <url>/posts/2c0f3226/</url>
+    <content><![CDATA[
+    <div id="aplayer-nNkKjOoL" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="523504" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
+    ></div>
+
+]]></content>
+      <categories>
+        <category>数据库原理及应用开发</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+        <tag>数据库系统</tag>
+        <tag>database</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>微信小程序开发-基础篇</title>
     <url>/posts/d2a29eb/</url>
     <content><![CDATA[
-    <div id="aplayer-yiOJWYdG" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-edoqKtTI" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="187672" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -458,6 +476,22 @@ onShareAppMessage:function(res){
 </tbody></table>
 </li>
 </ol>
+<h2 id="构建小程序的全栈应用"><a href="#构建小程序的全栈应用" class="headerlink" title="构建小程序的全栈应用"></a>构建小程序的全栈应用</h2><h3 id="小程序全栈开发"><a href="#小程序全栈开发" class="headerlink" title="小程序全栈开发"></a>小程序全栈开发</h3><p>WebServer：客户端发送消息给服务端，服务返回数据给客服端。</p>
+<p>http请求request到webserver，webserver response消息给HTTP</p>
+<p>webserver核心概念：</p>
+<p>中间件：用于处理响应。</p>
+<blockquote>
+<p>本笔记暂时中止，感觉学习的视频不是特别好。</p>
+<p>最终总结如下：</p>
+<ul>
+<li>微信小程序要有web前端基础（HTML+CSS+JavaScript）</li>
+<li>要会使用Ajax，异步请求（不需要使用原始的，会jQuery的就可以）</li>
+<li>要认清小程序的结构组成，要会看懂相应的API文档</li>
+<li>新手建议跟随项目学习，上手比较快，本视频，学到一半，没有了项目，如同没有了练习。</li>
+<li>如果需要连接后台，则需要有后端技术基础。</li>
+</ul>
+</blockquote>
+<p><strong><a href="https://www.xuetangx.com/course/THU08091000796/1510692?fromArray=learn_title" target="_blank" rel="noopener">视频学习地址</a></strong></p>
 ]]></content>
       <categories>
         <category>微信小程序开发学习记录</category>
@@ -472,7 +506,7 @@ onShareAppMessage:function(res){
     <title>Java集合复习记录</title>
     <url>/posts/45f2326c/</url>
     <content><![CDATA[
-    <div id="aplayer-VHZiDiiE" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-QtQTunUe" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="479764527" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -559,7 +593,7 @@ public ArrayList() {
     <title>Java基础复习记录</title>
     <url>/posts/318fc0d1/</url>
     <content><![CDATA[
-    <div id="aplayer-AzerXupq" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-jfdqeOKL" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="5253801" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -770,7 +804,7 @@ public ArrayList() {
     <title>对文件的输入输出</title>
     <url>/posts/4e1c1c23/</url>
     <content><![CDATA[
-    <div id="aplayer-vJVBbCqk" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-rhtZlmkE" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -1260,7 +1294,7 @@ int main()
     <title>用户自己建立数据类型</title>
     <url>/posts/7cad0bc5/</url>
     <content><![CDATA[
-    <div id="aplayer-mhNhJsME" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-WcSFZpZl" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -2100,7 +2134,7 @@ Date birthday;    //定义结构体类型变量，因为用typedef Date就是结
     <title>善于利用指针</title>
     <url>/posts/659d25f6/</url>
     <content><![CDATA[
-    <div id="aplayer-UjqOBPZm" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-tCcYWAwU" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3052,7 +3086,7 @@ void check(int *p)
     <title>用函数实现模块化程序设计</title>
     <url>/posts/e1d8c1a1/</url>
     <content><![CDATA[
-    <div id="aplayer-ckDLXTEH" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-tHSOVwVG" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3530,7 +3564,7 @@ int max()
     <title>利用数组处理批量数据</title>
     <url>/posts/2b72a7f0/</url>
     <content><![CDATA[
-    <div id="aplayer-EyRnuwZM" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-lrZvuuGK" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3795,7 +3829,7 @@ int main()
     <title>循环结构程序设计</title>
     <url>/posts/6d0a7f0b/</url>
     <content><![CDATA[
-    <div id="aplayer-DBgUqTSz" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-fJPOGkcI" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -3932,7 +3966,7 @@ int main()
     <title>选择结构程序设计</title>
     <url>/posts/a08e0173/</url>
     <content><![CDATA[
-    <div id="aplayer-vwNoQlDu" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-NyWEWWKm" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4229,7 +4263,7 @@ int main()
     <title>hexo+GitHub博客搭建</title>
     <url>/posts/6121bfd7/</url>
     <content><![CDATA[
-    <div id="aplayer-AzUPikAZ" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-EGThoIBM" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="1423285" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4354,7 +4388,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>最简单的C程序设计——顺序程序设计</title>
     <url>/posts/6b82abcf/</url>
     <content><![CDATA[
-    <div id="aplayer-acukgUau" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-qWVKLoIz" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4593,7 +4627,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>算法——程序的灵魂</title>
     <url>/posts/4c65aa6d/</url>
     <content><![CDATA[
-    <div id="aplayer-SEKZezyB" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-kHFxlAQT" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
@@ -4687,7 +4721,7 @@ hexo deploy 或是 hexo d #将资源上传到GitHub上</code></pre>
     <title>程序设计和C语言</title>
     <url>/posts/31f32bba/</url>
     <content><![CDATA[
-    <div id="aplayer-RcAjfzWO" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-gnWLZfwM" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="20744788" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#C20C0C"
     ></div>
 
